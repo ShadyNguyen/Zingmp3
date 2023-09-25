@@ -1,0 +1,151 @@
+:root{
+    --border-secondary:hsla(0,0%,100%,0.05);
+    --progressbar-player-bg:hsla(0,0%,100%,0.3);
+    --progressbar-active-bg: #fff;
+    --alpha-bg: hsla(0,0%,100%,0.1);
+    --text-primary: #fff;
+    --border-player:hsla(0,0%,100%,0.1);
+    --notify-box-shadow: rgba(0,0,0,0.6);
+    --scroll-thumb-bg: hsla(0,0%,100%,0.3);
+    --search-text: #eee;
+    --text-item-hover: #fff;
+    
+    --width-sidebar : 240px;
+    --height-playMusic: 90px;
+    --height-header: 70px;
+    --width-notification:360px;
+    --padding-section:5rem;
+    --max-width-header-search:440px;
+    --width-sidebar-mobile:240px;
+    
+    
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%; 
+}
+input{
+    outline: none;
+}
+body{
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    background-color: var(--layout-bg);
+    color: var(--text-primary);;
+    font-size: 1.4rem;
+    overflow: none scroll;
+        
+    
+}
+
+/* Scrollbar css */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background-color: var(--scroll-thumb-bg);;
+    background-clip: padding-box;
+}
+
+/* div i */
+.wrapper-icon{
+    display: flex;
+    align-items: center;    
+    color: (var(--text-primary));
+}
+
+/* notification */
+.notification{
+    position: fixed;
+    left: 20px;
+    bottom: calc(2rem + var(--height-playMusic));
+    box-shadow: 0 2px 10px 0 var(--notify-box-shadow);
+    background-color: var(--primary-bg);
+    border-radius: 0.6rem;
+    max-width: var(--width-notification);
+    z-index: 50;
+
+    padding: 1.5rem;
+    gap: 1rem;
+    transition: margin ease-in-out 0.5s;
+}
+.notification p{
+    margin: 0;
+    flex:1;
+}
+.icon-notification i{
+    font-size: 1.5rem;
+    color: (var(--text-primary));
+}
+.icon-notification i{
+    cursor: pointer;
+}
+.notification.hidden{
+    margin-left: -100%;
+}
+
+.content-wrapper{
+    
+    
+    padding-top: var(--height-header);
+    width: 360px;
+
+    margin-bottom: var(--height-playMusic);
+    width: 100%;
+    padding-left: var(--width-sidebar);
+    height: 5000px;
+    
+}
+.bg-overlay{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.2);
+    z-index: -1;
+}
+.bg-overlay-sidebar{
+    z-index: 29;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    :root {
+        --width-sidebar:0;
+
+        --padding-section: 1rem;
+        /* margin-left: calc( 0px - var(--width-sidebar) ); */
+        --max-width-header-search:90%;
+        --height-playMusic:10vh;
+        
+    }
+    .notification{
+        left:0;
+        width: 75%;
+        padding: .5rem;
+    }
+    .notification p{
+        font-size: 0.8em;
+
+    }
+    
+}
+
+
+
+

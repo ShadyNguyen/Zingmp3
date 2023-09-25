@@ -1,0 +1,21 @@
+aside{
+    position: fixed;
+    z-index: 30;
+    width: var(--width-sidebar);
+    background-color: var(--sidebar-popup-bg);
+    padding-bottom: var(--height-playMusic);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+    transition: all .3s ease-out;
+    height: 100vh;
+
+}
+@media (max-width: 991px) {
+    aside{
+        margin-left:-100%;
+    }
+    aside.hidden{
+        margin-left: 0;
+        width: var(--width-sidebar-mobile);
+        background-color: red;
+    }
+}

@@ -1,0 +1,123 @@
+[data-theme=blue-light], [data-theme=blue], [data-theme=brown], [data-theme=green], [data-theme=pink], [data-theme=purple], [data-theme=red] {
+    --text-placeholder: #dadada;
+    --navigation-text: #dadada;
+    --sticky-header-box-shadow: rgba(0,0,0,0.1);
+    --portal-menu-box-shadow: rgba(0,0,0,0.2);
+}
+
+[data-theme=purple] {
+    --layout-bg: #170f23;
+    --layout-header-bg: rgba(23,15,35,0.8);
+    --player-bg: #130c1c;
+    --sidebar-popup-bg: #2a213a;
+    --primary-bg: #34224f;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(23,15,35,0.95) 55.21%,rgba(23,15,35,0.6));
+    --alpha-layout-bg: rgba(41,21,71,0.8);
+    --queue-player-popup-bg: #120822;
+    --blur-queue-bg: rgba(30,21,47,0.9019607843137255);
+    --purple-primary: #9b4de0;
+    --link-text-hover: #c273ed;
+    --chart-bg-img-alpha: rgba(32,19,53,0.9);
+}
+
+[data-theme=purple],[data-theme=red] {
+    --chart-box-bg-alpha: hsla(0,0%,100%,0.05)
+}
+
+[data-theme=red] {
+    --layout-bg: #2e0f10;
+    --layout-header-bg: rgba(46,15,16,0.8);
+    --player-bg: #3b1113;
+    --sidebar-popup-bg: #7a2922;
+    --primary-bg: #522325;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(46,15,16,0.95) 55.21%,rgba(46,15,16,0.6));
+    --alpha-layout-bg: rgba(115,23,23,0.8);
+    --queue-player-popup-bg: #561111;
+    --blur-queue-bg: rgba(115,23,23,0.9019607843137255);
+    --purple-primary: #ca4954;
+    --link-text-hover: #f2636f;
+    --chart-bg-img-alpha: rgba(115,23,23,0.9)
+}
+
+[data-theme=blue] {
+    --layout-bg: #0f1a2e;
+    /* ut-header-bg: rgba(15,26,46,0.8); */
+    --player-bg: #111f3b;
+    --sidebar-popup-bg: #1d2a49;
+    --primary-bg: #173b45;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(15,26,46,0.95) 55.21%,rgba(15,26,46,0.6));
+    --alpha-layout-bg: rgba(16,31,63,0.8);
+    --queue-player-popup-bg: #223c75;
+    --blur-queue-bg: rgba(16,31,63,0.9019607843137255);
+    --purple-primary: #158370;
+    --link-text-hover: #0daf94;
+    --chart-bg-img-alpha: rgba(16,31,63,0.9);
+    --chart-box-bg-alpha: hsla(0,0%,100%,0.05)
+}
+
+[data-theme=blue-light] {
+    --layout-bg: #162a45;
+    --layout-header-bg: rgba(22,42,69,0.8);
+    --player-bg: #172f4f;
+    --sidebar-popup-bg: #2a4162;
+    --primary-bg: #203d65;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(22,42,69,0.95) 55.21%,rgba(22,42,69,0.6));
+    --alpha-layout-bg: rgba(29,55,90,0.8);
+    --queue-player-popup-bg: #0b274c;
+    --blur-queue-bg: rgba(29,55,90,0.9019607843137255);
+    --purple-primary: #3b68ef;
+    --link-text-hover: #429eff;
+    --chart-bg-img-alpha: rgba(29,55,90,0.9);
+    --chart-box-bg-alpha: hsla(0,0%,100%,0.05)
+}
+
+[data-theme=green] {
+    --layout-bg: #142922;
+    --layout-header-bg: rgba(20,41,34,0.8);
+    --player-bg: #19342c;
+    --sidebar-popup-bg: #244f3f;
+    --primary-bg: #204b3d;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(20,41,34,0.95) 55.21%,rgba(20,41,34,0.6));
+    --alpha-layout-bg: rgba(18,69,52,0.8);
+    --queue-player-popup-bg: #0c523a;
+    --blur-queue-bg: rgba(18,69,52,0.9019607843137255);
+    --purple-primary: #138673;
+    --link-text-hover: #0daf94;
+    --chart-bg-img-alpha: rgba(18,69,52,0.9)
+}
+
+[data-theme=brown],[data-theme=green] {
+    --chart-box-bg-alpha: hsla(0,0%,100%,0.05)
+}
+
+[data-theme=brown] {
+    --layout-bg: #251b18;
+    --layout-header-bg: rgba(37,27,24,0.8);
+    --player-bg: #30201d;
+    --sidebar-popup-bg: #604a45;
+    --primary-bg: #46312b;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(37,27,24,0.95) 55.21%,rgba(37,27,24,0.6));
+    --alpha-layout-bg: rgba(87,64,59,0.8);
+    --queue-player-popup-bg: #63423c;
+    --blur-queue-bg: rgba(87,64,59,0.9019607843137255);
+    --purple-primary: #b65f20;
+    --link-text-hover: #e96f16;
+    --chart-bg-img-alpha: rgba(87,64,59,0.9)
+}
+
+[data-theme=pink] {
+    --layout-bg: #411636;
+    --layout-header-bg: rgba(65,22,54,0.8);
+    --player-bg: #4c1a3f;
+    --sidebar-popup-bg: #883c6c;
+    --primary-bg: #642654;
+    --gradient-latest-section-artist: linear-gradient(286.07deg,rgba(65,22,54,0.95) 55.21%,rgba(65,22,54,0.6));
+    --alpha-layout-bg: rgba(128,0,100,0.8);
+    --queue-player-popup-bg: #800064;
+    --blur-queue-bg: rgba(128,0,100,0.9019607843137255);
+    --purple-primary: #ca4974;
+    --link-text-hover: #e9638f;
+    --gradient-bg: linear-gradient(96deg,#ff64dc,#d631a1 102%);
+    --chart-bg-img-alpha: rgba(142,51,122,0.9);
+    --chart-box-bg-alpha: hsla(0,0%,100%,0.05)
+}
