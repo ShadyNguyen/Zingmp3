@@ -7,6 +7,6 @@
 @stop
 
 @section('content')
-<p>asdsa</p>
+<p>asdsad</p>
 
 @stop

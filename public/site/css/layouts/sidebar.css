@@ -1,21 +1,95 @@
-aside{
+aside {
     position: fixed;
     z-index: 30;
     width: var(--width-sidebar);
     background-color: var(--sidebar-popup-bg);
-    padding-bottom: var(--height-playMusic);
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
     transition: all .3s ease-out;
-    height: 100vh;
+    height: calc(100vh - var(--height-playMusic));
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
+.aside-add-playlist:hover{
+    color: var(--text-primary) !important;
+}
+
+.aside-nav,.aside-add-playlist{
+    width: 100%;
+}
+
+.logo {
+    width: 100%;
+    height: var(--height-header);
+    padding: 0 2.5rem 0 2.8rem;
+}
+
+.logo-content {
+    width: 70%;
+    height: 100%;
+    background: var(--img-logo-mp3) 50%/contain no-repeat;
+
+}
+
+.aside-nav{
+    height: 70%;
+    flex:1;
+}
+
+.aside-nav-content{
+    color: var(--navigation-text);
+    overflow-y: scroll !important;
+    max-height: 300px;
+}
+
+.aside-nav-content .action-item-content{
+    color: var(--navigation-text);
+    padding: 1.2rem 2.1rem;
+}
+
+.menu-list-action-item.active .action-item-content{
+    border-left: 3px solid transparent;
+    border-color: var(--purple-primary);
+    background-color: var(--alpha-bg);
+    color: var(--text-primary);
+}
+
+.menu-list-action-item:hover +.aside-nav-content {
+    background-color: transparent;
+    color: var(--text-primary) !important;
+
+}
+
+
+.aside-nav-content i{
+    font-size: 2rem !important;
+}
+
+.aside-nav-content span{
+    width: 60% !important;
+}
+.aside-add-playlist{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid var(--border-primary);
+    background-color: var(--sidebar-popup-bg);
+}
+
+.aside-add-playlist .menu-list-action-item:hover{
+    background-color: transparent !important;
+}
+
 @media (max-width: 991px) {
-    aside{
-        margin-left:-100%;
+
+    aside {
+        margin-left: -100%;
     }
-    aside.hidden{
+    aside.hidden {
         margin-left: 0;
         width: var(--width-sidebar-mobile);
-        background-color: red;
+        /* background-color: red; */
     }
+    
 }

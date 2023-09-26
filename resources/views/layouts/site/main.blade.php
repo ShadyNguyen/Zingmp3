@@ -12,15 +12,19 @@
     <link rel="stylesheet" href="{{ url('public/site/css/layouts/sidebar.css') }}">
     <link rel="stylesheet" href="{{ url('public/site/css/layouts/playMusic.css') }}">
 
-
     <title>@yield('title') - Toanf-messi</title>
 
     @yield('css')
 </head>
+
 <body>
+
+    <!-- overlay -->
     <div class="bg-overlay">
 
     </div>
+
+
     <div class="wrapper">
         <!-- header -->
         @include('layouts/site/layoutItems/header')
@@ -28,57 +32,196 @@
         <!-- sidebar -->
         @include('layouts/site/layoutItems/sidebar')
 
-        <div class="content">
-            
-            <div class="test"> </div>            
-            @yield('content')
+        <div class="content-wrapper">
+            <div class="content">
+                @yield('content')
+                <div class="dropdown">
+                    <button class="" id="test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                        nhan day
+                    </button>
+                    <div class="dropdown-menu song-menu" aria-labelledby="test">
+                        <div class="menu-list song-info-menu">
+                            <div class="thumb-song">
+                                <img src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/c/9/5/d/c95d510864924eb7eff43c9b4cb19202.jpg" alt="">
+                            </div>
+                            <div class="content-song">
+                                <p class="content-song-title">Tên tao</p>
+                                <div class="content-song-stats">
+                                    <div class="stat-item">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <span>nhìn j</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <span>nhìn j</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-list group-button-menu">
+                            <div class="button-menu-item">
+                                <i class="fa-solid fa-download"></i>
+                                <span>
+                                    Tải xuống
+                                </span>
+                            </div>
+                            <div class="button-menu-item">
+                                <i class="fa-solid fa-download"></i>
+                                <span>
+                                    Tải xuống
+                                </span>
+                            </div>
+                            <div class="button-menu-item">
+                                <i class="fa-solid fa-download"></i>
+                                <span>
+                                    Tải xuống
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="menu-list-action-item">
+                            <div class="action-item-content" >
+                                <div><i class="fa-brands fa-google-play"></i></div>
+                                <span>Thêm vào danh sách phát</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-list-action-item">
+                            <div class="action-item-content">
+                                <div><i class="fa-solid fa-forward"></i></div>
+                                <span>Phát tiếp theo</span>
+                            </div>
+                        </div>
+
+                        <div class="menu-list-action-item">
+                            <div class="action-item-content">
+                                <div><i class="fa-solid fa-tower-broadcast"></i></div>
+                                <span>Phát Nội dung tương tự</span>
+                            </div>
+                        </div>
+
+
+                        <div class="menu-list action ">
+                            <div class="menu-list-action-item dropstart">
+                                <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div><i class="fa-solid fa-circle-plus"></i></div>
+                                    <span>Thêm vào playlist</span>
+                                    <div class="icon-sub">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                                <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
+                                    <div class="action-item-content">
+                                        <input type="text" placeholder="Tìm playlist">
+                                    </div>
+                                    <div class="menu-list-action-item mt-3 add-play-list-show">
+                                        <div class="action-item-content">
+                                            <div class="wrapper-icon add-playlist-i">
+                                                <i class="fa-solid fa-plus "></i>
+                                            </div>
+                                            <span>Tạo playlist mới</span>
+                                        </div>
+                                    </div>
+                                    <div class="menu-list-action-item">
+                                        <div class="action-item-content">
+                                            <div class="wrapper-icon">
+                                                <i class="fa-solid fa-music"></i>
+                                            </div>
+                                            <span>asdasd</span>
+                                        </div>
+                                    </div>
+                                    <div class="action-item-content empty-content">
+                                        <div class="wrapper-icon">
+                                            <i class="fa-solid fa-icons"></i>
+                                        </div>
+                                        <span>Không có playlist</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="menu-list-action-item dropstart">
+                            <div class="action-item-content">
+                                <div><i class="fa-regular fa-copy"></i></div>
+                                <span>Sao chép link</span>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
         </div>
 
-        <!-- playMusic -->
+
+        <!-- Modal add playlist -->
+        <div class="modal fade modal-add-playlist" id="modal-add-play-list" tabindex="-1" aria-labelledby="modal-add-play-list" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class=" modal-wrapper">
+                                    <div class="header-model d-flex">
+                                        <h3>
+                                            Tạo playlist mới
+                                        </h3>
+                                        <div class="wrapper-icon" data-bs-dismiss="modal" aria-label="Close">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </div>
+                                    </div>
+                                    <div class="action-item-content">
+                                        <input type="text" placeholder="Nhập tên playlist">
+                                    </div>
+                                    <div class="action-model">
+                                        <div class="action-model-content">
+                                            <p>Công khai</p>
+                                            <span>Mọi người có thể nhìn thấy playlist này</span>
+                                        </div>
+                                        <div class="action-model-action">
+                                            <div class="form-check form-switch swich-model">
+                                                <input class="form-check-input" type="checkbox" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="action-model">
+                                        <div class="action-model-content">
+                                            <p>Phát ngẫu nhiên</p>
+                                            <span>Luôn phát ngẫu nhiên các bài hát</span>
+                                        </div>
+                                        <div class="action-model-action">
+                                            <div class="form-check form-switch swich-model">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-modal">
+                                    <button>Tạo mới</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        <!-- playMusic -->    
         @include('layouts/site/layoutItems/playMusic')
 
-        <div class="notification d-flex justify-content-center align-items-center" id="notification">
+        <!-- alert -->  
+        <div class="notification d-flex justify-content-center align-items-center hidden" id="notification">
             <p>Đã thêm <strong>Toanf</strong> vào danh sách phát</p>
-            
+
             <div class="icon-notification wrapper-icon justify-content-between"><i class="fa-solid fa-xmark " onclick="closeNotification('notification')"></i></div>
         </div>
     </div>
     
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script src="{{ url('public/site/js/site.js') }}"></script>
+    <script src="{{ url('public/site/js/layouts/header.js') }}"></script>
+    <script src="{{ url('public/site/js/layouts/sidebar.js') }}"></script>
+    @yield('js')
 
     <script>
-
-        // notification
-        function addNotification(id){
-            
-            document.getElementById(id).classList.remove('hidden');
-        }
-        function closeNotification(id){
-            document.getElementById(id).classList.add('hidden');
-        }
-        const closeOverlay = ()=>{
-                event.preventDefault();
-                document.querySelector('aside').classList.remove('hidden');
-                document.querySelector('.bg-overlay').classList.remove('bg-overlay-sidebar');
-                
-            }
-        // sidebar
-        function toggleSidebar(show){
-
-            
-            if(show){
-                document.querySelector('aside').classList.add('hidden');
-                document.querySelector('.bg-overlay').classList.add('bg-overlay-sidebar');
-                document.querySelector('.bg-overlay-sidebar').addEventListener('click',closeOverlay );
-
-            }else{
-                document.querySelector('.bg-overlay-sidebar').removeEventListener('click',closeOverlay );
-
-                closeOverlay();
-            }
-            
-        }
-
+        
         
     </script>
+
 </body>
+
 </html>
