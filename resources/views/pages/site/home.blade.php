@@ -4,12 +4,16 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ url('public/site/css/pages/home.css') }}">
+<link rel="stylesheet" href="{{ url('public/site/css/components/listSong.css') }}">
+<link rel="stylesheet" href="{{ url('public/site/css/components/listAlbum.css') }}">
+
+
 @stop
 
 @section('content')
 <div class="home-page-content">
     <div class="home-page-content-items">
-        <div class="content-items-wrapper">
+        <div class="list-song-wrapper">
             <div class="main-items-header">
                 <div class="items-header-subtitle">
                     <span>Bắt đầu nghe từ một bài hát</span>
@@ -18,7 +22,6 @@
                     Gợi Ý Từ Nhạc Bạn Đã Nghe
                 </div>
             </div>
-
             <div class="main-items-content">
                 <!-- item -->
                 <div class="wrapper-items-song dropdown">
@@ -167,17 +170,96 @@
 
                 </div>
                 <!-- End item -->
-                
-                
-                
+
+
+
+
 
 
             </div>
         </div>
     </div>
-</div>
-<script>
 
-</script>
+    <div class="home-page-content-items">
+        <div class="list-album-wrapper">
+            <div class="main-items-header">
+                <div class="items-header-title">
+                    Có Thể Bạn Muốn Nghe
+                </div>
+            </div>
+            <div class="main-items-content album">
+                <div class="items-content">
+                    <div class="wrapper-items-album">
+                        <div class="items-album-img">
+                            <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/7/a/ab7aec69a53caaa0225097e2a4495dcb.jpg" alt="">
+                        </div>
+                        <button class="item-actions">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <button class="item-actions play">
+                            <i class="fa-regular fa-circle-play"></i>
+                        </button>
+                        <button class="item-actions">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+                    <div class="name-user-album">
+                        <a>Tên tao</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-page-content-items">
+        <div class="list-artist-wrapper">
+            <div class="main-items-header">
+                <div class="items-header-title">
+                    Nghệ Sĩ Tham Gia
+                </div>
+            </div>
+            <div class="main-items-content artist">
+                <div class="artist-item">
+                    <div class="wrapper-avatar">
+                        <div class="wrapper-avatar-content">
+
+                            <div class="artist-avatar">
+                                <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/avatars/e/1/e1c904e01896f63fa3511935ae51ca16_1485159033.jpg" alt="">
+                            </div>
+                            <div class="wrapper-icon">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="artist-info">
+                        <div class="artist-info-name">
+                            <a>Hồng Nhung</a>
+                        </div>
+                        <div class="artist-info-follower">
+                            <a>110K quan tâm</a>
+                        </div>
+                    </div>
+                    <div class="artist-action">
+                        <button class="artist-action-follow">
+                            <div class="wrapper-icon">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <div class="artist-action-title">
+                                Quan tâm
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 @stop

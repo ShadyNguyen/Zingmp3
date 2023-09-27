@@ -556,3 +556,35 @@ ul.dropdown-menu.sub-menu-song span{
     width: 100%;
 }
 
+
+
+/* componer */
+
+.main-items-header{
+    margin-bottom: 2rem;
+}
+.main-items-header .items-header-subtitle{
+    color:var(--text-secondary);
+}
+.main-items-header .items-header-title{
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.main-items-content{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap:2rem;
+   
+}
+.main-items-content:not(:last-child){
+    margin-bottom: 0.5rem;
+}
+
+
+
+/* song */
+
+

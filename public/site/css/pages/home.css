@@ -1,67 +1,73 @@
+.home-page-content-items{
+    margin-top: 3rem;
+}
 .home-page-content{
     
     /* background-color: red; */
     min-height: 100px;
     color: var(--text-primary);
 }
-.home-page-content-items{
-    margin-top: 3rem;
-}
-.main-items-header{
-    margin-bottom: 2rem;
-}
-.main-items-header .items-header-subtitle{
-    color:var(--text-secondary);
-}
-.main-items-header .items-header-title{
-    font-size: 2rem;
-    font-weight: 700;
-    text-transform: capitalize;
-}
-.main-items-content{
+
+
+
+/* artists */
+.main-items-content.artist{
     display: flex;
     align-items: center;
     justify-content: start;
-    flex-wrap: wrap;
-    gap:2rem;
-   
 }
-.main-items-content:not(:last-child){
-    margin-bottom: 0.5rem;
-}
-.wrapper-items-song{
-    flex: 0 0 31%; /* Mỗi mục chiếm 30% */
-    min-width: 200px;
-    min-height: 50px;
+.artist-item{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
+    justify-content: center;
+    flex-direction: column;
+
 }
-.wrapper-items-song .item-actions{
-    display: none;
+.wrapper-avatar{
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.wrapper-items-song{
-    color: var(--text-primary);
-    border-radius: 0.8rem;
+.wrapper-avatar-content{
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
-.wrapper-items-song:hover{
-    background-color: var(--tab-active-bg);
+.artist-avatar{
+    position: absolute;
+    z-index: -1;
+
 }
-.wrapper-items-song .item-song .item-song-wrapper:hover{
-    background-color: unset;
+.artist-action-follow{
+    padding: 0.5rem 2rem;
 }
-.wrapper-items-song:hover .item-actions {
-    display: block; /* Hiển thị khi .wrapper-items-song được hover */
+.artist-avatar img{
+    width: 18rem;
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    transition: all 1s ease;
+
+}
+.wrapper-avatar-content .wrapper-icon{
+    opacity: 0;
+    transition: all 1s ease;
+
+}
+.wrapper-avatar-content:hover img{
+    filter: brightness(50%);
+}
+.wrapper-avatar-content:hover .wrapper-icon{
+    opacity: 1;
+}
+.artist-action-title{
+    text-transform: uppercase;
 }
 
-.wrapper-items-song .item-song-content .song-thumb img{
-    width: 6rem;
-}
 
-@media (max-width: 991px){
-    .wrapper-items-song{
-        width: 100%;
-        flex:unset
-    }
-}
+

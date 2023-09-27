@@ -79,7 +79,7 @@
                 <div class="action-content-setting">
 
                     <!-- setting icon -->
-                    <div class="wrapper-icon" id="setting" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <div class="wrapper-icon" id="setting" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-toggle-tooltip="tooltip" data-bs-placement="bottom" title="Cài đặt">
                         <i class="fa-solid fa-gear"></i>
                     </div>
                     <!-- end setting icon -->
