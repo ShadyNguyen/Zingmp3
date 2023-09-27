@@ -1,472 +1,158 @@
 <div class="wrapper-play-music">
     <div class="play-music-content">
         <div class="play-music-content-info">
+
+            <!-- Img Song -->
             <div class="info-avatar">
                 <a href="">
                     <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/c/3/c/3c3ce33100476bdaab8ffc57e1df6f2e.jpg" alt="">
                 </a>
             </div>
+            <!-- End Img Song -->
+
+            <!-- Name Song -->
             <div class="info-title">
                 <a class="run-text " href=""><span class="info-title-name">Những bản Hit V-Pop 'thuộc nằm lòng' của mọi nhà</span></a>
                 <a href=""><span class="info-title-artist">Tên tao nè đọc đi m</span></a>
             </div>
+            <!-- End Name Song -->
+
             <div class="info-action">
 
+                <!-- Like Song -->
                 <button class="item-actions">
                     <i class="fa-regular fa-heart"></i>
                 </button>
+                <!-- End Like Song -->
+
+                <!-- More Song -->
                 <button class="item-actions">
                     <i class="fa-solid fa-ellipsis"></i>
                 </button>
+                <!-- End More Song -->
+
             </div>
         </div>
-        <div class="play-music-player-controls">
+        <div class="play-music-player-controls card">
+
+            <div class="card__wrapper action">
+
+                <!-- repeat list songs -->
+                <button class="card__btn active"><svg fill="none" height="12" viewBox="0 0 20 12" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <clipPath id="a">
+                            <path d="m0 0h20v12h-20z"></path>
+                        </clipPath>
+                        <g>
+                            <path d="m17 1c0-.265216-.1054-.51957-.2929-.707107-.1875-.187536-.4419-.292893-.7071-.292893h-8v2h7v5h-3l3.969 5 4.031-5h-3zm-14 10c0 .2652.10536.5196.29289.7071.18754.1875.44189.2929.70711.2929h8v-2h-7v-5h3l-4-5-4 5h3z" fill="#fff"></path>
+                        </g>
+                    </svg>
+                </button>
+                <!-- End repeat list songs -->
+
+                <!-- pre songs -->
+                <button class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.5 8V0L0 8L11.5 16V8ZM23 0L11.5 8L23 16V0Z" fill="#fff"></path>
+                    </svg>
+                </button>
+                <!-- end pre songs -->
+
+                <!-- pause songs -->
+                <button class="card__btn">
+                    <!-- pause songs icon-->
+                    <svg class="" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm224-72V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24zm112 0V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24z" fill="#fff" />
+                    </svg>
+                    <!-- end pause songs icon-->
+
+                    <!-- end resume songs icon-->
+                    <svg class="none" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z" fill="#fff" />
+                    </svg>
+                    <!-- end resume songs icon-->
+
+                </button>
+                <!-- end pause songs -->
+
+                <!-- next song -->
+                <button class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.5 8V0L23 8L11.5 16V8ZM0 0L11.5 8L0 16V0Z" fill="#fff"></path>
+                    </svg>
+                </button>
+                <!-- end next song -->
+
+                <!-- random list song -->
+                <button class="card__btn"><svg fill="#fff" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <clipPath id="a">
+                            <path d="m0 .5h20v19h-20z"></path>
+                        </clipPath>
+                        <g fill="#fff">
+                            <path d="m15 14.5h-1.559l-9.7-10.673c-.09376-.10305-.20802-.18536-.33545-.24168-.12744-.05631-.26523-.08537-.40455-.08532h-3.001v2h2.559l4.09 4.5-4.09 4.501h-2.559v2h3.001c.13932 0 .27711-.029.40455-.0853.12743-.0563.24169-.1387.33545-.2417l4.259-4.687 4.259 4.686c.0938.103.208.1854.3355.2417.1274.0563.2652.0853.4045.0853h2.001v3l5-4-5-4z">
+                            </path>
+                            <path d="m13.4406 5.5h1.559v3l5-3.938-5-4.062v3h-2.001c-.1393-.00005-.2771.02901-.4045.08532-.1275.05632-.2417.13863-.3355.24168l-3.36798 3.707 1.47998 1.346z">
+                            </path>
+                        </g>
+                    </svg>
+                </button>
+                <!-- end random list song -->
+            </div>
+            <div class="card__wrapper">
+                <div class="card__time card__time-passed">03:34</div>
+                <div class="control-volume">
+                    <label class="slider">
+                        <input type="range" class="level" id="progres-music">
+                    </label>
+                </div>
+                <div class="card__time card__time-left">02:04</div>
+            </div>
 
         </div>
+
         <div class="play-music-content-actions">
-            <div class="wrapper-icon" id="toggle-play-music-sidebar">
+
+            <div class="toogle-sound">
+                <input type="checkbox" id="toggle-volume">
+                <label for="toggle-volume" class="toggleSwitch">
+                    <div class="speaker"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
+                            <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z" style="stroke:#fff;stroke-width:5;stroke-linejoin:round;fill:#fff;"></path>
+                            <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"></path>
+                        </svg></div>
+
+                    <div class="mute-speaker"><svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
+                            <path d="m39,14-17,15H6V48H22l17,15z" fill="#fff" stroke-linejoin="round"></path>
+                            <path d="m49,26 20,24m0-24-20,24" fill="#fff" stroke-linecap="round"></path>
+                        </svg></div>
+                </label>
+            </div>
+            <div class="control-volume">
+                <label class="slider">
+                    <input type="range" class="level" id="volume">
+
+                </label>
+            </div>
+            <div class="boder-height">
+                <div></div>
+            </div>
+            <!-- Show aside playlist -->
+            <div class="wrapper-icon icon-show-aside-playlist" id="toggle-play-music-sidebar">
                 <i class="fa-regular fa-file-audio"></i>
             </div>
+
+            <!-- End Show aside playlist -->
         </div>
+        <script>
+            const valueVolume = document.getElementById('volume');
+            const toogleVolumeBtn = document.getElementById('toggle-volume');
+            let lastValueVolume = valueVolume.value;
+
+            toogleVolumeBtn.addEventListener('change', (e) => {
+                if (toogleVolumeBtn.checked) {
+                    lastValueVolume = valueVolume.value;
+                    valueVolume.value = 0;
+                } else {
+                    valueVolume.value = lastValueVolume;
+                }
+            })
+        </script>
+
     </div>
-</div>
-
-<div class="playlist-aside hidden" id="playlist-aside">
-    <div class="playlist-aside-wrapper">
-        <div class="playlist-aside-header">
-            <div class="items-header active">
-                <span>Danh sách phát</span>
-            </div>
-            <div class="items-header">
-                <span>Nge gần đây</span>
-            </div>
-        </div>
-        <div class="playlist-aside-content">
-            <div class="item-song">
-                <div class="item-song-wrapper">
-                    <div class="item-song-content">
-                        <div class="song-thumb">
-
-                            <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/2/a/3/32a35f4d26ee56366397c09953f6c269.jpg" alt="">
-                            <button class="song-thumb-action">
-                                <i class="fa-solid fa-play hidden"></i>
-                                <i class="fa-regular fa-circle-pause fa-spin"></i>
-                            </button>
-                        </div>
-                        <div class="song-info">
-                            <a class="song-info-name"><span>Tên bài hát</span></a>
-                            <a class="song-info-astist"><span>Tên tao <i class="fa-solid fa-star"></i></span></a>
-                        </div>
-                        <div class="song-action dropdown">
-                            <button class="item-actions">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                            <button class="item-actions" id="id-test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
-
-                            <!-- more song -->
-                            <div class="dropdown-menu song-menu" aria-labelledby="id-test">
-                                <div class="menu-list song-info-menu">
-                                    <div class="thumb-song">
-                                        <img src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/c/9/5/d/c95d510864924eb7eff43c9b4cb19202.jpg" alt="">
-                                    </div>
-                                    <div class="content-song">
-                                        <p class="content-song-title">Tên tao</p>
-                                        <div class="content-song-stats">
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list group-button-menu">
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-brands fa-google-play"></i></div>
-                                        <span>Thêm vào danh sách phát</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-forward"></i></div>
-                                        <span>Phát tiếp theo</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-tower-broadcast"></i></div>
-                                        <span>Phát Nội dung tương tự</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list action ">
-                                    <div class="menu-list-action-item dropstart">
-                                        <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <div><i class="fa-solid fa-circle-plus"></i></div>
-                                            <span>Thêm vào playlist</span>
-                                            <div class="icon-sub">
-                                                <i class="fa-solid fa-chevron-right"></i>
-                                            </div>
-                                        </div>
-                                        <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
-                                            <div class="action-item-content">
-                                                <input type="text" placeholder="Tìm playlist">
-                                            </div>
-                                            <div class="menu-list-action-item mt-3 add-play-list-show">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon add-playlist-i">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                    </div>
-                                                    <span>Tạo playlist mới</span>
-                                                </div>
-                                            </div>
-                                            <div class="menu-list-action-item">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon">
-                                                        <i class="fa-solid fa-music"></i>
-                                                    </div>
-                                                    <span>asdasd</span>
-                                                </div>
-                                            </div>
-                                            <div class="action-item-content empty-content">
-                                                <div class="wrapper-icon">
-                                                    <i class="fa-solid fa-icons"></i>
-                                                </div>
-                                                <span>Không có playlist</span>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item dropstart">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-regular fa-copy"></i></div>
-                                        <span>Sao chép link</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end more song -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- song listened -->
-            <div class="item-song listened">
-                <div class="item-song-wrapper">
-                    <div class="item-song-content">
-                        <div class="song-thumb">
-                            <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/2/a/3/32a35f4d26ee56366397c09953f6c269.jpg" alt="">
-                            <button class="song-thumb-action">
-                                <i class="fa-solid fa-play hidden"></i>
-                                <i class="fa-regular fa-circle-pause fa-spin"></i>
-                            </button>
-                        </div>
-                        <div class="song-info">
-                            <a class="song-info-name"><span>Tên bài hát</span></a>
-                            <a class="song-info-astist"><span>Tên tao <i class="fa-solid fa-star"></i></span></a>
-                        </div>
-                        <div class="song-action dropdown">
-                            <button class="item-actions">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                            <button class="item-actions" id="id-test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
-
-                            <!-- more song -->
-                            <div class="dropdown-menu song-menu" aria-labelledby="id-test">
-                                <div class="menu-list song-info-menu">
-                                    <div class="thumb-song">
-                                        <img src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/c/9/5/d/c95d510864924eb7eff43c9b4cb19202.jpg" alt="">
-                                    </div>
-                                    <div class="content-song">
-                                        <p class="content-song-title">Tên tao</p>
-                                        <div class="content-song-stats">
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list group-button-menu">
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-brands fa-google-play"></i></div>
-                                        <span>Thêm vào danh sách phát</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-forward"></i></div>
-                                        <span>Phát tiếp theo</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-tower-broadcast"></i></div>
-                                        <span>Phát Nội dung tương tự</span>
-                                    </div>
-                                </div>
-
-
-                                <div class="menu-list action ">
-                                    <div class="menu-list-action-item dropstart">
-                                        <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <div><i class="fa-solid fa-circle-plus"></i></div>
-                                            <span>Thêm vào playlist</span>
-                                            <div class="icon-sub">
-                                                <i class="fa-solid fa-chevron-right"></i>
-                                            </div>
-                                        </div>
-                                        <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
-                                            <div class="action-item-content">
-                                                <input type="text" placeholder="Tìm playlist">
-                                            </div>
-                                            <div class="menu-list-action-item mt-3 add-play-list-show">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon add-playlist-i">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                    </div>
-                                                    <span>Tạo playlist mới</span>
-                                                </div>
-                                            </div>
-                                            <div class="menu-list-action-item">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon">
-                                                        <i class="fa-solid fa-music"></i>
-                                                    </div>
-                                                    <span>asdasd</span>
-                                                </div>
-                                            </div>
-                                            <div class="action-item-content empty-content">
-                                                <div class="wrapper-icon">
-                                                    <i class="fa-solid fa-icons"></i>
-                                                </div>
-                                                <span>Không có playlist</span>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item dropstart">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-regular fa-copy"></i></div>
-                                        <span>Sao chép link</span>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                            <!-- end more song -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- song active -->
-            <div class="item-song active">
-                <div class="item-song-wrapper">
-                    <div class="item-song-content">
-                        <div class="song-thumb">
-
-                            <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/2/a/3/32a35f4d26ee56366397c09953f6c269.jpg" alt="">
-                            <button class="song-thumb-action">
-                                <i class="fa-solid fa-play hidden"></i>
-                                <i class="fa-regular fa-circle-pause fa-spin"></i>
-
-                            </button>
-                        </div>
-                        <div class="song-info">
-                            <a class="song-info-name"><span>Tên bài hát</span></a>
-                            <a class="song-info-astist"><span>Tên tao <i class="fa-solid fa-star"></i></span></a>
-                        </div>
-                        <div class="song-action dropdown">
-                            <button class="item-actions">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                            <button class="item-actions" id="id-test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-
-                            </button>
-
-                            <!-- more song -->
-                            <div class="dropdown-menu song-menu" aria-labelledby="id-test">
-                                <div class="menu-list song-info-menu">
-                                    <div class="thumb-song">
-                                        <img src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/c/9/5/d/c95d510864924eb7eff43c9b4cb19202.jpg" alt="">
-                                    </div>
-                                    <div class="content-song">
-                                        <p class="content-song-title">Tên tao</p>
-                                        <div class="content-song-stats">
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                            <div class="stat-item">
-                                                <i class="fa-regular fa-heart"></i>
-                                                <span>nhìn j</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list group-button-menu">
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                    <div class="button-menu-item">
-                                        <i class="fa-solid fa-download"></i>
-                                        <span>
-                                            Tải xuống
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-brands fa-google-play"></i></div>
-                                        <span>Thêm vào danh sách phát</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-forward"></i></div>
-                                        <span>Phát tiếp theo</span>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-solid fa-tower-broadcast"></i></div>
-                                        <span>Phát Nội dung tương tự</span>
-                                    </div>
-                                </div>
-
-
-                                <div class="menu-list action ">
-                                    <div class="menu-list-action-item dropstart">
-                                        <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <div><i class="fa-solid fa-circle-plus"></i></div>
-                                            <span>Thêm vào playlist</span>
-                                            <div class="icon-sub">
-                                                <i class="fa-solid fa-chevron-right"></i>
-                                            </div>
-                                        </div>
-                                        <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
-                                            <div class="action-item-content">
-                                                <input type="text" placeholder="Tìm playlist">
-                                            </div>
-                                            <div class="menu-list-action-item mt-3 add-play-list-show">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon add-playlist-i">
-                                                        <i class="fa-solid fa-plus "></i>
-                                                    </div>
-                                                    <span>Tạo playlist mới</span>
-                                                </div>
-                                            </div>
-                                            <div class="menu-list-action-item">
-                                                <div class="action-item-content">
-                                                    <div class="wrapper-icon">
-                                                        <i class="fa-solid fa-music"></i>
-                                                    </div>
-                                                    <span>asdasd</span>
-                                                </div>
-                                            </div>
-                                            <div class="action-item-content empty-content">
-                                                <div class="wrapper-icon">
-                                                    <i class="fa-solid fa-icons"></i>
-                                                </div>
-                                                <span>Không có playlist</span>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="menu-list-action-item dropstart">
-                                    <div class="action-item-content">
-                                        <div><i class="fa-regular fa-copy"></i></div>
-                                        <span>Sao chép link</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end more song -->
-                        </div>
-                    </div>
-                </div>
-                <div class="item-song-footer">
-                    <p>Tiếp theo</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>

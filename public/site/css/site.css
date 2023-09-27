@@ -77,9 +77,7 @@ button{
     cursor: pointer;
 }
 
-span,a,p,i{
-    color: var(--text-primary);
-}
+
 
 input{
     width: 100%;
@@ -91,6 +89,9 @@ input{
     border: 0;
     color: var(--search-text);
     padding: 0.7rem 2rem;
+}
+.none{
+    display: none;;
 }
 
 /* Scrollbar css */
@@ -170,7 +171,7 @@ img.avatar{
 }
 
 .content{
-    padding: 0 var(--padding-section);;
+    padding: 2rem var(--padding-section);;
 }
 
 .bg-overlay{
@@ -259,9 +260,11 @@ img.avatar{
     font-size: 1.5rem;
     cursor: pointer;
 }
-
+.content-song-title{
+    color:var(--text-primary) !important;
+}
 .content-song-title:hover{
-    color: var(--link-text-hover);
+    color: var(--link-text-hover)!;
     
 }
 

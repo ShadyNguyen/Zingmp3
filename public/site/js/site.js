@@ -53,4 +53,5 @@ const playMusicSidebarElm = document.querySelector('#playlist-aside');
 togglePlayMusicSidebarElm.addEventListener('click',(e)=>{
     
     playMusicSidebarElm.classList.toggle('hidden');
+    togglePlayMusicSidebarElm.classList.toggle('active');
 })

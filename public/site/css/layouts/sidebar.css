@@ -46,7 +46,7 @@ aside {
 
 .aside-nav-content .action-item-content{
     color: var(--navigation-text);
-    padding: 1.2rem 2.1rem;
+    /* padding: 1.2rem 2.1rem; */
 }
 
 .menu-list-action-item.active .action-item-content{
@@ -61,6 +61,7 @@ aside {
     color: var(--text-primary) !important;
 
 }
+
 
 
 .aside-nav-content i{
