@@ -67,7 +67,7 @@
             <div class="content">
 
                 <div class="dropdown">
-                    <button class="" id="test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <button class="" id="test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
                         nhan day
                     </button>
                     <div class="dropdown-menu song-menu" aria-labelledby="test">
@@ -178,7 +178,7 @@
                                 <span>Sao chép link</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     @yield('content')
                 </div>
             </div>
@@ -253,8 +253,6 @@
 
     <!-- bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-  
     <!-- End bootstrap JS -->
 
     <!-- Side JS -->

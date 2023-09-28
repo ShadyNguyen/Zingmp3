@@ -1,5 +1,5 @@
 .home-page-content-items{
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 .home-page-content{
     
@@ -10,64 +10,87 @@
 
 
 
-/* artists */
-.main-items-content.artist{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-.artist-item{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+/* slide */
+.slide-page{
+    margin-top: 1rem;
+    
+    overflow: hidden;
 
 }
-.wrapper-avatar{
-    width: 20rem;
-    height: 20rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.wrapper-avatar-content{
+.slide-wrapper{
+    width: 100%;
+    /* background-color: red; */
     position: relative;
-    width: 20rem;
-    height: 20rem;
+    
+
+}
+.slide-wrapper-content{
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    
+
+    
 }
-.artist-avatar{
-    position: absolute;
-    z-index: -1;
+.slide-wrapper-content .slide-items{
+    width: 100%;
+
+    
+    
+}
+.slide-items{
+    width: 100%;
+    
+    
+
 
 }
-.artist-action-follow{
-    padding: 0.5rem 2rem;
+.slide-item-list-album{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+
 }
-.artist-avatar img{
-    width: 18rem;
-    aspect-ratio: 1/1;
+.slide-item-album{
+    flex:0 0 31%;
+    
+
+    overflow: hidden;
+}
+.slide-item-album img{
+    width: 97%;
+    display: block;
+    aspect-ratio: 16/9; 
+    border-radius: 0.8rem;
+
+}
+.slide-wrapper .slide-action{
+    padding: 0 2rem;
+
+}
+.slide-wrapper .slide-action.prev{
+    justify-content: start;
+
+}
+.slide-wrapper .slide-action.next{
+    justify-content: end;
+}
+.slide-wrapper .slide-action i{
+    font-size: 3.5rem;
+}
+.slide-action .wrapper-icon{
+    /* background-color: red; */
     border-radius: 999px;
-    transition: all 1s ease;
-
-}
-.wrapper-avatar-content .wrapper-icon{
+    width: 4.5rem;
+    height: 4.5rem;
     opacity: 0;
-    transition: all 1s ease;
-
+    transition: all 0.5s ease;
 }
-.wrapper-avatar-content:hover img{
-    filter: brightness(50%);
-}
-.wrapper-avatar-content:hover .wrapper-icon{
+.slide-wrapper:hover .wrapper-icon{
     opacity: 1;
+    background-color:  hsla(0,0%,100%,.45);
 }
-.artist-action-title{
-    text-transform: uppercase;
-}
-
-
 
