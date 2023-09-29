@@ -22,18 +22,13 @@ class AdminMiddleware
     {
         
         // Kiểm tra xem người dùng đã đăng nhập không
-        // dd($roles);
         if (!Auth::guard('admin')->check()) {
             return redirect()->route('admin.auth.login');
         }
-
          // Kiểm tra xem người dùng có trong danh sách các vai trò được phép không
         if (!in_array(Auth::guard('admin')->user()->role, $roles)) {
             return redirect()->route('admin.auth.login')->with('error', 'Bạn không có quyền truy cập vào trang này');
         }
-
-
-
         return $next($request);
 
     }

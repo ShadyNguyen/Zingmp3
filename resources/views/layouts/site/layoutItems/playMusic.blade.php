@@ -38,7 +38,7 @@
             <div class="card__wrapper action">
 
                 <!-- repeat list songs -->
-                <button class="card__btn active"><svg fill="none" height="12" viewBox="0 0 20 12" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Lặp lại">
+                <button id="btn-repeat-list" class="card__btn active"><svg fill="none" height="12" viewBox="0 0 20 12" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Lặp lại">
                         <clipPath id="a">
                             <path d="m0 0h20v12h-20z"></path>
                         </clipPath>
@@ -50,14 +50,14 @@
                 <!-- End repeat list songs -->
 
                 <!-- pre songs -->
-                <button class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Quay lại bải trước">
+                <button id="btn-prev-song" class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Quay lại bải trước">
                         <path d="M11.5 8V0L0 8L11.5 16V8ZM23 0L11.5 8L23 16V0Z" fill="#fff"></path>
                     </svg>
                 </button>
                 <!-- end pre songs -->
 
                 <!-- pause songs -->
-                <button class="card__btn">
+                <button id="btn-pause-song" class="card__btn">
                     <!-- pause songs icon-->
                     <svg class="" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Dừng phát"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                         <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm224-72V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24zm112 0V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24z" fill="#fff" />
@@ -74,14 +74,14 @@
                 <!-- end pause songs -->
 
                 <!-- next song -->
-                <button class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Bài tiếp">
+                <button id="btn-next-song" class="card__btn"><svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Bài tiếp">
                         <path d="M11.5 8V0L23 8L11.5 16V8ZM0 0L11.5 8L0 16V0Z" fill="#fff"></path>
                     </svg>
                 </button>
                 <!-- end next song -->
 
                 <!-- random list song -->
-                <button class="card__btn"><svg fill="#fff" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Phát ngẫu nhiên">
+                <button id="btn-random-list" class="card__btn"><svg fill="#fff" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Phát ngẫu nhiên">
                         <clipPath id="a">
                             <path d="m0 .5h20v19h-20z"></path>
                         </clipPath>
@@ -96,13 +96,13 @@
                 <!-- end random list song -->
             </div>
             <div class="card__wrapper">
-                <div class="card__time card__time-passed">03:34</div>
+                <div class="card__time card__time-passed" id="left-time-line">03:34</div>
                 <div class="control-volume">
                     <label class="slider">
                         <input type="range" class="level" id="progres-music">
                     </label>
                 </div>
-                <div class="card__time card__time-left">02:04</div>
+                <div class="card__time card__time-left" id="right-time-line">02:04</div>
             </div>
 
         </div>
@@ -140,18 +140,7 @@
             <!-- End Show aside playlist -->
         </div>
         <script>
-            const valueVolume = document.getElementById('volume');
-            const toogleVolumeBtn = document.getElementById('toggle-volume');
-            let lastValueVolume = valueVolume.value;
-
-            toogleVolumeBtn.addEventListener('change', (e) => {
-                if (toogleVolumeBtn.checked) {
-                    lastValueVolume = valueVolume.value;
-                    valueVolume.value = 0;
-                } else {
-                    valueVolume.value = lastValueVolume;
-                }
-            })
+            
         </script>
 
     </div>

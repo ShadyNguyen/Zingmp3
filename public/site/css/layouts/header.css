@@ -197,7 +197,7 @@ span.name-artist {
     background-color: var(--alpha-bg);
 }
 
-.item-actions.active i {
+.item-actions i.active {
     color: var(--purple-primary);
 }
 

@@ -1,0 +1,42 @@
+<?php
+
+namespace App\View\Components;
+
+use Closure;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\Component;
+
+class Song extends Component
+{
+    /**
+     * Create a new component instance.
+     */
+    public $song;
+    public $artist;
+    public $isLike=false;
+    public $stringJs = '';
+    public function __construct($song)
+    {
+        
+        $this->song = $song;
+        
+        $this->artist = $song->artist;
+        if(Auth::guard('user')->check()){
+            $this->stringJs = Auth::guard('user')->user()->id."','".$song->id;
+            if(Auth::guard('user')->user()->likeSongs->where('id_song', $this->song->id)->first()){
+                $this->isLike=true;
+            }
+
+        }
+        
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        return view('components.song');
+    }
+}

@@ -12,6 +12,13 @@ aside {
     justify-content: space-between;
 
 }
+aside.full{
+    height: 100vh;
+
+}
+aside.full .aside-nav-content{
+    max-height: unset;
+}
 .aside-add-playlist:hover{
     color: var(--text-primary) !important;
 }
@@ -41,7 +48,7 @@ aside {
 .aside-nav-content{
     color: var(--navigation-text);
     overflow-y: scroll !important;
-    max-height: 300px;
+    max-height: 45%;
 }
 
 .aside-nav-content .action-item-content{
@@ -62,8 +69,6 @@ aside {
 
 }
 
-
-
 .aside-nav-content i{
     font-size: 2rem !important;
 }
@@ -71,6 +76,7 @@ aside {
 .aside-nav-content span{
     width: 60% !important;
 }
+
 .aside-add-playlist{
     padding-top: 1rem;
     padding-bottom: 1rem;

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="purple">
+<html lang="vi" data-theme="brown">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="root-url" data-index="{{ URL::to('/'); }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url('public/site/img/logo-laravel-zingmp3.png') }}">
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -179,6 +181,8 @@
                             </div>
                         </div>
                     </div> -->
+
+
                     @yield('content')
                 </div>
             </div>
@@ -199,7 +203,7 @@
                             </div>
                         </div>
                         <div class="action-item-content">
-                            <input type="text" placeholder="Nhập tên playlist">
+                            <input type="text" placeholder="Nhập tên playlist" id="name-new-playlist">
                         </div>
                         <div class="action-model">
                             <div class="action-model-content">
@@ -208,7 +212,7 @@
                             </div>
                             <div class="action-model-action">
                                 <div class="form-check form-switch swich-model">
-                                    <input class="form-check-input" type="checkbox">
+                                    <input class="form-check-input" type="checkbox" name="check-status-new-playlist">
                                 </div>
                             </div>
                         </div>
@@ -224,9 +228,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="btn-modal">
+                    <div class="btn-modal" id="btn-add-play-list">
                         <button>Tạo mới</button>
                     </div>
+                    @auth('user')
+                    <input type="hidden" value="{{ Auth::guard('user')->user()->id }}">
+                    @endauth
                 </div>
             </div>
         </div>
@@ -240,8 +247,6 @@
         @include('layouts/site/layoutItems/playListAside')
         <!-- End playListAside -->
 
-
-
         <!-- alert -->
         <div class="notification d-flex justify-content-center align-items-center hidden" id="notification">
             <p>Đã thêm <strong>Toanf</strong> vào danh sách phát</p>
@@ -249,7 +254,18 @@
         </div>
         <!-- End Alert -->
 
+        <audio id="elm-audio" controls hidden>
+            <source src="" type="audio/mpeg">
+            <!-- Your browser does not support the audio element. -->
+        </audio>
+
+
     </div>
+
+
+    <!-- axios JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- End axios JS -->
 
     <!-- bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -263,15 +279,44 @@
     <script src="{{ url('public/site/js/layouts/header.js') }}"></script>
     <!-- End Header JS -->
 
+    @unless(auth('user')->check())
+    <!-- Form login JS -->
+    <script src="{{ url('public/site/js/layouts/login.js') }}"></script>
+    <!-- End Form login JS -->
+    @endunless
+
+    @auth('user')
+   
+    @endauth
+
+    @auth('user')
+    <!-- like song JS -->
+    <script src="{{ url('public/site/js/likeSong.js') }}"></script>
+    <!-- End like song JS -->
+
+    <!-- follow artist JS -->
+    <script src="{{ url('public/site/js/followArtist.js') }}"></script>
+    <!-- End follow artist JS -->
+
+    <!-- add playlist JS -->
+    <script src="{{ url('public/site/js/addPlayList.js') }}"></script>
+    <!-- End add playlist JS -->
+
+    @endauth
+
+    <!-- Play music JS -->
+    <script src="{{ url('public/site/js/playMusic.js') }}"></script>
+    <!-- End Play music JS -->
+
+    <!-- Arlert login JS -->
+    <script src="{{ url('public/site/js/alert.js') }}"></script>
+    <!-- End Arlert login JS -->
+
     <!-- sidebar JS -->
     <script src="{{ url('public/site/js/layouts/sidebar.js') }}"></script>
     <!-- End sidebar JS -->
 
     @yield('js')
-    
- 
-
-
 
 </body>
 

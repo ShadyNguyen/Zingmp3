@@ -5,23 +5,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.5s ease;
+    color: var(--text-primary);
+    border-radius: 0.8rem;
+    flex-grow: 1;
+
     
 }
 .wrapper-items-song .item-actions{
-    display: none;
+    opacity: 0;
+    transition: all 0.5s ease;
 }
-.wrapper-items-song{
-    color: var(--text-primary);
-    border-radius: 0.8rem;
-}
+
 .wrapper-items-song:hover{
     background-color: var(--tab-active-bg);
 }
+
 .wrapper-items-song .item-song .item-song-wrapper:hover{
     background-color: unset;
 }
+
 .wrapper-items-song:hover .item-actions {
-    display: block; /* Hiển thị khi .wrapper-items-song được hover */
+    opacity: 1; /* Hiển thị khi .wrapper-items-song được hover */
 }
 
 .wrapper-items-song .item-song-content .song-thumb img{

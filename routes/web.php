@@ -25,7 +25,12 @@ Route::get('/kkk', function () {
 */
 
 
-Route::get('/', [Site\HomeController::class, 'home'])->name('site.home');
+Route::post('/loginAjax', [Site\AuthController::class, 'loginAjax']);
+Route::get('/logout', [Site\AuthController::class, 'logout'])->name('site.auth.logout');
+Route::post('/registerAjax', [Site\AuthController::class, 'register'])->name('site.auth.register');
+
+
+
 
 
 Route::get('admin/login', [Admin\AuthController::class, 'login'])->name('admin.auth.login');
@@ -39,3 +44,4 @@ Route::group(['prefix' => 'admin','middleware'=>'admin:admin,nv'], function () {
     Route::get('/onlyadmin', [Admin\HomeController::class, 'onlyAdmin'])->name('admin.onlyAdmin')->withoutMiddleware('admin:admin,nv')->middleware(('admin:admin'));
 
 });
+Route::get('/', [Site\HomeController::class, 'home'])->name('site.home');

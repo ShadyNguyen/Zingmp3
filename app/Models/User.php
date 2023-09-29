@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        
+        'id',
         'name',
         'avatar',
         'username',
@@ -58,12 +58,23 @@ class User extends Authenticatable
     {
         return $this->hasMany(FollowArtist::class, 'id_user', 'id');
     }
+    public function checkFollowArtists($idArtist){
+        $isFollowing = $this->followArtists()->where('id_artist', $idArtist)->exists();
+        return $isFollowing;
+    }
 
     public function isAdmin()
     {
         return $this->role == 'admin';
     }
     
+    public function isUserActive()
+    {
+        if($this->role=='user'&&$this->status==1){
+            return true;
+        }
+        return false;
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

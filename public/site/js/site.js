@@ -1,9 +1,28 @@
+const URL_WEB = document.querySelector('meta[name="root-url"]').dataset.index;
+const ID_NOTIFICATION = "notification";
+
+var closeNotificationId = null;
+// addNotification('notification','toanf',10000);
+
+function setStringAction(action,strStrong,messPlus=''){
+    return `Bạn đã ${action} <strong>${strStrong}</strong> ${messPlus}`
+}
 // notification
-function addNotification(id) {
+function addNotification(id, mess, time = 2000) {
+    if(closeNotificationId){
+        clearTimeout(closeNotificationId);
+    }
+
+    const notiElm = document.getElementById(id);
+    notiElm.querySelector("p").innerHTML = mess;
     document.getElementById(id).classList.remove("hidden");
+    closeNotificationId = setTimeout(() => {
+        closeNotification(id);
+    }, time);
 }
 
 function closeNotification(id) {
+    
     document.getElementById(id).classList.add("hidden");
 }
 
@@ -34,17 +53,21 @@ function toggleSidebar(show) {
 }
 
 //add play list
-const myModal = new bootstrap.Modal(
+const modalAddPlayList = new bootstrap.Modal(
     document.getElementById("modal-add-play-list"),
     {
         keyboard: false,
     }
 );
 function toggleAddPlayList(show) {
+   
     if (show) {
-        myModal.show();
+        
+        modalAddPlayList.show();
     } else {
-        myModal.hidden();
+        
+        modalAddPlayList.toggle();
+
     }
 }
 
@@ -67,7 +90,11 @@ togglePlayMusicSidebarElm.addEventListener("click", (e) => {
 });
 
 //show tooltip
-let tooltipelements = document.querySelectorAll("[data-bs-toggle-tooltip='tooltip']");
+let tooltipelements = document.querySelectorAll(
+    "[data-bs-toggle-tooltip='tooltip']"
+);
 tooltipelements.forEach((el) => {
     new bootstrap.Tooltip(el);
 });
+
+

@@ -102,3 +102,14 @@
 .artist-action-follow .artist-action-title,.artist-action-follow .wrapper-icon i{
     font-size: 1.2rem;
 }
+.artist-action .artist-action-follow.active{
+    background-color: transparent;
+    border: 1px solid var(--border-primary);
+}
+.artist-action .artist-action-follow.none{
+    display: none;
+}
+.artist-action .artist-action-follow.active:hover{
+    color: var(--link-text-hover);
+    border-color: var(--link-text-hover);
+}

@@ -9,7 +9,7 @@ class Playlist extends Model
 {
     use HasFactory;
     protected $table = 'play_lists';
-    protected $fillable = ['id_user','status','total_like','total_listen','banner','avatar','slug'];
+    protected $fillable = ['id_user','status','title','total_like','total_listen','banner','avatar','slug'];
 
     public function user()
     {

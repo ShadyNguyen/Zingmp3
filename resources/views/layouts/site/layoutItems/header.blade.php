@@ -151,22 +151,19 @@
                 </div>
                 <!-- End sub menu setting -->
 
-
+            
                 <!-- Sub menu profile -->
                 <div class="action-content-avatar">
-                    <div class="menu-list-action-item">
-                        <div class="action-item-content" data-bs-toggle="modal" data-bs-target="#login-model">
-                            <span>Đăng nhập</span>
-                        </div>
-                    </div>
-                    <!-- <img class="avatar" src="https://s120-ava-talk-zmp3.zmdcdn.me/d/3/e/6/4/120/d952e9ddc5c0f39892340e8d4a2db971.jpg" alt="" id="profile" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"> -->
+                    @auth('user')
+                    <img class="avatar" src="https://s120-ava-talk-zmp3.zmdcdn.me/d/3/e/6/4/120/d952e9ddc5c0f39892340e8d4a2db971.jpg" alt="" id="profile" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+
                     <ul class="dropdown-menu sub-menu-setting" id="profile">
 
                         <!-- Show profile -->
                         <div class="menu-list-action-item">
                             <div class="action-item-content">
                                 <img class="avatar" src="https://s120-ava-talk-zmp3.zmdcdn.me/d/3/e/6/4/120/d952e9ddc5c0f39892340e8d4a2db971.jpg" alt="" id="profile" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                <span>Tên tao nè</span>
+                                <span>{{ Auth::guard('user')->user()->name }}</span>
                             </div>
                         </div>
                         <!-- End Show profile -->
@@ -181,26 +178,38 @@
                         <!-- End boder -->
 
                         <!-- Edit profile -->
-                        <div class="menu-list-action-item">
+                        <a class="menu-list-action-item">
                             <div class="action-item-content">
                                 <i class="fa-solid fa-user-pen"></i>
                                 <span>Chỉnh sửa thông tin cá nhân</span>
 
                             </div>
-                        </div>
+                        </a>
                         <!-- End Edit profile -->
 
                         <!-- Logout -->
-                        <div class="menu-list-action-item">
+                        <a href="{{ route('site.auth.logout') }}" class="menu-list-action-item">
                             <div class="action-item-content">
                                 <i class="fa-solid fa-right-from-bracket"></i>
                                 <span>Đăng xuất</span>
                             </div>
-                        </div>
+                        </a>
                         <!-- End -->
 
 
                     </ul>
+                    @else
+
+                    <div class="menu-list-action-item">
+                        <div class="action-item-content" data-bs-toggle="modal" data-bs-target="#login-model">
+                            <span>Đăng nhập</span>
+                        </div>
+                    </div>
+                    @endauth
+
+                    @auth('user')
+                    
+                    @endauth
                 </div>
                 <!-- End Sub menu profile -->
 
@@ -211,7 +220,7 @@
     </div>
 </header>
 
-
+@unless(auth('user')->check())
 <div class="modal fade" id="login-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content login">
@@ -317,6 +326,10 @@
                         <label for="username-register">Tài khoản</label>
                         <input type="text" name="username" id="username-register" placeholder="" autocomplete="off">
                     </div>
+                    <div class="input-group">
+                        <label for="username-register">Tên</label>
+                        <input type="text" name="name" id="name-register" placeholder="" autocomplete="off">
+                    </div>
                     <div class="input-group pass">
                         <label for="password-login">Mật khẩu</label>
                         <div class="input-group-pass">
@@ -375,64 +388,9 @@
         </div>
     </div>
 </div>
-<script>
-    function toggleShowPassword(id){
-        const inputPassElm = document.getElementById(id);
-        if (inputPassElm.type === 'password') {
-            inputPassElm.type = 'text'
-            document.querySelector(`div[data-show="${id}"]`).querySelector('i').classList.value = 'fa-regular fa-eye-slash'
+@endunless
 
-        } else {
-            inputPassElm.type = 'password'
-            document.querySelector(`div[data-show="${id}"]`).querySelector('i').classList.value = 'fa-regular fa-eye'
-        }
-    }
-    // for (toggle of toggleShowPass) {
-    //     toggle.addEventListener('click', (e) => {
-    //         const idInput = toggle.getAttribute('data-show')
-            
-    //         // console.log(idInput)
-    //         const inputPassElm = document.getElementById(idInput);
-            
-    //         if (inputPassElm.type === 'password') {
-    //             inputPassElm.type = 'text'
-    //             toggle.querySelector('i').classList.value = 'fa-regular fa-eye-slash'
+<form action="">
+    @csrf
+</form>
 
-    //         } else {
-    //             inputPassElm.type = 'password'
-    //             toggle.querySelector('i').classList.value = 'fa-regular fa-eye'
-    //         }
-    //     })
-    // }
-
-    // const toggleShowPassLoginBtn = document.getElementById('toggle-show-pass-login')
-    // toggleShowPassLoginBtn.addEventListener('click', (e) => {
-    //     const inputPassElm = document.getElementById(toggleShowPassLoginBtn.getAttribute('data-show'));
-    //     if (inputPassElm.type === 'password') {
-    //         inputPassElm.type = 'text'
-    //         toggleShowPassLoginBtn.querySelector('i').classList.value = 'fa-regular fa-eye-slash'
-
-    //     } else {
-    //         inputPassElm.type = 'password'
-    //         toggleShowPassLoginBtn.querySelector('i').classList.value = 'fa-regular fa-eye'
-    //     }
-    //     // console.log(toggleShowPassLoginBtn.querySelector('i').classList.value)
-    // })
-
-    const swicthRegisterBtn = document.getElementById('btn-swicth-register')
-    const swicthLoginBtn = document.getElementById('btn-swicth-login')
-
-    const formLogin = document.getElementById('login-form')
-    const formRegister = document.getElementById('register-from')
-    swicthRegisterBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        formLogin.classList.add('none');
-        formRegister.classList.remove('none');
-    })
-    swicthLoginBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        formLogin.classList.remove('none');
-        formRegister.classList.add('none');
-    })
-</script>

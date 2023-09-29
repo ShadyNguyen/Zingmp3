@@ -42,8 +42,9 @@
             </div>
         </div>
 
-        <div class="aside-nav-content">
-            <a class="menu-list-action-item">
+
+        <div class="aside-nav-content play-list">
+            <a class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content ">
                     <div><i>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -61,7 +62,7 @@
                 </div>
             </a>
 
-            <a class="menu-list-action-item">
+            <a class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_2645_12880)"></path>
@@ -77,7 +78,7 @@
                 </div>
             </a>
 
-            <a class="menu-list-action-item">
+            <a class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_2645_12884)"></path>
@@ -96,7 +97,7 @@
                 </div>
             </a>
 
-            <a class="menu-list-action-item">
+            <a class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_3153_2362)"></path>
@@ -111,7 +112,7 @@
                     <span>Album</span>
                 </div>
             </a>
-            <a class="menu-list-action-item">
+            <a class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content ">
                     <div><i> <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_2645_12883)"></path>
@@ -126,36 +127,37 @@
                     <span>Đã tải lên</span>
                 </div>
             </a>
+            
+            
+            
+            @auth('user')
             <!-- boder -->
             <div class="menu-list-action-item no-pointer">
                 <div class="boder-single">
                     <div></div>
                 </div>
-            </div>
+            </div> 
+                
+                @foreach(Auth::guard('user')->user()->playLists as $playList)
+                
+                    <a class="menu-list-action-item">
+                        <div class="action-item-content ">
+                            <span>{{ $playList->title }}</span>
+                        </div>
+                        <div class="wrapper-icon" data-id-playlist="{{ $playList->id }}" data-id-user=" {{ Auth::guard('user')->user()->id }} ">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </a>
+                @endforeach
+                
+            @endauth
 
-            <a class="menu-list-action-item play-list-name">
-                <div class="action-item-content ">
-                    <span>Danh sách phát 1</span>
-                </div>
-            </a>
-            <a class="menu-list-action-item">
-                <div class="action-item-content ">
-                    <span>Danh sách phát 1</span>
-                </div>
-            </a>
-            <a class="menu-list-action-item">
-                <div class="action-item-content ">
-                    <span>Danh sách phát 1</span>
-                </div>
-            </a>
-            <a class="menu-list-action-item">
-                <div class="action-item-content ">
-                    <span>Danh sách phát 1</span>
-                </div>
-            </a>
         </div>
     </nav>
-    <div class="aside-add-playlist" id="add-play-list-sidebar">
+    
+
+
+    <div class="aside-add-playlist" @auth('user') id="add-play-list-sidebar" @else onclick="showAlerLogin()" @endauth>
         <div class="menu-list-action-item">
             <div class="action-item-content ">
                 <div><i class="fa-solid fa-plus"></i></div>
