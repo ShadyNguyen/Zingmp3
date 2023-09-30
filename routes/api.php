@@ -19,6 +19,9 @@ Route::post('/likeSong', [Site\SongController::class, 'likeSong']);
 Route::post('/followArtist', [Site\SongController::class, 'followArtist']);
 Route::post('/addPlayList', [Site\SongController::class, 'addPlayList']);
 Route::post('/deletePlayList', [Site\SongController::class, 'deletePlayList']);
+Route::get('/getSongById', [Site\SongController::class, 'getSongById']);
+Route::post('/addSongToPlayList', [Site\SongController::class, 'addSongToPlayList']);
+
 
 
 

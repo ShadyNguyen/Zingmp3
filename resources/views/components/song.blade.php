@@ -9,7 +9,7 @@
             <div class="item-song-content">
                 <div class="song-thumb">
                     <img src="{{ $song->thumbnail }}" alt="">
-                    <button class="song-thumb-action">
+                    <button class="song-thumb-action" onclick="addSongToListBtn('{{ $song->id }}')">
                         <i class="fa-solid fa-play "></i>
                         <i class="fa-regular fa-circle-pause fa-spin hidden"></i>
                     </button>
@@ -46,8 +46,6 @@
                 <i class="fa-regular fa-heart"></i>
             </button>
     @endauth
-
-
     <!-- end like btn -->
 
 
@@ -128,7 +126,8 @@
                     <div class="action-item-content">
                         <input type="text" placeholder="Tìm playlist">
                     </div>
-                    <div class="menu-list-action-item mt-3 add-play-list-show">
+                    
+                    <div class="menu-list-action-item mt-3" @auth('user') onclick="toggleAddPlayList(true)" @else onclick="showAlerLogin()" @endauth('user')>
                         <div class="action-item-content">
                             <div class="wrapper-icon add-playlist-i">
                                 <i class="fa-solid fa-plus "></i>
@@ -136,20 +135,34 @@
                             <span>Tạo playlist mới</span>
                         </div>
                     </div>
-                    <div class="menu-list-action-item">
-                        <div class="action-item-content">
-                            <div class="wrapper-icon">
-                                <i class="fa-solid fa-music"></i>
+                    @auth('user')
+                        @if(Auth::guard('user')->user()->playLists->count() > 0)
+                            @foreach(Auth::guard('user')->user()->playLists as $playList)
+                            <div class="menu-list-action-item" data-name="{{$playList->title}}" data-add-song-playlist-song="{{ $song->id }}" data-add-song-playlist-user="{{ Auth::guard('user')->user()->id }}" data-add-song-playlist-id="{{ $playList->id }}">
+                                <div class="action-item-content">
+                                    <div class="wrapper-icon">
+                                        <i class="fa-solid fa-music"></i>
+                                    </div>
+                                    <span>{{$playList->title}}</span>
+                                </div>
                             </div>
-                            <span>asdasd</span>
-                        </div>
-                    </div>
+                            @endforeach
+                        @else
+                            <div class="action-item-content empty-content">
+                                <div class="wrapper-icon">
+                                    <i class="fa-solid fa-icons"></i>
+                                </div>
+                                <span>Không có playlist</span>
+                            </div>
+                        @endif
+                    @else
                     <div class="action-item-content empty-content">
                         <div class="wrapper-icon">
                             <i class="fa-solid fa-icons"></i>
                         </div>
                         <span>Không có playlist</span>
                     </div>
+                    @endauth
                 </ul>
             </div>
         </div>

@@ -8,13 +8,13 @@
                 <span>Nge gần đây</span>
             </div>
         </div>
-        <div class="playlist-aside-content">
+        <div class="playlist-aside-content" id="playlist-aside-content">
 
 
 
 
             <!-- song active -->
-            <div class="item-song ">
+            <!-- <div class="item-song">
                 <div class="item-song-wrapper">
                     <div class="item-song-content">
                         <div class="song-thumb">
@@ -43,7 +43,7 @@
                 <div class="item-song-footer">
                     <p>Tiếp theo</p>
                 </div>
-            </div>
+            </div> -->
 
 
 

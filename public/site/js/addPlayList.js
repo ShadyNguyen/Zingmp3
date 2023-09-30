@@ -151,3 +151,66 @@ function btnDeletePlayListCall(id_user, id_playlist, parentN) {
             }
         });
 }
+
+function addSongToPlayList(idUser,idSong,idPlayList,namePlayList){
+    const urlCall = URL_WEB + "/api/addSongToPlayList"; // Thay đổi địa chỉ URL thành endpoint của bạn
+    const formData = new FormData();
+
+    formData.append("idUser", idUser);
+    formData.append("idSong", idSong);
+    formData.append("idPlayList", idPlayList);
+
+
+    // Gửi yêu cầu POST bằng Axios
+    axios
+        .post(urlCall, formData, {
+            headers: {
+                "Content-Type": "application/json", // Định dạng dữ liệu gửi lên là JSON
+                Accept: "application/json", // Header Accept: application/json
+            },
+        })
+        .then((response) => {
+            // Xử lý phản hồi từ máy chủ ở đây
+            const data = response.data;
+            const status = response.status;
+            if (status === 204) {
+                // Load lại trang web hiện tại
+
+                addNotification(
+                    ID_NOTIFICATION,
+                    setStringAction("Thêm bài hát vào playlist", namePlayList, "thành công!"),
+                    4000
+                );
+                
+            }
+        })
+        .catch((error) => {
+            const data = error.response.data;
+            const status = error.response.status;
+
+            if (status === 503) {
+                addNotification(ID_NOTIFICATION, data.message, 4000);
+            } else {
+                addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+            }
+        });
+}
+
+const addPlayListBtns = document.querySelectorAll('div[data-name][data-add-song-playlist-song][data-add-song-playlist-user][data-add-song-playlist-id]');
+if(addPlayListBtns){
+    addPlayListBtns.forEach(function(divElement) {
+        // Thực hiện các hành động bạn muốn trên mỗi phần tử divElement ở đây
+        // Ví dụ:
+        const namePlayList = divElement.dataset.name; // Lấy giá trị của thuộc tính data-name
+        const idSong = divElement.dataset.addSongPlaylistSong // Lấy giá trị của thuộc tính data-add-song-playlist-song
+        const idUser = divElement.dataset.addSongPlaylistUser // Lấy giá trị của thuộc tính data-add-song-playlist-user
+        const idPlayList = divElement.dataset.addSongPlaylistId // Lấy giá trị của thuộc tính data-add-song-playlist-id
+    
+        divElement.addEventListener('click',(e)=>{
+            addSongToPlayList(idUser,idSong,idPlayList,namePlayList);
+        })
+        
+        
+    });
+}
+

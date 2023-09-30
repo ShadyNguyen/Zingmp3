@@ -18,8 +18,8 @@ class HomeController extends Controller
 
         $listPlayListAside = [];
 
-        $topSongs = Song::orderBy('total_listen','desc')->take($quantityTopSong)->orderBy('total_listen', 'desc')->get();
-        $topArtists = User::where('is_celeb',true)->take($quantityTopArtists)->orderBy('total_followers', 'desc')->get();
+        $topSongs = Song::where('status',true)->orderBy('total_listen','desc')->take($quantityTopSong)->orderBy('total_listen', 'desc')->get();
+        $topArtists = User::where('is_celeb',true)->where('status',true)->where('role','user')->take($quantityTopArtists)->orderBy('total_followers', 'desc')->get();
 
         
         return view('pages.site.home',compact('topSongs','topArtists'));

@@ -157,7 +157,7 @@
     
 
 
-    <div class="aside-add-playlist" @auth('user') id="add-play-list-sidebar" @else onclick="showAlerLogin()" @endauth>
+    <div class="aside-add-playlist" @auth('user') onclick="toggleAddPlayList(true)" @else onclick="showAlerLogin()" @endauth('user')>
         <div class="menu-list-action-item">
             <div class="action-item-content ">
                 <div><i class="fa-solid fa-plus"></i></div>

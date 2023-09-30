@@ -15,7 +15,7 @@
 }
 
 .playlist-aside-wrapper{
-    padding: 1rem;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,27 @@
 .playlist-aside-content{
     width: 100%;
     overflow-y: scroll;
-    position: relative; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem; 
+}
+.playlist-aside-content .item-song-wrapper{
+    padding: 0.5rem 0.7rem;
+}
+.playlist-aside-content .item-song-wrapper:hover{
+    background-color: var(--alpha-bg);
+}
+.playlist-aside-content .item-song-wrapper:hover .item-song-content .song-thumb-action{
+    opacity: 1;
+}
+.playlist-aside-content .song-info{
+    width: 60%;
+}
+.playlist-aside-content .song-info .song-info-name{
+    white-space: nowrap; /* Ngăn nội dung xuống dòng */
+    overflow: hidden; /* Ẩn phần nội dung bị tràn ra ngoài */
+    text-overflow: ellipsis;
 }
 
 /* item  song */
@@ -74,7 +94,9 @@
     width: 100%;
     background-color: transparent;
     border-radius: 0.8rem;  
+    
 }
+
 
 .item-song span,.item-song i{
     color: inherit !important;
@@ -87,6 +109,8 @@
 .item-song.active {
     position: sticky;
     top: 0;
+    background-color: var(--queue-player-popup-bg);
+    z-index: 10;
 }
 
 .item-song.active .item-song-wrapper{

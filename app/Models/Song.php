@@ -23,4 +23,7 @@ class Song extends Model
     {
         return $this->hasMany(LikeSong::class, 'id_song', 'id');
     }
+    public function isActive(){
+        return $this->status;
+    }
 }

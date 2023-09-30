@@ -3,17 +3,17 @@
         <div class="play-music-content-info">
 
             <!-- Img Song -->
-            <div class="info-avatar">
+            <div class="info-avatar" >
                 <a href="">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/c/3/c/3c3ce33100476bdaab8ffc57e1df6f2e.jpg" alt="">
+                    <img id="play-music-img-active" src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/3/c/3/c/3c3ce33100476bdaab8ffc57e1df6f2e.jpg" alt="">
                 </a>
             </div>
             <!-- End Img Song -->
 
             <!-- Name Song -->
             <div class="info-title">
-                <a class="run-text " href=""><span class="info-title-name">Những bản Hit V-Pop 'thuộc nằm lòng' của mọi nhà</span></a>
-                <a href=""><span class="info-title-artist">Tên tao nè đọc đi m</span></a>
+                <a class="run-text " href=""><span class="info-title-name" id="play-music-name-active">Những bản Hit V-Pop 'thuộc nằm lòng' của mọi nhà</span></a>
+                <a href=""><span class="info-title-artist" id="play-music-name--artist-active">Tên tao nè đọc đi m</span></a>
             </div>
             <!-- End Name Song -->
 
@@ -59,13 +59,13 @@
                 <!-- pause songs -->
                 <button id="btn-pause-song" class="card__btn">
                     <!-- pause songs icon-->
-                    <svg class="" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Dừng phát"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <svg class="none" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Dừng phát"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                         <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm224-72V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24zm112 0V328c0 13.3-10.7 24-24 24s-24-10.7-24-24V184c0-13.3 10.7-24 24-24s24 10.7 24 24z" fill="#fff" />
                     </svg>
                     <!-- end pause songs icon-->
 
                     <!-- end resume songs icon-->
-                    <svg class="none" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Tiếp tục"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <svg class="" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 512 512" width="20" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Tiếp tục"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                         <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z" fill="#fff" />
                     </svg>
                     <!-- end resume songs icon-->

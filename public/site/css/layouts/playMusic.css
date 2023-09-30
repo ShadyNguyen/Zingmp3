@@ -112,7 +112,7 @@
     background-color: transparent;
     border-radius: 0.4rem;  
     position: relative;
-    overflow: hidden;
+    
 }
 
 .item-song span,.item-song i{

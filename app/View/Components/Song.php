@@ -16,6 +16,7 @@ class Song extends Component
     public $artist;
     public $isLike=false;
     public $stringJs = '';
+    public $stringJsAddSongToPlayList='';
     public function __construct($song)
     {
         
@@ -23,10 +24,14 @@ class Song extends Component
         
         $this->artist = $song->artist;
         if(Auth::guard('user')->check()){
-            $this->stringJs = Auth::guard('user')->user()->id."','".$song->id;
+            $id_user = Auth::guard('user')->user()->id;
+            $this->stringJs = $id_user."','".$song->id;
             if(Auth::guard('user')->user()->likeSongs->where('id_song', $this->song->id)->first()){
                 $this->isLike=true;
             }
+            $this->stringJsAddSongToPlayList = "addSongToPlayList('{$id_user}','{$this->song->id}','";
+            $this->stringJsAddSongToPlayList = "addSongToPlayList('{$id_user}','{$this->song->id}','')";
+
 
         }
         
