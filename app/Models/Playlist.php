@@ -20,6 +20,9 @@ class Playlist extends Model
     {
         return $this->hasMany(DetailPlaylist::class, 'id_playlist', 'id');
     }
+    public function isActive(){
+        return $this->status;
+    }
 
 }
 

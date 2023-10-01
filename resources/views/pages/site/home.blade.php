@@ -9,18 +9,11 @@
 <link rel="stylesheet" href="{{ url('public/site/css/components/listArtist.css') }}">
 <link rel="stylesheet" href="{{ url('public/site/css/components/slide.css') }}">
 
-
-
-
 @stop
 
 @section('content')
 <div class="home-page-content">
-
     <x-slide />
-
-
-
     <div class="home-page-content-items">
         <div class="list-song-wrapper">
             <div class="main-items-header">
@@ -42,7 +35,7 @@
     </div>
 
     <div class="home-page-content-items">
-        <x-list-album />
+        <x-list-album title="Có Thể Bạn Muốn Nghe"/>
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="brown">
+<html lang="vi" data-theme="purple">
 
 <head>
     <meta charset="UTF-8">
@@ -184,6 +184,7 @@
 
 
                     @yield('content')
+                    
                 </div>
             </div>
         </div>
@@ -239,6 +240,165 @@
         </div>
         <!-- End Modal add playlist -->
 
+        <!-- Modal add playlist -->
+        <div class="modal fade modal-add-playlist" id="modal-add-change-theme" tabindex="-1" aria-labelledby="modal-add-change-theme" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content change-theme">
+                    <div class=" modal-wrapper">
+                        <div class="header-model d-flex">
+                            <h3>
+                                Giao diện
+                            </h3>
+                            <div class="wrapper-icon" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <div class="modal-change-theme-content">
+                            <h2>Chọn màu</h2>
+                            <div class="list-theme" id="list-theme">
+                                <!-- <div class="change-them-item active">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/dark.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item active">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/purple.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/blue.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/blue-light.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/green.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/brown.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/pink.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div>
+                                <div class="change-them-item">
+                                    <div class="theme-bg">
+                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/red.jpg" alt="">
+                                    </div>
+                                    <div class="theme-action">
+                                        <button class="outline-button active">
+                                            <span>Áp dụng</span>
+                                        </button>
+                                        <button class="outline-button">
+                                            <span>Xem trước</span>
+                                        </button>
+                                    </div>
+                                    <div class="wrapper-icon theme-icon-active">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- End Modal add playlist -->
+
+
+
         <!-- playMusic -->
         @include('layouts/site/layoutItems/playMusic')
         <!-- End playMusic -->
@@ -262,6 +422,9 @@
 
     </div>
 
+    <!-- theme login JS -->
+    <script src="{{ url('public/site/js/layouts/changeThem.js') }}"></script>
+    <!-- End theme login JS -->
 
     <!-- axios JS -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -286,7 +449,7 @@
     @endunless
 
     @auth('user')
-   
+
     @endauth
 
     @auth('user')

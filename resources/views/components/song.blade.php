@@ -99,7 +99,7 @@
         </div>
 
         <div class="menu-list-action-item">
-            <div class="action-item-content">
+            <div class="action-item-content" onclick="setNextSongBtn('{{ $song->id }}')">
                 <div><i class="fa-solid fa-forward"></i></div>
                 <span>Phát tiếp theo</span>
             </div>

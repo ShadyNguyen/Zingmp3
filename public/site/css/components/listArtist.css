@@ -3,13 +3,14 @@
     display: flex;
     align-items: center;
     justify-content: start;
+    gap:3%;
 }
 .artist-item{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    flex-grow: 1;
+    margin-bottom: 4rem;
 
 }
 .wrapper-avatar{

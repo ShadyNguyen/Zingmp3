@@ -125,15 +125,22 @@
     width: 100%;
     padding: 0.8rem;
     border-radius: 0.5rem;
+    
 }
 
 .item-song .item-song-wrapper span,.item-song .item-song-wrapper i{
     color: inherit;
     font-size: inherit;
 }
-
-.item-song .item-song-wrapper:hover{
+.wrapper-items-song{
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.wrapper-items-song:hover{
     background-color: var(--tab-active-bg);
+    cursor: pointer;
 }
 
 .item-song-content{
@@ -197,7 +204,7 @@
 
 .item-song-content .song-info-name{
     color: var(--text-primary) !important;
-    cursor: default;
+    
 }
 
 .item-song-content .song-info-astist{

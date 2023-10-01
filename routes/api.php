@@ -21,8 +21,8 @@ Route::post('/addPlayList', [Site\SongController::class, 'addPlayList']);
 Route::post('/deletePlayList', [Site\SongController::class, 'deletePlayList']);
 Route::get('/getSongById', [Site\SongController::class, 'getSongById']);
 Route::post('/addSongToPlayList', [Site\SongController::class, 'addSongToPlayList']);
-
-
+Route::get('/getSongByArtist', [Site\SongController::class, 'getSongByArtist']);
+Route::get('/upListensSong', [Site\SongController::class, 'upListensSong']);
 
 
 

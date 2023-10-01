@@ -1,9 +1,11 @@
 <div class="list-artist-wrapper">
+    @if(!empty($title))
     <div class="main-items-header">
         <div class="items-header-title">
             {{ $title }}
         </div>
     </div>
+    @endif
     <div class="main-items-content artist">
         @foreach($listArtists as $artist)
         <?php
@@ -19,7 +21,7 @@
         ?>
         <div class="artist-item">
             <div class="wrapper-avatar">
-                <div class="wrapper-avatar-content">
+                <div class="wrapper-avatar-content" onclick="playListSongArtist('{{ $artist->id }}')">
 
                     <div class="artist-avatar">
                         <img src="{{ $artist->avatar }}" alt="">

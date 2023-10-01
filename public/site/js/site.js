@@ -1,5 +1,6 @@
 const URL_WEB = document.querySelector('meta[name="root-url"]').dataset.index;
 const ID_NOTIFICATION = "notification";
+const _idUser = document.getElementById('_id-user');
 
 var closeNotificationId = null;
 // addNotification('notification','toanf',10000);
@@ -141,7 +142,7 @@ function createItemSongPlaySidebar(song,stastus=null) {
 
 function secondToMinute(second){
     const minutes =Math.floor(second/60);
-    const secondLeft = second - minutes*60;
+    const secondLeft = Math.floor(second - minutes*60);
     const str = String(minutes).padStart(2, '0').slice(0, 2) +':'+ String(secondLeft).padStart(2, '0').slice(0, 2);
     return str;
 }

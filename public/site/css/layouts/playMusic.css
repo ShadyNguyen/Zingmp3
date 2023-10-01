@@ -165,9 +165,9 @@
     font-size: inherit;
 }
 
-.item-song .item-song-wrapper:hover{
+/* .item-song .item-song-wrapper:hover{
     background-color: var(--tab-active-bg);
-}
+} */
 
 .item-song.active .item-song-wrapper:hover{
     background-color: var(--purple-primary);;
@@ -234,7 +234,7 @@
 
 .item-song-content .song-info-name{
     color: var(--text-primary) !important;
-    cursor: default;
+   
 }
 
 .item-song-content .song-info-astist{

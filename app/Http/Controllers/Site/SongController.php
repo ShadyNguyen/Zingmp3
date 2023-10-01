@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Site\SongResource;
 use App\Models\DetailPlaylist;
 use App\Models\FollowArtist;
 use App\Models\LikeSong;
 use App\Models\Playlist;
 use App\Models\Song;
+use App\Models\SongListenerHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -193,5 +195,52 @@ class SongController extends Controller
             }
         }
         return response()->json([],503);
+    }
+
+    public function getSongByArtist(Request $request){
+        $validator = $request->validate([
+            'idArtist' => 'required', 
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_artist = $request->idArtist;
+        
+
+        $user = User::where('id',$id_artist)->first();
+        
+        
+        if($user && $user->isUserActive()){
+            $listSong = $user->songs->where('status',true);
+            
+            return SongResource::collection($listSong);
+        }
+        return response()->json([],503);
+    }
+
+    public function upListensSong(Request $request){
+        $validator = $request->validate([
+            'idSong' => 'required', 
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_song = $request->idSong;
+        $song = Song::where('id',$id_song)->first();
+
+        if($song && $song->isActive()){
+            $song->total_listen = $song->total_listen +1;
+            $song->save();
+
+            if($request->has('idUser')){
+                $id_user = $request->idUser;
+                $user = User::where('id',$id_user)->first();
+                if($user && $user->isUserActive()){
+                    SongListenerHistory::create(['id_user' => $id_user,'id_song'=>$id_song]);
+                }
+                
+            }
+            return response()->json([],204);
+        }
+            return response()->json([],503);
+
     }
 }

@@ -39,6 +39,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Song::class, 'id_user', 'id');
     }
+    
+    public function getListSong()
+    {
+        return $this->hasMany(Song::class, 'id_user', 'id')->where('status', 1);
+    }
 
     public function playlists()
     {
@@ -58,10 +63,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(FollowArtist::class, 'id_user', 'id');
     }
+
     public function checkFollowArtists($idArtist){
         $isFollowing = $this->followArtists()->where('id_artist', $idArtist)->exists();
         return $isFollowing;
     }
+
+    public function songListenerHistorys(){
+        return $this->hasMany(SongListenerHistory::class, 'id_user', 'id');
+    }
+
+    public function searchHistorys(){
+        return $this->hasMany(SearchHistoty::class, 'id_user', 'id');
+    }
+
 
     public function isAdmin()
     {

@@ -1,0 +1,96 @@
+.search-content{
+    width: 100%;
+    /* background-color: red; */
+    min-height: 100px;
+}
+
+.search-content .search-header {
+    width: 100%;
+    border-bottom: 1px solid var(--border-primary);
+    margin-bottom: 28px!important;
+    
+}
+.search-content .search-header a,.search-content .search-header span{
+    color: var(--navigation-text);
+    display: block;
+}
+.search-content .search-header-content{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+    justify-content: start;
+}
+.search-header-content .header-content-title h3{
+    margin: 0;
+    font-size: 2.7rem;
+}
+.search-header-content .header-content-item{
+    padding: 0.3em 0;
+    margin-right: 1rem;
+}
+
+.search-header-content .header-content-item:hover span{
+    color: var(--text-item-hover);
+
+}
+.search-header-content .header-content-item.active{
+    border-bottom: 2px solid var(--purple-primary);
+}
+.search-header-content .header-content-item.active span{
+    color: var(--text-item-hover);
+
+}
+.search-header-content .header-content-item span{
+    font-size: 2rem;
+    
+}
+
+.search-content .search-content-items{
+    margin-bottom: 3rem;
+}
+.search-content-items .search-content-item-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-content-items .search-content-item-title p{
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.search-content-items .search-content-item-title a{
+    color: var(--text-secondary);
+    font-size: 2rem;
+    font-weight: 500;
+}
+.search-content-items .search-content-item-title a:hover{
+    color:var(--purple-primary);
+}
+.search-content-item-song{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.search-content-items .search-list-song{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: red; */
+    justify-content: space-between;
+    
+    gap: 1rem;
+}
+.search-content-item-song{
+    display: block;
+    /* flex-grow: 1; */
+    width: 48%;
+    min-width: 350px;
+    border-bottom: 1px solid var(--border-secondary);
+}
+.search-content-item-song{
+    display: flex;
+    align-items: center;
+    justify-self: space-between;
+}

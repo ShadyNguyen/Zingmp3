@@ -23,19 +23,26 @@ Route::get('/kkk', function () {
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
+//login user
 Route::post('/loginAjax', [Site\AuthController::class, 'loginAjax']);
 Route::get('/logout', [Site\AuthController::class, 'logout'])->name('site.auth.logout');
 Route::post('/registerAjax', [Site\AuthController::class, 'register'])->name('site.auth.register');
 
-
-
-
-
+//login admin
 Route::get('admin/login', [Admin\AuthController::class, 'login'])->name('admin.auth.login');
 Route::post('admin/login', [Admin\AuthController::class, 'checkLogin'])->name('admin.auth.login');
 Route::get('admin/logout', [Admin\AuthController::class, 'logout'])->name('admin.auth.logout');
+
+//tim kiem user
+Route::group(['prefix' => 'tim-kiem'], function () {
+    Route::get('/tat-ca', [Site\HomeController::class, 'searchAll'])->name('site.search.all');
+    Route::get('/bai-hat', [Site\HomeController::class, 'searchSong'])->name('site.search.song');
+    Route::get('/nghe-si', [Site\HomeController::class, 'searchArtist'])->name('site.search.artist');
+    Route::get('/playlisy', [Site\HomeController::class, 'searchPlaylist'])->name('site.search.playlist');
+
+});
+
+
 
 // Route::get('/admin', [Admin\HomeController::class, 'dashboard'])->name('admin.dashboard');
 Route::group(['prefix' => 'admin','middleware'=>'admin:admin,nv'], function () {
@@ -44,4 +51,5 @@ Route::group(['prefix' => 'admin','middleware'=>'admin:admin,nv'], function () {
     Route::get('/onlyadmin', [Admin\HomeController::class, 'onlyAdmin'])->name('admin.onlyAdmin')->withoutMiddleware('admin:admin,nv')->middleware(('admin:admin'));
 
 });
+
 Route::get('/', [Site\HomeController::class, 'home'])->name('site.home');

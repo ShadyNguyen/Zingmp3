@@ -5,8 +5,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 20rem;
-    height: 20rem;
+    width: 23rem;
+    height: 23rem;
     padding: 0 1rem;
     border-radius: 0.4rem;
 }
@@ -52,9 +52,13 @@
     filter: brightness(50%);
     scale: 1.1;
 }
-.main-items-content.album .items-content .name-user-album{
+.main-items-content.album .items-content .name-user-album {
     margin-top: 1rem;
     color:var(--text-secondary);
+}
+.main-items-content.album .items-content .name-user{
+    color: var(--text-primary);
+    font-size: 2rem;;
 }
 .main-items-content.album .items-content .name-user-album:hover{
     text-decoration: underline;

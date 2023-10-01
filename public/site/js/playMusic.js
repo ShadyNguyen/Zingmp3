@@ -4,12 +4,13 @@ let listSongRandom = [];
 let options = {};
 //elm audio
 const audioElm = document.getElementById("elm-audio");
-const nameSongElm = document.getElementById('play-music-name-active');
-const avatarSongElm = document.getElementById('play-music-img-active');
-const nameArtistSongElm = document.getElementById('play-music-name--artist-active');
+const nameSongElm = document.getElementById("play-music-name-active");
+const avatarSongElm = document.getElementById("play-music-img-active");
+const nameArtistSongElm = document.getElementById(
+    "play-music-name--artist-active"
+);
 const leftTimeLineElm = document.getElementById("left-time-line");
 const rightTimeLineElm = document.getElementById("right-time-line");
-
 
 const btnRepeatList = document.getElementById("btn-repeat-list");
 const btnPrevSong = document.getElementById("btn-prev-song");
@@ -18,7 +19,6 @@ const btnPauseSong = document.getElementById("btn-pause-song");
 const btnRandomList = document.getElementById("btn-random-list");
 
 const timelineCurrentElm = document.getElementById("progres-music");
-
 
 //elm options
 const valueVolume = document.getElementById("volume");
@@ -29,16 +29,19 @@ getListSongLocalStorage();
 getOptionLocalStorage();
 renderSidebarMusic();
 
-audioElm.volume = options.volumesValue/100;
+audioElm.volume = options.volumesValue / 100;
 valueVolume.value = options.volumesValue;
 toogleVolumeBtn.checked = options.isMute;
-if(options.isMute){
+if (options.isMute) {
     valueVolume.value = 0;
 }
-if(options.isRandomList){
-    btnRandomList.classList.add('active');
+if (options.isRandomList) {
+    btnRandomList.classList.add("active");
 }
-timelineCurrentElm.value = options.currentTime/options.currentSong.duration*100 || 0;
+if(options.currentTime){
+
+    timelineCurrentElm.value = (options.currentTime / options.currentSong.duration) * 100 || 0;
+}
 
 // if (listSongPlay.length < 1){
 //     document.querySelector('.wrapper-play-music').classList.add('none');
@@ -58,35 +61,36 @@ function getListSongLocalStorage() {
 //function render sidebar splay music
 
 function renderSidebarMusic() {
-    const playListAside = document.getElementById('playlist-aside-content');
-    playListAside.innerHTML='';
+    const playListAside = document.getElementById("playlist-aside-content");
+    playListAside.innerHTML = "";
     let listRender = [];
-    if (options.isRandomList){
+    if (options.isRandomList) {
         listRender = listSongRandom;
-    }else{
+    } else {
         listRender = listSong;
     }
-    for(let i = 0; i < listRender.length; i++){
-        if(listRender[i].id == options.currentSong.id){
-            
-            playListAside.appendChild(createItemSongPlaySidebar(listRender[i],'active'));
-
-        }else{
-
+    for (let i = 0; i < listRender.length; i++) {
+        if (listRender[i].id == options.currentSong.id) {
+            playListAside.appendChild(
+                createItemSongPlaySidebar(listRender[i], "active")
+            );
+        } else {
             playListAside.appendChild(createItemSongPlaySidebar(listRender[i]));
         }
     }
-    nameSongElm.innerHTML = options.currentSong.name;
-    nameArtistSongElm.innerHTML = options.currentSong.name_artist;
-    avatarSongElm.src = options.currentSong.thumbnail;
-    updateTimeLineElm();
-}
-function updateTimeLineElm(){
-    leftTimeLineElm.innerHTML = secondToMinute(options.currentTime)
-   
-    rightTimeLineElm.innerHTML = secondToMinute(options.currentSong.duration)
-}
+    if(options.currentSong != null){
+        nameSongElm.innerHTML = options.currentSong.name;
+        nameArtistSongElm.innerHTML = options.currentSong.name_artist;
+        avatarSongElm.src = options.currentSong.thumbnail;
 
+        updateTimeLineElm();
+    }
+}
+function updateTimeLineElm() {
+    leftTimeLineElm.innerHTML = secondToMinute(options.currentTime);
+
+    rightTimeLineElm.innerHTML = secondToMinute(options.currentSong.duration);
+}
 
 //Lưu lại danh sách vảo local storage
 function saveListSongLocalStorage() {
@@ -111,6 +115,24 @@ function addSongToFirstList(song) {
     saveListSongLocalStorage();
 }
 
+function addSongToNextList(song) {
+    if(listSong.length == 0){
+        listSong.push(song);
+        listSongRandom.push(song);
+       
+    }else{
+        const currentSong = options.currentSong;
+        const index = listSong.findIndex((item) => item.id === currentSong.id);
+        const indexRandom = listSongRandom.findIndex((item)=> item.id === currentSong.id);
+        listSong.splice(index+1, 0, song);
+        listSongRandom.splice(indexRandom+1, 0, song);
+   
+
+    }
+    
+    saveListSongLocalStorage();
+}
+
 function addManySongToList(songs) {
     listSong = [...listSong, ...songs];
     listSongRandom = [...listSongRandom, ...songs];
@@ -126,29 +148,31 @@ function deleteSongFromList(idSongRemove) {
 function setListSongByOrderPlayPlist(newList) {
     listSong = [...newList];
     listSongRandom = [...newList];
+    randomListSong(false);
 
     saveListSongLocalStorage();
 }
 
-function randomListSong() {
-    
+function randomListSong(save = true) {
     const currentSong = options.currentSong;
-    // console.log(currentSong)
-    const listRandom = listSongRandom.filter((item) => item.id !== currentSong.id)
     
+    const listRandom = listSongRandom.filter(
+        (item) => item.id !== currentSong.id
+    );
 
-    const newListRandom = shuffleArray(listRandom)
-    // console.log(newListRandom)
+    const newListRandom = shuffleArray(listRandom);
+   
 
-    listSongRandom = [currentSong, ...listRandom];
-    
-    
-    saveListSongLocalStorage();
+    listSongRandom = [currentSong, ...newListRandom];
+
+    if (save) {
+        saveListSongLocalStorage();
+    }
 }
 
 // Hàm random
 function shuffleArray(arr) {
-     // Xáo trộn mảng từ vị trí thứ 1 đến cuối
+    // Xáo trộn mảng từ vị trí thứ 1 đến cuối
     for (var i = 1; i < arr.length; i++) {
         var randomIndex = Math.floor(Math.random() * (i + 1));
         // Tráo đổi phần tử tại vị trí i với phần tử tại vị trí randomIndex
@@ -193,16 +217,12 @@ toogleVolumeBtn.addEventListener("change", (e) => {
         options.lastValueVolume = options.volumesValue;
         options.volumesValue = 0;
         options.isMute = true;
-        
     } else {
         options.volumesValue = options.lastValueVolume;
         options.isMute = false;
-        
-        
     }
     saveOptionLocalStorage();
-    audioElm.volume = options.volumesValue/100;
-
+    audioElm.volume = options.volumesValue / 100;
 });
 
 valueVolume.addEventListener("change", (e) => {
@@ -211,8 +231,7 @@ valueVolume.addEventListener("change", (e) => {
     options.volumesValue = valueVolume.value;
     saveOptionLocalStorage();
 
-    
-    audioElm.volume = options.volumesValue/100;
+    audioElm.volume = options.volumesValue / 100;
 });
 
 //set current song
@@ -220,18 +239,23 @@ function setCurrentSong(song) {
     options.currentSong = song;
     options.currentTime = 0;
     saveOptionLocalStorage();
-    
 }
 
 //even click play song
 function addSongToListBtn(idSong) {
-    getSongById(idSong);
+    getSongById(idSong,callBackPlaySongById);
+}
+
+function callBackPlaySongById(data) {
+    setCurrentSong(data);
+    addSongToFirstList(data);
+    playMusic();
 }
 
 //call api get info song
-function getSongById(idSong) {
+function getSongById(idSong, callback) {
     const urlCall = URL_WEB + "/api/getSongById"; // Thay đổi địa chỉ URL thành endpoint của bạn
-
+    
     params = {
         idSong,
     };
@@ -247,9 +271,7 @@ function getSongById(idSong) {
 
             const status = response.status;
             if (status === 200) {
-                setCurrentSong(data);
-                addSongToFirstList(data);
-                playMusic();
+                callback(data);
             }
         })
 
@@ -261,23 +283,24 @@ function getSongById(idSong) {
 
 //phát nhạc
 function playMusic() {
-    const svgElms = btnPauseSong.querySelectorAll('svg');
-    svgElms[0].classList.remove('none');
-    svgElms[1].classList.add('none');
+    const svgElms = btnPauseSong.querySelectorAll("svg");
+    svgElms[0].classList.remove("none");
+    svgElms[1].classList.add("none");
     audioElm.src = options.currentSong.source;
     // Đợi cho âm thanh tải xong trước khi phát
     audioElm.addEventListener("loadedmetadata", function () {
         // Sau khi âm thanh tải xong, gọi phương thức play()
         audioElm.play();
     });
+    upListensSong();
 }
 
 //dừng nhạc
 function pauseMusic() {
-    const svgElms = btnPauseSong.querySelectorAll('svg');
+    const svgElms = btnPauseSong.querySelectorAll("svg");
 
-    svgElms[0].classList.add('none');
-    svgElms[1].classList.remove('none');
+    svgElms[0].classList.add("none");
+    svgElms[1].classList.remove("none");
     options.currentTime = audioElm.currentTime;
     saveOptionLocalStorage();
     audioElm.pause();
@@ -285,9 +308,9 @@ function pauseMusic() {
 
 //tiếp tục phát
 function resumeMusic() {
-    const svgElms = btnPauseSong.querySelectorAll('svg');
-    svgElms[0].classList.remove('none');
-    svgElms[1].classList.add('none');
+    const svgElms = btnPauseSong.querySelectorAll("svg");
+    svgElms[0].classList.remove("none");
+    svgElms[1].classList.add("none");
     audioElm.src = options.currentSong.source;
     audioElm.currentTime = options.currentTime;
     audioElm.addEventListener("loadedmetadata", function () {
@@ -298,92 +321,96 @@ function resumeMusic() {
 
 //phát theo id bài háy
 function playSongById(id) {
-    let listCurrentSong = options.isRandomList ?listSongRandom:listSong;
-    const index = listCurrentSong.findIndex(item => item.id === id);
+    let listCurrentSong = options.isRandomList ? listSongRandom : listSong;
+    const index = listCurrentSong.findIndex((item) => item.id === id);
     const newSong = listCurrentSong[index];
- 
+
     setCurrentSong(newSong);
     saveListSongLocalStorage();
+    
     playMusic();
-
 }
 
 //tạm dừng
-btnPauseSong.addEventListener('click',(e)=>{
-    const svgElms = btnPauseSong.querySelectorAll('svg');
-    if(!audioElm.paused){
-        
-
+btnPauseSong.addEventListener("click", (e) => {
+    const svgElms = btnPauseSong.querySelectorAll("svg");
+    if (!audioElm.paused) {
         pauseMusic();
-    }else{
-        
+    } else {
         resumeMusic();
     }
-    
-})
+});
 
 //click random list
-btnRandomList.addEventListener('click',(e)=>{
-    if(options.isRandomList){
+btnRandomList.addEventListener("click", (e) => {
+    if (options.isRandomList) {
         options.isRandomList = false;
         //render
         saveOptionLocalStorage();
         saveListSongLocalStorage();
-        btnRandomList.classList.remove('active');
-    }else{
+        btnRandomList.classList.remove("active");
+    } else {
         options.isRandomList = true;
         saveOptionLocalStorage();
         randomListSong();
-        btnRandomList.classList.add('active');
-
-
+        btnRandomList.classList.add("active");
     }
-})
+});
 
 //next song
-btnNextSong.addEventListener('click',(e)=>{
+btnNextSong.addEventListener("click", (e) => {
     nextSong();
-})
+});
 
-function nextSong(){
+function nextSong() {
     const currentSong = options.currentSong;
-    let listCurrentSong = options.isRandomList ?listSongRandom:listSong;
-    const indexCurrentSong = listCurrentSong.findIndex(item => item.id === currentSong.id);
-    const nextSongIndex = (indexCurrentSong+1) > (listCurrentSong.length -1) ? 0 : (indexCurrentSong+1);
+    let listCurrentSong = options.isRandomList ? listSongRandom : listSong;
+    const indexCurrentSong = listCurrentSong.findIndex(
+        (item) => item.id === currentSong.id
+    );
+    const nextSongIndex =
+        indexCurrentSong + 1 > listCurrentSong.length - 1
+            ? 0
+            : indexCurrentSong + 1;
     playSongById(listCurrentSong[nextSongIndex].id);
 }
 
 //prev song
-btnPrevSong.addEventListener('click',(e)=>{
+btnPrevSong.addEventListener("click", (e) => {
     prevSong();
-})
+});
 
-function prevSong(){
+function prevSong() {
     const currentSong = options.currentSong;
-    let listCurrentSong = options.isRandomList ?listSongRandom:listSong;
-    const indexCurrentSong = listCurrentSong.findIndex(item => item.id === currentSong.id);
-    const nextSongIndex = (indexCurrentSong-1) < 0 ? (listCurrentSong.length -1) : (indexCurrentSong-1);
+    let listCurrentSong = options.isRandomList ? listSongRandom : listSong;
+    const indexCurrentSong = listCurrentSong.findIndex(
+        (item) => item.id === currentSong.id
+    );
+    const nextSongIndex =
+        indexCurrentSong - 1 < 0
+            ? listCurrentSong.length - 1
+            : indexCurrentSong - 1;
     playSongById(listCurrentSong[nextSongIndex].id);
 }
 
 //update timeline
-audioElm.addEventListener('timeupdate', () =>{
+audioElm.addEventListener("timeupdate", () => {
     // Tính phần trăm tiến trình và đặt giá trị cho thanh trượt
     const currentTime = audioElm.currentTime;
     const duration = audioElm.duration;
-    
 
-    if (!isNaN(duration)) { // Đảm bảo duration hợp lệ (không phải NaN)
+    if (!isNaN(duration)) {
+        // Đảm bảo duration hợp lệ (không phải NaN)
         const progressPercentage = (currentTime / duration) * 100;
         timelineCurrentElm.value = progressPercentage;
         options.currentTime = currentTime;
         saveOptionLocalStorage();
         updateTimeLineElm();
     }
-})
+});
 
 // update view timeline
-timelineCurrentElm.addEventListener('input', function() {
+timelineCurrentElm.addEventListener("input", function () {
     const progressPercentage = timelineCurrentElm.value;
     const duration = audioElm.duration;
 
@@ -398,3 +425,68 @@ audioElm.addEventListener("ended", function () {
     nextSong();
 });
 
+function playListSongArtist(idArtist) {
+    const urlCall = URL_WEB + "/api/getSongByArtist"; // Thay đổi địa chỉ URL thành endpoint của bạn
+
+    params = {
+        idArtist,
+    };
+    // Gửi yêu cầu POST bằng Axios
+    // Thực hiện yêu cầu GET với params
+    axios
+        .get(urlCall, { params })
+        .then((response) => {
+            // Xử lý dữ liệu trả về từ máy chủ ở đây
+            const datas = response.data.data;
+            // data["id"] = data["id_song"] + "_" + generateRandomNumberString(6);
+            // addSongToList(data);
+
+            datas.map((data) => {
+                data.id = data["id_song"] + "_" + generateRandomNumberString(6);
+            });
+            const status = response.status;
+            if (status === 200) {
+                setCurrentSong(datas[0]);
+                setListSongByOrderPlayPlist(datas);
+                playMusic();
+            }
+        })
+        .catch((error) => {
+            // Xử lý lỗi nếu có
+            addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+        });
+}
+function upListensSong() {
+    const currentSong = options.currentSong;
+    const idSong = currentSong.id_song;
+    // const
+    const urlCall = URL_WEB + "/api/upListensSong"; // Thay đổi địa chỉ URL thành endpoint của bạn
+
+    params = {
+        idSong,
+    };
+    if (_idUser) {
+        const idUser = _idUser.value;
+        params.idUser = idUser;
+    }
+    // Gửi yêu cầu POST bằng Axios
+    // Thực hiện yêu cầu GET với params
+    axios
+        .get(urlCall, { params })
+        .then((response) => {
+            // Xử lý dữ liệu trả về từ máy chủ ở đây
+            const status = response.status;
+            if (status === 204) {
+                
+            }
+        })
+        .catch((error) => {
+            // Xử lý lỗi nếu có
+            // addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+        });
+}
+
+function setNextSongBtn(id_song) {
+    
+    getSongById(id_song,addSongToNextList);
+}

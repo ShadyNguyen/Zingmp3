@@ -6,7 +6,8 @@
         </div>
         <!-- End Icon toggle menu moblie -->
 
-        <form class="form-search dropdown">
+        <form method="get" class="form-search dropdown" action="{{ route('site.search.all') }}">
+            
             <div class="d-flex justify-content-center align-items-center header-search" id="header-search">
                 <div class="wrapper-icon icon-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -14,7 +15,7 @@
 
                 <!-- Input Search -->
                 <div class="form-search-input" id="search-input">
-                    <input type="text" placeholder="Nhập thông tin tìm kiếm...">
+                    <input name="q" type="text" placeholder="Nhập thông tin tìm kiếm..." autocomplete="off">
                 </div>
                 <!-- End Input Search -->
 
@@ -26,7 +27,7 @@
                 <div class="result-search-content">
                     <!-- title search -->
                     <div class="result-search-title">
-                        <p>Đề xuất cho bạn</p>
+                        <p>Lịch sử tìm kiếm</p>
                         <button>Xóa</button>
                     </div>
 
@@ -45,7 +46,12 @@
                     </div>
                     <!-- End text result search -->
 
-
+                    <!-- boder -->
+                    
+                        <div class="boder-single no-pointer">
+                            <div class="w-100"></div>
+                        </div>
+                    
                     <!-- music result search -->
                     <div class="result-search-item d-flex align-items-center justify-content-start ">
                         <div class="avatar me-3">
@@ -94,7 +100,7 @@
                             </div>
                         </div>
                         <div class="menu-list-action-item">
-                            <div class="action-item-content">
+                            <div class="action-item-content" data-bs-toggle="modal" data-bs-target="#modal-add-change-theme">
                                 <div><i class="fa-solid fa-brush"></i></div>
                                 <span>Giao diện</span>
                                 <div><i class="fa-solid fa-chevron-right"></i></div>
@@ -151,7 +157,7 @@
                 </div>
                 <!-- End sub menu setting -->
 
-            
+
                 <!-- Sub menu profile -->
                 <div class="action-content-avatar">
                     @auth('user')
@@ -208,7 +214,7 @@
                     @endauth
 
                     @auth('user')
-                    
+                    <input id="_id-user" type="hidden" value="{{ Auth::guard('user')->user()->id }}" />
                     @endauth
                 </div>
                 <!-- End Sub menu profile -->
@@ -257,7 +263,7 @@
                         <label for="password-login">Mật khẩu</label>
                         <div class="input-group-pass">
 
-                            <input type="password" name="password" id="password-login" placeholder="" autocomplete="off"> 
+                            <input type="password" name="password" id="password-login" placeholder="" autocomplete="off">
                             <div class="wrapper-icon icon-toogle-pass" data-show="password-login" onclick="toggleShowPassword('password-login')">
                                 <i class="fa-regular fa-eye"></i>
                             </div>
@@ -393,4 +399,3 @@
 <form action="">
     @csrf
 </form>
-
