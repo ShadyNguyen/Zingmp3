@@ -18,6 +18,6 @@ class SongListenerHistory extends Model
     }
     public function song()
     {
-        return $this->hasOne(Song::class, 'id', 'id_user');
+        return $this->hasOne(Song::class, 'id', 'id_song');
     }
 }

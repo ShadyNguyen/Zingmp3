@@ -44,7 +44,7 @@
 
 
         <div class="aside-nav-content play-list">
-            <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
+            <a href="{{ route('site.mymusic.history',['type'=>'bai-hat']) }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content ">
                     <div><i>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

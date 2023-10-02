@@ -77,6 +77,18 @@ class User extends Authenticatable
         return $this->hasMany(SearchHistory::class, 'id_user', 'id');
     }
 
+    public function listenedSongs()
+    {
+        return $this->hasManyThrough(
+            Song::class, // Model của bảng cần truy cập (Song)
+            SongListenerHistory::class, // Model của bảng trung gian (SongListenerHistory)
+            'id_user', // Khóa ngoại trong bảng trung gian liên kết đến User
+            'id', // Khóa chính trong bảng cần truy cập liên kết đến Song
+            'id', // Khóa chính trong bảng User
+            'id_song' // Khóa ngoại trong bảng trung gian liên kết đến Song
+        )->orderBy('created_at', 'desc');
+    }
+
 
     public function isAdmin()
     {

@@ -154,7 +154,7 @@ class SongController extends Controller
                 'name_artist'=>$song->user->name,
                 'duration'=>$song->duration,
                 'thumbnail'=>$song->thumbnail,
-                'source'=>$song->source,
+                'source'=>$song->getSource(),
                 'slug'=>$song->slug,
                 'slug_artist'=>$song->user->slug
 

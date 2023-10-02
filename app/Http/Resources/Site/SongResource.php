@@ -21,7 +21,7 @@ class SongResource extends JsonResource
             'name_artist'=>$this->user->name,
             'duration'=>$this->duration,
             'thumbnail'=>$this->thumbnail,
-            'source'=>$this->source,
+            'source'=>$this->getSource(),
             'slug'=>$this->slug,
             'slug_artist'=>$this->user->slug
         ];

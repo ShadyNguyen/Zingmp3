@@ -39,6 +39,11 @@ Route::group(['prefix' => 'tim-kiem'], function () {
     Route::get('/bai-hat', [Site\HomeController::class, 'searchSong'])->name('site.search.song');
     Route::get('/nghe-si', [Site\HomeController::class, 'searchArtist'])->name('site.search.artist');
     Route::get('/playlisy', [Site\HomeController::class, 'searchPlaylist'])->name('site.search.playlist');
+});
+
+//mymusic
+Route::group(['prefix' => 'mymusic','middleware'=>'user'], function () {
+    Route::get('/history/{type}', [Site\UserController::class, 'history'])->name('site.mymusic.history');
 
 });
 
