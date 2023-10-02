@@ -14,27 +14,27 @@
         <div class="search-header">
             <div class="search-header-content">
                 <div class="header-content-title">
-                    <h3>Kết quả tìm kiếm</h3>
+                    <h3>Kết quả tìm kiếm </h3>
                 </div>
                 <div class="border-height" style="height: 4rem;">
                     <div></div>
                 </div>
-                <a href="{{ route('site.search.all', ['q' => 'a']) }}" class="header-content-item active">
+                <a href="{{ route('site.search.all',['q'=>$lastQ]) }}" class="header-content-item active">
                     <span>
                         Tất cả
                     </span>
                 </a>
-                <a href="{{ route('site.search.song', ['q' => 'a']) }}" class="header-content-item">
+                <a href="{{ route('site.search.song',['q'=>$lastQ]) }}" class="header-content-item">
                     <span>
                         Bài hát
                     </span>
                 </a>
-                <a href="{{ route('site.search.playlist', ['q' => 'a']) }}" class="header-content-item">
+                <a href="{{ route('site.search.playlist',['q'=>$lastQ]) }}" class="header-content-item">
                     <span>
                         Playlist
                     </span>
                 </a>
-                <a href="{{ route('site.search.artist', ['q' => 'a']) }}" class="header-content-item">
+                <a href="{{ route('site.search.artist',['q'=>$lastQ]) }}" class="header-content-item">
                     <span>
                         Nghệ sĩ
                     </span>
@@ -46,7 +46,7 @@
                 @if($listRsSong->count() > 0)
                 <div class="search-content-item-title">
                     <p>Bài hát</p>
-                    <a href="#">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a href="{{ route('site.search.song',['q'=>$lastQ]) }}">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
 
                 </div>
                 <div class="search-list-song">
@@ -63,17 +63,17 @@
             <div class="search-content-items">
                 <div class="search-content-item-title">
                     <p>Album</p>
-                    <a href="#">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a href="{{ route('site.search.playlist',['q'=>$lastQ]) }}">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
                 </div>
                 <div class="search-list-album">     
                     <x-list-album title=""/>
                 </div>
             </div>
-            @if($listRsSong->count() > 0)
+            @if($listArtist->count() > 0)
             <div class="search-content-items">
                 <div class="search-content-item-title">
                     <p>Artist</p>
-                    <a href="#">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a href="{{ route('site.search.artist',['q'=>$lastQ]) }}">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
                 </div>
                 <div class="search-list-album"> 
                 

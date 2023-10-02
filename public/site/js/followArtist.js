@@ -1,9 +1,9 @@
-function setFolowerArtist(button,id_user, id_artist) {
+function setFolowerArtist(button, id_artist) {
 
     const urlCall = URL_WEB + "/api/followArtist"; // Thay đổi địa chỉ URL thành endpoint của bạn
     const formData = new FormData();
     const elm =button;
-    
+    const id_user = _idUser.value;
     formData.append("id_user", id_user);
     formData.append("id_artist", id_artist);
 

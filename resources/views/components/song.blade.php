@@ -15,8 +15,8 @@
                     </button>
                 </div>
                 <div class="song-info">
-                    <a class="song-info-name"><span>{{ $song->name }}</span></a>
-                    <a class="song-info-astist">
+                    <a href="#" class="song-info-name"><span>{{ $song->name }}</span></a>
+                    <a href="{{ route('site.artist.home',['aritistSlug' => $song->user->slug]) }}" class="song-info-astist">
                         <span>{{ $song->user->name }}
                             @if($song->user->is_celeb)
                             <i class="fa-solid fa-star"></i>

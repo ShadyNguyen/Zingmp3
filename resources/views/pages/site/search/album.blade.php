@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{{ url('public/site/css/pages/search/main.css') }}">
 <link rel="stylesheet" href="{{ url('public/site/css/components/listAlbum.css') }}">
 <link rel="stylesheet" href="{{ url('public/site/css/components/listArtist.css') }}">
+<link rel="stylesheet" href="{{ url('public/partials/paginateCustom.css') }}">
+
 
 
 @stop
@@ -47,7 +49,10 @@
             <div class="search-content-items">
                 <div class="search-content-item-title">
                     <p>Album</p>
-                    <a href="#">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
+                    <div>
+                    {{ $listAlbum->withQueryString()->links('partials.paginateCustom') }}
+
+                    </div>
                 </div>
                 <div class="search-list-album">     
                     <x-list-album title=""/>

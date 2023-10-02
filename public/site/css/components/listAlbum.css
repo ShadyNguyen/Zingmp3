@@ -81,11 +81,19 @@
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1.36;
-    color: var(--text-primary);
+    color: var(--text-primary) ;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.artist-info .artist-info-name:hover{
+.artist-info .artist-info-name a{
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.36;
+    color: var(--text-primary) ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.artist-info .artist-info-name a:hover{
     text-decoration: underline;
     color: var(--link-text-hover);
     cursor: pointer;

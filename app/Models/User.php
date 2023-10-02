@@ -74,7 +74,7 @@ class User extends Authenticatable
     }
 
     public function searchHistorys(){
-        return $this->hasMany(SearchHistoty::class, 'id_user', 'id');
+        return $this->hasMany(SearchHistory::class, 'id_user', 'id');
     }
 
 

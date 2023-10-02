@@ -140,6 +140,10 @@
     cursor: pointer;
     padding: 0.8rem 1rem;
     border-radius: 0.4rem;
+    color:var(--text-primary);
+}
+.result-search-item:hover{
+    color:var(--purple-primary);
 }
 
 .result-search-item:hover {

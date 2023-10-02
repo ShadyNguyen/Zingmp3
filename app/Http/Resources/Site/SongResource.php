@@ -22,7 +22,8 @@ class SongResource extends JsonResource
             'duration'=>$this->duration,
             'thumbnail'=>$this->thumbnail,
             'source'=>$this->source,
-            'slug'=>$this->slug
+            'slug'=>$this->slug,
+            'slug_artist'=>$this->user->slug
         ];
     }
 }

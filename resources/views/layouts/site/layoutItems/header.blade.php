@@ -15,7 +15,8 @@
 
                 <!-- Input Search -->
                 <div class="form-search-input" id="search-input">
-                    <input name="q" type="text" placeholder="Nhập thông tin tìm kiếm..." autocomplete="off">
+                    
+                    <input name="q" @if(isset($lastQ)) value="{{ $lastQ}}" @endif type="text" placeholder="Nhập thông tin tìm kiếm..." autocomplete="off">
                 </div>
                 <!-- End Input Search -->
 
@@ -30,20 +31,27 @@
                         <p>Lịch sử tìm kiếm</p>
                         <button>Xóa</button>
                     </div>
-
+                    @auth('user')
+                        @if(Auth::guard('user')->user()->searchHistorys()->count() > 0)
                     <!-- text result search -->
-                    <div class="result-search-item d-flex">
+                    
+                        @foreach(Auth::guard('user')->user()->searchHistorys()->orderBy('created_at', 'desc')->take(3)->get() as $key)
+                            
+                            <a href="{{route('site.search.all',['q'=>$key->search_keyword])}}" class="result-search-item d-flex">
+                                <div class="wrapper-icon">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                </div>
+                                <span class="ms-3">{{ $key->search_keyword }}</span>
+                            </a>
+                        @endforeach
+                        @endif
+                    @endauth
+                    <!-- <div class="result-search-item d-flex">
                         <div class="wrapper-icon">
                             <i class="fa-solid fa-arrow-trend-up"></i>
                         </div>
                         <span class="ms-3">Chữ mày kiếm đây nè thằng ngu</span>
-                    </div>
-                    <div class="result-search-item d-flex">
-                        <div class="wrapper-icon">
-                            <i class="fa-solid fa-arrow-trend-up"></i>
-                        </div>
-                        <span class="ms-3">Chữ mày kiếm đây nè thằng ngu</span>
-                    </div>
+                    </div> -->
                     <!-- End text result search -->
 
                     <!-- boder -->

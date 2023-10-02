@@ -42,12 +42,22 @@ Route::group(['prefix' => 'tim-kiem'], function () {
 
 });
 
+//artist
+Route::group(['prefix' => 'nghe-si'], function () {
+    Route::get('{aritistSlug}/album', [Site\HomeController::class, 'albumArtist'])->name('site.artist.album');
+
+    Route::get('{aritistSlug}/bai-hat', [Site\HomeController::class, 'songArtist'])->name('site.artist.song');
+    Route::get('{aritistSlug}', [Site\HomeController::class, 'homeArtist'])->name('site.artist.home');
+
+    
+
+});
+
 
 
 // Route::get('/admin', [Admin\HomeController::class, 'dashboard'])->name('admin.dashboard');
 Route::group(['prefix' => 'admin','middleware'=>'admin:admin,nv'], function () {
     Route::get('/', [Admin\HomeController::class, 'dashboard'])->name('admin.dashboard');
-    
     Route::get('/onlyadmin', [Admin\HomeController::class, 'onlyAdmin'])->name('admin.onlyAdmin')->withoutMiddleware('admin:admin,nv')->middleware(('admin:admin'));
 
 });

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SearchHistoty extends Model
+class SearchHistory extends Model
 {
     use HasFactory;
-    protected $table = 'search_histotys';
+    protected $table = 'search_historys';
     protected $fillable = ['id_user','search_keyword'];
 
     public function user()

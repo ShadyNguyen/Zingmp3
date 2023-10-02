@@ -16,11 +16,12 @@
             if ($user->checkFollowArtists($artist->id)) {
                 $isFollowed = true;
             }
-            $stringJS =  "onclick=setFolowerArtist(this,'".$user->id."','".$artist->id."')";
+            $stringJS =  "onclick=setFolowerArtist(this,'".$artist->id."')";
         }
         ?>
         <div class="artist-item">
             <div class="wrapper-avatar">
+                
                 <div class="wrapper-avatar-content" onclick="playListSongArtist('{{ $artist->id }}')">
 
                     <div class="artist-avatar">
@@ -35,7 +36,7 @@
 
             <div class="artist-info">
                 <div class="artist-info-name">
-                    <a>{{ $artist->name }}</a>
+                    <a href="{{  route('site.artist.home',['aritistSlug' => $artist->slug])  }}">{{ $artist->name }}</a>
                 </div>
                 <div class="artist-info-follower">
                     <a>{{ $artist->total_followers }}K quan tâm</a>

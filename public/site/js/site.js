@@ -97,6 +97,7 @@ function generateRandomNumberString(length) {
 
 //
 function createItemSongPlaySidebar(song,stastus=null) {
+    console.log(song);
     const itemSong = document.createElement('div');
     let strHTML=`<i class="fa-solid fa-play "></i>
                 <i class="fa-regular fa-circle-pause fa-spin hidden"></i>`
@@ -120,7 +121,7 @@ function createItemSongPlaySidebar(song,stastus=null) {
                             </div>
                             <div class="song-info">
                                 <a class="song-info-name"><span>${song.name}</span></a>
-                                <a class="song-info-astist"><span>${song.name_artist}<i class="fa-solid fa-star"></i></span></a>
+                                <a href="${URL_WEB}/nghe-si/${song.slug_artist}" class="song-info-astist"><span>${song.name_artist}<i class="fa-solid fa-star"></i></span></a>
                             </div>
                             <div class="song-action">
                                 <button class="item-actions" onclick="deleteSongFromList('${song.id}')">

@@ -543,3 +543,41 @@
 .control-volume .slider{
     width: 100%;
 }
+
+@media (max-width: 991px){
+    .wrapper-play-music{
+        padding: 0 0.5rem;
+    }
+    .card__wrapper{
+        gap:0.5rem;
+    }
+    .play-music-content-info .info-title{
+        max-width: 10rem;
+    }
+    .play-music-content-actions{
+        gap:0.5rem;
+    }
+    
+}
+@media (max-width: 620px){
+    .play-music-content-info .info-title{
+        display: none;
+    }
+    .info-action{
+        display: none;
+    }
+    .card{
+        align-items: start;
+    }
+}
+@media (max-width: 575px){
+    #btn-repeat-list{
+        display: none;
+    }
+    #btn-random-list{
+        display: none;
+    }
+    .card__wrapper.action{
+        width: 100%;
+    }
+}

@@ -1,0 +1,132 @@
+.content-banner{
+    width: 100%;
+    height: 30rem;
+    /* background-color: red; */
+    overflow: hidden;
+
+}
+.bg-banner{
+    position: absolute;
+    
+    top: -20rem;
+    left: -20rem;
+    right: -20rem;
+    /* width: calc(100% + 25rem); */
+    height: calc(var(--height-header) + 40rem);
+    /* right: 0; */
+    z-index: -1;
+    overflow: hidden;
+    
+}
+.bg-banner .blur{
+    position: absolute;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    -webkit-filter: blur(10%);
+    filter: blur(50px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    overflow: hidden;
+}
+.bg-banner-color{
+    background-color: var(--artist-layout-bg);
+    height: 100%;
+    /* z-index: 1; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    overflow: hidden;
+}
+.content-banner-info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-bottom: 7%;
+    align-items: end;
+}
+.content-banner-info .info-wrapper{
+    /* background-color: #fff; */
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap:3rem;
+    height: fit-content;
+}
+.info-wrapper .info-avatar{
+    /* border-radius: 999px; */
+    
+}
+.info-wrapper .info-avatar img{
+    border-radius: 999px;
+
+    display: block;
+    aspect-ratio: 1/1;
+    max-height: 14rem;
+}
+.info-content .info-content-title{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    
+    
+}
+.info-content .info-content-title .wrapper-icon{
+    color: var(--text-primary);
+    
+}
+.info-content .info-content-title .wrapper-icon{
+    border-radius: 999px;
+    background-color: var(--purple-primary);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    transition: all 0.5s ease-in-out;
+
+}
+.info-content .info-content-title .wrapper-icon:hover{
+    filter: brightness(80%);
+}
+.info-content .info-content-title .wrapper-icon i{
+    font-size: 2.5rem;
+    margin-left: 0.3rem;
+}
+.info-content .info-content-title h3{
+    font-size: 5rem;
+}
+.info-content-des{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap:2rem;
+}
+.info-content-des .artist-action-follow{
+    flex-grow: 1;
+}
+.search-content-item-title>div{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap:1rem;
+}
+.search-content-item-title .wrapper-icon{
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--purple-primary);
+    border-radius: 999px;
+
+}
+.search-content-item-title .wrapper-icon i{
+    color: var(--text-primary);
+}

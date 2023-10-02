@@ -13,7 +13,8 @@
     --border-primary: hsla(0,0%,100%,0.1);
     --navigation-text: #dadada;
     --tab-active-bg:hsla(0,0%,100%,0.3);
-    
+    --artist-layout-bg: var(--alpha-layout-bg);
+
     --width-sidebar : 240px;
     --height-playMusic: 90px;
     --height-header: 70px;
@@ -169,7 +170,7 @@ img.avatar{
     margin-bottom: var(--height-playMusic);
     width: 100%;
     padding-left: var(--width-sidebar);
-        
+    overflow: hidden;
 }
 
 .content{

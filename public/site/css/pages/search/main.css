@@ -94,3 +94,15 @@
     align-items: center;
     justify-self: space-between;
 }
+
+@media (max-width: 991px){
+    .search-content .search-header-content{
+        gap:1rem;
+    }
+    .search-header-content .header-content-title h3{
+        display: none;
+    }
+    .search-header-content .header-content-item span{
+        font-size: 2rem;
+    }
+}
