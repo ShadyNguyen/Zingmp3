@@ -1,9 +1,11 @@
 // function addPlayList(idUser,name,status)
 const btnAddPlayListUser = document.getElementById("btn-add-play-list");
 
-const btnDeletePlayLists = document.querySelectorAll(
-    "a.menu-list-action-item div.wrapper-icon[data-id-playlist][data-id-user]"
-);
+const confirmDeletePlayList = new bootstrap.Modal(document.getElementById('modal-submit-delete-playlist'), {
+    keyboard: false
+  })
+
+
 
 if (btnAddPlayListUser) {
     btnAddPlayListUser.addEventListener("click", (e) => {
@@ -47,7 +49,6 @@ function addPlayListCall(idUser, namePlayList, isPublic) {
 
             if (status === 200) {
                 // Load lại trang web hiện tại
-                toggleAddPlayList(false);
                 addNotification(
                     ID_NOTIFICATION,
                     setStringAction(
@@ -57,22 +58,30 @@ function addPlayListCall(idUser, namePlayList, isPublic) {
                     ),
                     4000
                 );
+                toggleAddPlayList(false);
+                if(reloadPagePlaylist){
+                    setTimeout(()=>{
+                        location.reload();
+                    },1500)
+                }
+                
                 
                 const newElmPlayList = document.createElement("a");
                 newElmPlayList.classList.add("menu-list-action-item");
-                newElmPlayList.innerHTML = `
-                    <div class="action-item-content ">
-                        <span>${data.title}</span>
-                    </div>
-                    <div class="wrapper-icon" data-id-playlist="${data.id}" data-id-user="${data.id_user}">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>`;
+                
+                newElmPlayList.innerHTML = `<a class="menu-list-action-item" data-id-playlist="${data.id}">
+                                            <div class="action-item-content ">
+                                                <span>${data.title}</span>
+                                            </div>
+                                            <div class="wrapper-icon" data-id-playlist="${data.id}" data-id-user=" ${data.id_user}" onclick="showConfirmDeletePlayList(this)">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </div>
+                                        </a>`;
+
                     document.querySelector("nav.aside-nav .aside-nav-content.play-list").appendChild(newElmPlayList);
-                    newElmPlayList.querySelector('.wrapper-icon').addEventListener('click',()=>deletePlayList(newElmPlayList.querySelector('.wrapper-icon')));
             }
         })
         .catch((error) => {
-            const data = error.response.data;
             const status = error.response.status;
             if (status === 422) {
                 addNotification(
@@ -87,15 +96,26 @@ function addPlayListCall(idUser, namePlayList, isPublic) {
         });
 }
 
-if (btnDeletePlayLists) {
-    btnDeletePlayLists.forEach((btnDeletePlayList) => {
-        btnDeletePlayList.addEventListener("click", ()=> deletePlayList(btnDeletePlayList));
-    });
-}
 
-function deletePlayList(btnDeletePlayList) {
-    const id_user = btnDeletePlayList.dataset["idUser"];
-    const id_playlist = btnDeletePlayList.dataset["idPlaylist"];
+
+function showConfirmDeletePlayList(btnDeletePlayList,reload=false) {
+    
+    confirmDeletePlayList.show();
+    const submit = document.getElementById('btn-submit-delete-playlist');
+    submit.dataset["idUser"] = btnDeletePlayList.dataset["idUser"];
+    submit.dataset["idPlaylist"] = btnDeletePlayList.dataset["idPlaylist"];
+    submit.dataset["reload"] = reload;
+
+    
+
+}
+const deletePlayList = (e)=>{
+    
+    const submit = document.getElementById('btn-submit-delete-playlist');
+    const id_user = submit.dataset["idUser"];
+    const id_playlist = submit.dataset["idPlaylist"];
+    const reload = submit.dataset["reload"];
+    
     
     if (!id_user || !id_playlist) {
         addNotification(ID_NOTIFICATION, "Có lỗi, thử lại sau!", 4000);
@@ -103,13 +123,16 @@ function deletePlayList(btnDeletePlayList) {
         btnDeletePlayListCall(
             id_user,
             id_playlist,
-            btnDeletePlayList.parentNode
+            reload
+            
         );
     }
 }
+document.getElementById('btn-submit-delete-playlist').addEventListener('click',deletePlayList);
+
 
 //call api delete playlist
-function btnDeletePlayListCall(id_user, id_playlist, parentN) {
+function btnDeletePlayListCall(id_user, id_playlist,reload) {
    
     const urlCall = URL_WEB + "/api/deletePlayList"; // Thay đổi địa chỉ URL thành endpoint của bạn
     const formData = new FormData();
@@ -127,21 +150,33 @@ function btnDeletePlayListCall(id_user, id_playlist, parentN) {
         })
         .then((response) => {
             // Xử lý phản hồi từ máy chủ ở đây
-            const data = response.data;
+            
             const status = response.status;
             if (status === 204) {
                 // Load lại trang web hiện tại
-
-                addNotification(
-                    ID_NOTIFICATION,
-                    setStringAction("Xóa playlist", " ", "thành công!"),
-                    4000
-                );
-                parentN.remove();
+               return id_playlist
+                
+                // parentN.remove();
             }
         })
+        .then((id_playlist)=>{
+            confirmDeletePlayList.toggle();
+            addNotification(
+                ID_NOTIFICATION,
+                setStringAction("Xóa playlist", " ", "thành công!"),
+                4000
+                );
+            if(reloadPagePlaylist){
+                setTimeout(()=>{
+                    location.reload();
+                },1500)
+            }else{
+                document.querySelector(`a[data-id-playlist="${id_playlist}"]`).remove();
+            }
+            
+        })
         .catch((error) => {
-            const data = error.response.data;
+            
             const status = error.response.status;
 
             if (status === 422) {
@@ -212,5 +247,63 @@ if(addPlayListBtns){
         
         
     });
+}
+
+
+function likePlayList(btn,idPlayList,namePlayList){
+    const idUser = _idUser.value;
+    const urlCall = URL_WEB + "/api/likePlayList"; // Thay đổi địa chỉ URL thành endpoint của bạn
+    const formData = new FormData();
+
+    formData.append("id_user", idUser);
+    formData.append("id_playlist", idPlayList);
+
+    // Gửi yêu cầu POST bằng Axios
+    axios
+        .post(urlCall, formData, {
+            headers: {
+                "Content-Type": "application/json", // Định dạng dữ liệu gửi lên là JSON
+                Accept: "application/json", // Header Accept: application/json
+            },
+        })
+        .then((response) => {
+            // Xử lý phản hồi từ máy chủ ở đây
+            const data = response.data;
+            const status = response.status;
+
+            if (status === 200) {
+                
+                if(data.isLike){
+
+                    addNotification(
+                        ID_NOTIFICATION,
+                        setStringAction(
+                            "thích playlist",
+                            namePlayList,
+                            "!"
+                        ),
+                        4000
+                    );
+                    btn.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+                }else{
+                    addNotification(
+                        ID_NOTIFICATION,
+                        setStringAction(
+                            "bỏ thích playlist",
+                            namePlayList,
+                            "!"
+                        ),
+                        4000
+                    );
+                    btn.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+
+                }
+            }
+        })
+        .catch((error) => {
+           
+            addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+            
+        });
 }
 

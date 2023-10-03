@@ -23,6 +23,17 @@ class Playlist extends Model
     public function isActive(){
         return $this->status;
     }
+    public function songs()
+    {
+        return $this->hasManyThrough(
+            Song::class, // Model của bài hát
+            DetailPlaylist::class, // Model của bảng trung gian
+            'id_playlist', // Khóa ngoại trên bảng trung gian
+            'id', // Khóa chính trên model hiện tại (Playlist)
+            'id', // Khóa chính trên model Song
+            'id_song' // Khóa ngoại trên bảng trung gian liên kết với Song
+        );
+    }
 
 }
 

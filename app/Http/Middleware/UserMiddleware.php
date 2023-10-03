@@ -20,7 +20,7 @@ class UserMiddleware
     {
         // Kiểm tra xem người dùng đã đăng nhập không
         if (!Auth::guard('user')->check()){
-            return redirect()->back()->with('error','Bạn cần đăng nhập để truy cập trang này!');
+            return redirect()->route('site.home')->with('error','Bạn cần đăng nhập để truy cập trang này!');
         }
         
         return $next($request);

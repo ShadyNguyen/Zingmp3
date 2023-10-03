@@ -69,127 +69,17 @@
             <div class="content">
 
                 <div class="dropdown">
-                    <!-- <button class="" id="test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                        nhan day
-                    </button>
-                    <div class="dropdown-menu song-menu" aria-labelledby="test">
-                        <div class="menu-list song-info-menu">
-                            <div class="thumb-song">
-                                <img src="https://photo-resize-zmp3.zmdcdn.me/w94_r1x1_webp/cover/c/9/5/d/c95d510864924eb7eff43c9b4cb19202.jpg" alt="">
-                            </div>
-                            <div class="content-song">
-                                <p class="content-song-title">Tên tao</p>
-                                <div class="content-song-stats">
-                                    <div class="stat-item">
-                                        <i class="fa-regular fa-heart"></i>
-                                        <span>nhìn j</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <i class="fa-regular fa-heart"></i>
-                                        <span>nhìn j</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="menu-list group-button-menu">
-                            <div class="button-menu-item">
-                                <i class="fa-solid fa-download"></i>
-                                <span>
-                                    Tải xuống
-                                </span>
-                            </div>
-                            <div class="button-menu-item">
-                                <i class="fa-solid fa-download"></i>
-                                <span>
-                                    Tải xuống
-                                </span>
-                            </div>
-                            <div class="button-menu-item">
-                                <i class="fa-solid fa-download"></i>
-                                <span>
-                                    Tải xuống
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="menu-list-action-item">
-                            <div class="action-item-content">
-                                <div><i class="fa-brands fa-google-play"></i></div>
-                                <span>Thêm vào danh sách phát</span>
-                            </div>
-                        </div>
-
-                        <div class="menu-list-action-item">
-                            <div class="action-item-content">
-                                <div><i class="fa-solid fa-forward"></i></div>
-                                <span>Phát tiếp theo</span>
-                            </div>
-                        </div>
-
-                        <div class="menu-list-action-item">
-                            <div class="action-item-content">
-                                <div><i class="fa-solid fa-tower-broadcast"></i></div>
-                                <span>Phát Nội dung tương tự</span>
-                            </div>
-                        </div>
-
-
-                        <div class="menu-list action ">
-                            <div class="menu-list-action-item dropstart">
-                                <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div><i class="fa-solid fa-circle-plus"></i></div>
-                                    <span>Thêm vào playlist</span>
-                                    <div class="icon-sub">
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                    </div>
-                                </div>
-                                <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
-                                    <div class="action-item-content">
-                                        <input type="text" placeholder="Tìm playlist">
-                                    </div>
-                                    <div class="menu-list-action-item mt-3 add-play-list-show">
-                                        <div class="action-item-content">
-                                            <div class="wrapper-icon add-playlist-i">
-                                                <i class="fa-solid fa-plus "></i>
-                                            </div>
-                                            <span>Tạo playlist mới</span>
-                                        </div>
-                                    </div>
-                                    <div class="menu-list-action-item">
-                                        <div class="action-item-content">
-                                            <div class="wrapper-icon">
-                                                <i class="fa-solid fa-music"></i>
-                                            </div>
-                                            <span>asdasd</span>
-                                        </div>
-                                    </div>
-                                    <div class="action-item-content empty-content">
-                                        <div class="wrapper-icon">
-                                            <i class="fa-solid fa-icons"></i>
-                                        </div>
-                                        <span>Không có playlist</span>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="menu-list-action-item dropstart">
-                            <div class="action-item-content">
-                                <div><i class="fa-regular fa-copy"></i></div>
-                                <span>Sao chép link</span>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-                    @yield('content')
+                    <!-- Button trigger modal -->
                     
+                    @yield('content')
+
                 </div>
             </div>
         </div>
         <!-- End content -->
-
+        @auth('user')
+        
         <!-- Modal add playlist -->
         <div class="modal fade modal-add-playlist" id="modal-add-play-list" tabindex="-1" aria-labelledby="modal-add-play-list" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -204,7 +94,7 @@
                             </div>
                         </div>
                         <div class="action-item-content">
-                            <input type="text" placeholder="Nhập tên playlist" id="name-new-playlist">
+                            <input type="text" placeholder="Nhập tên playlist" id="name-new-playlist" autocomplete="off">
                         </div>
                         <div class="action-model">
                             <div class="action-model-content">
@@ -240,7 +130,11 @@
         </div>
         <!-- End Modal add playlist -->
 
-        <!-- Modal add playlist -->
+        
+
+        @endauth
+
+        <!-- Modal change theme -->
         <div class="modal fade modal-add-playlist" id="modal-add-change-theme" tabindex="-1" aria-labelledby="modal-add-change-theme" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content change-theme">
@@ -256,134 +150,7 @@
                         <div class="modal-change-theme-content">
                             <h2>Chọn màu</h2>
                             <div class="list-theme" id="list-theme">
-                                <!-- <div class="change-them-item active">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/dark.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item active">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/purple.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/blue.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/blue-light.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/green.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/brown.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/pink.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div>
-                                <div class="change-them-item">
-                                    <div class="theme-bg">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme/red.jpg" alt="">
-                                    </div>
-                                    <div class="theme-action">
-                                        <button class="outline-button active">
-                                            <span>Áp dụng</span>
-                                        </button>
-                                        <button class="outline-button">
-                                            <span>Xem trước</span>
-                                        </button>
-                                    </div>
-                                    <div class="wrapper-icon theme-icon-active">
-                                        <i class="fa-solid fa-circle-check"></i>
-                                    </div>
-                                </div> -->
+
                             </div>
 
                         </div>
@@ -395,8 +162,42 @@
                 </div>
             </div>
         </div>
-        <!-- End Modal add playlist -->
+        <!-- End Modal change theme -->
 
+        @auth('user')
+        <!-- Modal submit delete play list -->
+        <div class="modal fade modal-add-playlist" id="modal-submit-delete-playlist" tabindex="-1" aria-labelledby="modal-submit-delete-playlist" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content confirm">
+                    <div class=" modal-wrapper">
+                        <div class="header-model d-flex">
+
+                            <div class="wrapper-icon" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <div class="">
+                            <h2>Xóa playlist</h2>
+                            <div class="list-theme" id="list-theme">
+                                <span>Playlist của bạn sẽ bị xóa khỏi thư viện cá nhân. Bạn có muốn xóa?</span>
+                            </div>
+                        </div>
+                        
+                        <div class="action-modal-cofirm">
+                            <button class="outline-button active" data-bs-dismiss="modal" aria-label="Close">
+                                <span>Không</span>
+                            </button>
+                            <button class="outline-button" id="btn-submit-delete-playlist" >
+                                <span>Có</span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal submit delete play list -->
+        @endauth
 
 
         <!-- playMusic -->
@@ -448,9 +249,6 @@
     <!-- End Form login JS -->
     @endunless
 
-    @auth('user')
-
-    @endauth
 
     @auth('user')
     <!-- like song JS -->

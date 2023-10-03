@@ -17,11 +17,15 @@ class Song extends Component
     public $isLike=false;
     public $stringJs = '';
     public $stringJsAddSongToPlayList='';
-    public function __construct($song)
+    public $isDelete=false;
+
+    public function __construct($song,$isDelete=false)
     {
         
         $this->song = $song;
-        
+        if($isDelete=="true"){
+            $this->isDelete = true;
+        }
         $this->artist = $song->artist;
         if(Auth::guard('user')->check()){
             $id_user = Auth::guard('user')->user()->id;

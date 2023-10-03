@@ -106,3 +106,22 @@
         font-size: 2rem;
     }
 }
+.search-content-items.no-content{
+    width: 100%;
+    padding: 30px 0;
+    min-height: 220px;
+    background-color: var(--alpha-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+    gap:1rem;
+}
+.search-content-items.no-content i{
+    font-size: 8rem;
+    /* color: var(--alpha-bg); */
+}
+.search-content-items.no-content p{
+    font-size: 2.5rem;
+}

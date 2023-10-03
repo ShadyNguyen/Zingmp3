@@ -38,19 +38,22 @@ Route::group(['prefix' => 'tim-kiem'], function () {
     Route::get('/tat-ca', [Site\HomeController::class, 'searchAll'])->name('site.search.all');
     Route::get('/bai-hat', [Site\HomeController::class, 'searchSong'])->name('site.search.song');
     Route::get('/nghe-si', [Site\HomeController::class, 'searchArtist'])->name('site.search.artist');
-    Route::get('/playlisy', [Site\HomeController::class, 'searchPlaylist'])->name('site.search.playlist');
+    Route::get('/playlist', [Site\HomeController::class, 'searchPlaylist'])->name('site.search.playlist');
 });
 
 //mymusic
 Route::group(['prefix' => 'mymusic','middleware'=>'user'], function () {
+    Route::get('/favorite/{type}', [Site\UserController::class, 'favorite'])->name('site.mymusic.favorite');
     Route::get('/history/{type}', [Site\UserController::class, 'history'])->name('site.mymusic.history');
+    Route::get('/playlist', [Site\UserController::class, 'playlist'])->name('site.mymusic.playlist');
+    Route::get('/playlist/edit/{slugPlaylist}', [Site\UserController::class, 'editPlaylist'])->name('site.mymusic.playlist.edit');
+
 
 });
 
 //artist
 Route::group(['prefix' => 'nghe-si'], function () {
     Route::get('{aritistSlug}/album', [Site\HomeController::class, 'albumArtist'])->name('site.artist.album');
-
     Route::get('{aritistSlug}/bai-hat', [Site\HomeController::class, 'songArtist'])->name('site.artist.song');
     Route::get('{aritistSlug}', [Site\HomeController::class, 'homeArtist'])->name('site.artist.home');
 

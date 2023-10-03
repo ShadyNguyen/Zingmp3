@@ -11,7 +11,10 @@ use App\Models\Playlist;
 use App\Models\Song;
 use App\Models\SongListenerHistory;
 use App\Models\User;
+use App\Models\LikePlaylist;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -107,7 +110,7 @@ class SongController extends Controller
 
         if ($user && $user->isUserActive()) {
             $currentTimestamp = now()->timestamp;
-            $randomString = strval($currentTimestamp);
+            $randomString = strval($currentTimestamp).'-'.$name_playlist;
             Playlist::create(['id_user' => $id_user, 'title' => $name_playlist,'slug'=>$randomString,'status'=>$is_public]);
             $playList = User::find($id_user)->playLists()->select('id','title','slug','id_user')->orderByDesc('created_at')->first();
             return response()->json([
@@ -117,6 +120,35 @@ class SongController extends Controller
         }
         return response()->json([], 503);
     }
+
+    public function editPlayList(Request $request){
+        $validator = $request->validate([
+            'id_user' => 'required||exists:users,id',
+            'id_playlist' => 'required||exists:play_lists,id',
+            'newName' => 'required',
+            'newStatus' =>'required',
+        ], [
+            'required' => 'Nhập thiếu thông tin!',
+            'exists' => 'Sai thông tin!',
+
+        ]);
+        $id_user = $request->id_user;
+        $id_playlist = $request->id_playlist;
+        $newName = $request->newName;
+        $newStatus = $request->newStatus=='true'?1:0;
+
+        $user = User::where(['id' => $id_user])->first();
+        $playlist = Playlist::where('id', $id_playlist)->where('id_user',$id_user)->first();
+        if($user->isUserActive()){
+            $playlist->title = $newName;
+            $playlist->status = $newStatus;
+            $playlist->save();
+            return response()->json([],204);
+
+        }
+        return response()->json([],503);
+    }
+
     public function deletePlayList(Request $request)
     {
         $validator = $request->validate([
@@ -133,6 +165,36 @@ class SongController extends Controller
         if ($user && $user->isUserActive() && $playList) {
             $playList->delete();
             return response()->json([], 204);
+        }
+        return response()->json([], 503);
+    }
+    public function likePlayList(Request $request){
+        $validator = $request->validate([
+            'id_user' => 'required',
+            'id_playlist' => 'required',
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_user = $request->id_user;
+        $id_playlist = $request->id_playlist;
+        $user = User::where(['id' => $id_user])->first();
+        $playList = Playlist::where(['id' => $id_playlist])->where(['id_user' => $id_user])->first();
+        if ($user && $user->isUserActive() && $playList) {
+            if($user->checkLikePlaylists($playList->id)){
+                $likePlayList = LikePlaylist::where(['id_user' => $id_user,'id_playlist'=>$id_playlist]);
+                $likePlayList->delete();
+                $playList->total_like = $playList->total_like -1;
+
+            }else{
+                $playList->total_like = $playList->total_like +1;
+                LikePlaylist::create(['id_user' => $id_user,'id_playlist' => $id_playlist]);
+                
+            }
+            $playList->save();
+
+            return response()->json([
+                'isLike'=>$user->checkLikePlaylists($playList->id)
+            ], 200);
         }
         return response()->json([], 503);
     }
@@ -154,11 +216,24 @@ class SongController extends Controller
                 'name_artist'=>$song->user->name,
                 'duration'=>$song->duration,
                 'thumbnail'=>$song->thumbnail,
-                'source'=>$song->getSource(),
                 'slug'=>$song->slug,
                 'slug_artist'=>$song->user->slug
-
-
+            ],200);
+        }
+        return response()->json([],503);
+    }
+    function getSourceById(Request $request)  {
+        $validator = $request->validate([
+            'idSong' => 'required',
+            
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_song = $request->idSong;
+        $song = Song::where('id',$id_song)->first();
+        if($song && $song->isActive()){
+            return response()->json([
+                'source' => $song->getSource()
             ],200);
         }
         return response()->json([],503);
@@ -197,6 +272,33 @@ class SongController extends Controller
         return response()->json([],503);
     }
 
+    public function deleteSongFromPlayList(Request $request){
+        $validator = $request->validate([
+            'id_user' => 'required||exists:users,id',
+            'id_playlist' => 'required||exists:play_lists,id',
+            'id_song' => 'required||exists:songs,id'
+            
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_user = $request->id_user;
+        $id_playlist = $request->id_playlist;
+        $id_song = $request->id_song;
+
+        $user = User::where(['id' => $id_user])->first();
+        $playlist = Playlist::where('id', $id_playlist)->where('id_user',$id_user)->first();
+        $detail = DetailPlaylist::where('id_playlist',$playlist->id)->where('id_song',$id_song)->first();
+        
+        if($detail && $user->isUserActive()){
+            DB::table('detail_playlists')
+                ->where('id_playlist', $id_playlist) // Thay $id_playlist bằng giá trị bạn muốn
+                ->where('id_song', $id_song) // Thay $id_song bằng giá trị bạn muốn
+                ->delete();
+            return response()->json([],204);
+        }
+        return response()->json([],503);
+    }
+
     public function getSongByArtist(Request $request){
         $validator = $request->validate([
             'idArtist' => 'required', 
@@ -211,6 +313,26 @@ class SongController extends Controller
         
         if($user && $user->isUserActive()){
             $listSong = $user->songs->where('status',true);
+            
+            return SongResource::collection($listSong);
+        }
+        return response()->json([],503);
+    }
+
+    public function getSongByPlaylist(Request $request){
+        $validator = $request->validate([
+            'id_playlist' => 'required', 
+        ], [
+            'required' => 'Nhập thiếu thông tin!'
+        ]);
+        $id_playlist = $request->id_playlist;
+        
+
+        $playlist = Playlist::where('id',$id_playlist)->first();
+        
+        
+        if($playlist && $playlist->isActive()){
+            $listSong = $playlist->songs->where('status',true);
             
             return SongResource::collection($listSong);
         }

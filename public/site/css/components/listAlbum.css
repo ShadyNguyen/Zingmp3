@@ -1,6 +1,6 @@
 /* album */
-.wrapper-items-album{
-    
+.wrapper-items-album {
+
     position: relative;
     display: flex;
     align-items: center;
@@ -10,7 +10,8 @@
     padding: 0 1rem;
     border-radius: 0.4rem;
 }
-.wrapper-items-album .items-album-img{
+
+.wrapper-items-album .items-album-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,7 +20,8 @@
     overflow: hidden;
     border-radius: 0.4rem;
 }
-.wrapper-items-album .items-album-img img{
+
+.wrapper-items-album .items-album-img img {
     display: block;
     aspect-ratio: 1/1;
     object-fit: cover;
@@ -28,8 +30,7 @@
 
 }
 
-
-.wrapper-items-album .item-actions{
+.wrapper-items-album .item-actions {
     height: fit-content;
     opacity: 0;
     z-index: 1;
@@ -38,90 +39,208 @@
     transition: all 1s ease;
 
 }
-.wrapper-items-album .item-actions i{
+
+.wrapper-items-album .item-actions i {
     font-size: 2rem;
 }
-.item-actions.play i{
+
+.item-actions.play i {
     font-size: 4rem;
 
 }
+
 .wrapper-items-album:hover .item-actions {
-    opacity: 1;/* Hiển thị khi .wrapper-items-album được hover */
+    opacity: 1;
+    /* Hiển thị khi .wrapper-items-album được hover */
 }
-.wrapper-items-album:hover img{
+
+.wrapper-items-album:hover img {
     filter: brightness(50%);
     scale: 1.1;
 }
-.main-items-content.album .items-content .name-user-album {
-    margin-top: 1rem;
-    color:var(--text-secondary);
+
+.main-items-content.album .items-content .name-user-album a,
+.main-items-content.album .items-content .name-user-album span {
+
+    color: var(--text-secondary);
+    display: inline-block;
+
 }
-.main-items-content.album .items-content .name-user{
+
+.main-items-content.album .items-content .name-user-album a.name {
     color: var(--text-primary);
-    font-size: 2rem;;
 }
-.main-items-content.album .items-content .name-user-album:hover{
+
+.main-items-content.album .items-content .name-user {
+    color: var(--text-primary);
+    font-size: 2rem;
+    ;
+}
+
+.main-items-content.album .items-content .name-user-album a:hover {
     text-decoration: underline;
     color: var(--link-text-hover);
     cursor: pointer;
 }
-.main-items-content.album{
-    gap:3rem;
+
+.main-items-content.album {
+    gap: 3rem;
 }
-.artist-info{
+
+.artist-info {
     margin-bottom: 1rem;
 }
-.artist-item .artist-info{
+
+.artist-item .artist-info {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.artist-info .artist-info-name{
+
+.artist-info .artist-info-name {
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1.36;
-    color: var(--text-primary) ;
+    color: var(--text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.artist-info .artist-info-name a{
+
+.artist-info .artist-info-name a {
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 1.36;
-    color: var(--text-primary) ;
+    color: var(--text-primary);
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.artist-info .artist-info-name a:hover{
+
+.artist-info .artist-info-name a:hover {
     text-decoration: underline;
     color: var(--link-text-hover);
     cursor: pointer;
 }
-.artist-info .artist-info-follower a{
+
+.artist-info .artist-info-follower a {
     font-size: 1.2rem !important;
     font-weight: 400;
     line-height: 1.33;
     color: var(--text-secondary);
     pointer-events: none;
 }
-.artist-action .artist-action-follow{
+
+.artist-action .artist-action-follow {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
 }
-.artist-action-follow .artist-action-title,.artist-action-follow .wrapper-icon i{
+
+.artist-action-follow .artist-action-title,
+.artist-action-follow .wrapper-icon i {
     font-size: 1.2rem;
 }
-.artist-action .artist-action-follow.active{
+
+.artist-action .artist-action-follow.active {
     background-color: transparent;
     border: 1px solid var(--border-primary);
 }
-.artist-action .artist-action-follow.none{
+
+.artist-action .artist-action-follow.none {
     display: none;
 }
-.artist-action .artist-action-follow.active:hover{
+
+.artist-action .artist-action-follow.active:hover {
     color: var(--link-text-hover);
     border-color: var(--link-text-hover);
+}
+
+.search-content-items.search-content-header {
+    display: flex;
+}
+
+.search-content-items.search-content-header .create-playlist {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: fit-content;
+    padding: 0 8rem;
+    margin-right: 3rem;
+
+    border: 1px solid var(--border-primary);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    color: var(--text-item-hover);
+    text-transform: capitalize;
+    gap: 1rem;
+    position: relative;
+    height: 300px;
+
+}
+
+.search-content-items.search-content-header .create-playlist:hover {
+    color: var(--link-text-hover);
+}
+
+.search-content-items.search-content-header .create-playlist i {
+    font-size: 7rem;
+}
+
+.items-content.edit{
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.items-content.edit .wrapper-items-album .items-album-img{
+    border-radius: 0.8rem;
+
+}
+.items-content.edit .action{
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+}
+ .items-content.edit .action i,.items-content.edit .action a{
+    color: var(--text-primary);
+
+}
+.items-content.edit .name-user-album span{
+    color: var(--text-secondary) ;
+    display: block;
+}
+.items-content.edit .name-user-album strong{
+    color: var(--text-primary);
+
+}
+
+.items-content.edit .action .name{
+    font-size: 2.5rem;
+}
+.items-content.edit .wrapper-items-album {
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.items-content.edit{
+    margin-right: 2rem;
+}
+.edit-wrapper{
+    width: 100%;
+}
+.edit-wrapper .wrapper-items-song{
+    width: 100%;
+}
+.edit-wrapper .search-content-item-song{
+    width: 100%;
 }

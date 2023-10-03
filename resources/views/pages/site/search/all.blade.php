@@ -42,6 +42,14 @@
             </div>
         </div>
         <div class="search-content">
+            @if($listRsSong->count() == 0 && $listAlbum->count() ==0 && $listArtist->count() == 0)
+            <div class="search-content-items no-content">
+                    <div class="wrapper-icon">
+                        <i class="fa-solid fa-compact-disc"></i>
+                    </div>
+                    <p>Không có kết quả được tìm thấy</p>
+            </div>  
+            @endif
             <div class="search-content-items">
                 @if($listRsSong->count() > 0)
                 <div class="search-content-item-title">
@@ -59,16 +67,17 @@
                 </div>
                 @endif
             </div>
-
+            @if($listAlbum->count() > 0)
             <div class="search-content-items">
                 <div class="search-content-item-title">
                     <p>Album</p>
                     <a href="{{ route('site.search.playlist',['q'=>$lastQ]) }}">Tất cả <i class="fa-solid fa-chevron-right"></i> </a>
                 </div>
                 <div class="search-list-album">     
-                    <x-list-album title=""/>
+                    <x-list-album title="" :listAlbum="$listAlbum"/>
                 </div>
             </div>
+            @endif
             @if($listArtist->count() > 0)
             <div class="search-content-items">
                 <div class="search-content-item-title">

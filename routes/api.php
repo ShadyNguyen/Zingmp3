@@ -16,12 +16,24 @@ use App\Http\Controllers\Site;
 |
 */
 Route::post('/likeSong', [Site\SongController::class, 'likeSong']);
-Route::post('/followArtist', [Site\SongController::class, 'followArtist']);
-Route::post('/addPlayList', [Site\SongController::class, 'addPlayList']);
-Route::post('/deletePlayList', [Site\SongController::class, 'deletePlayList']);
 Route::get('/getSongById', [Site\SongController::class, 'getSongById']);
+Route::get('/getSourceById', [Site\SongController::class, 'getSourceById']);
+
+Route::post('/followArtist', [Site\SongController::class, 'followArtist']);
+
+
+Route::post('/addPlayList', [Site\SongController::class, 'addPlayList']);
+Route::post('/editPlaylist', [Site\SongController::class, 'editPlayList']);
+
+Route::post('/deletePlayList', [Site\SongController::class, 'deletePlayList']);
+Route::post('/likePlayList', [Site\SongController::class, 'likePlayList']);
+
+
 Route::post('/addSongToPlayList', [Site\SongController::class, 'addSongToPlayList']);
+Route::get('/deleteSongFromPlayList', [Site\SongController::class, 'deleteSongFromPlayList']);
 Route::get('/getSongByArtist', [Site\SongController::class, 'getSongByArtist']);
+Route::get('/getSongByPlaylist', [Site\SongController::class, 'getSongByPlaylist']);
+
 Route::get('/upListensSong', [Site\SongController::class, 'upListensSong']);
 
 

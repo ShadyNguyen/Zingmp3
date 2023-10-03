@@ -69,6 +69,33 @@ class User extends Authenticatable
         return $isFollowing;
     }
 
+    public function checkLikePlaylists($idPlayList){
+        $isLike = $this->likePlaylists()->where('id_playlist',$idPlayList)->exists();
+        return $isLike;
+    }
+
+    public function favoriteSong(){
+        return $this->hasManyThrough(
+            Song::class, // Model của bảng cần truy cập (Song)
+            LikeSong::class, // Model của bảng trung gian (SongListenerHistory)
+            'id_user', // Khóa ngoại trong bảng trung gian liên kết đến User
+            'id', // Khóa chính trong bảng cần truy cập liên kết đến Song
+            'id', // Khóa chính trong bảng User
+            'id_song' // Khóa ngoại trong bảng trung gian liên kết đến Song
+        )->orderBy('created_at', 'desc');
+    }
+
+    public function favoritePlayList(){
+        return $this->hasManyThrough(
+            Playlist::class, // Model của bảng cần truy cập (Song)
+            LikePlaylist::class, // Model của bảng trung gian (SongListenerHistory)
+            'id_user', // Khóa ngoại trong bảng trung gian liên kết đến User
+            'id', // Khóa chính trong bảng cần truy cập liên kết đến Song
+            'id', // Khóa chính trong bảng User
+            'id_playlist' // Khóa ngoại trong bảng trung gian liên kết đến Song
+        )->orderBy('created_at', 'desc');
+    }
+
     public function songListenerHistorys(){
         return $this->hasMany(SongListenerHistory::class, 'id_user', 'id');
     }

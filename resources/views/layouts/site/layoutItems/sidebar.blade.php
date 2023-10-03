@@ -44,7 +44,7 @@
 
 
         <div class="aside-nav-content play-list">
-            <a href="{{ route('site.mymusic.history',['type'=>'bai-hat']) }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
+            <a  class="menu-list-action-item" @auth('user') href="{{ route('site.mymusic.history',['type'=>'bai-hat']) }}" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content ">
                     <div><i>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -62,7 +62,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
+            <a class="menu-list-action-item" @auth('user') href="{{ route('site.mymusic.favorite',['type'=>'song']) }}" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_2645_12880)"></path>
@@ -74,11 +74,11 @@
                                     </linearGradient>
                                 </defs>
                             </svg></i></div>
-                    <span>Bài hát yêu thích</span>
+                    <span>Yêu thích</span>
                 </div>
             </a>
 
-            <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
+            <a class="menu-list-action-item" @auth('user') href="{{ route('site.mymusic.playlist') }}" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_2645_12884)"></path>
@@ -93,11 +93,11 @@
                                     </linearGradient>
                                 </defs>
                             </svg></i></div>
-                    <span>Playlist</span>
+                    <span>Playlist của tôi</span>
                 </div>
             </a>
 
-            <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
+            <!-- <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content">
                     <div><i><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5164 7.14319C1.32829 3.21545 3.8263 1.02782 7.72282 0.366909C10.6032 -0.121503 13.4847 -0.12767 16.3602 0.380652C20.3723 1.08984 22.7841 3.40504 23.5524 7.39215C24.1461 10.4736 24.1554 13.5879 23.5431 16.6663C22.7218 20.5669 20.1593 22.9747 16.2772 23.6331C13.3968 24.1215 10.5153 24.1277 7.63977 23.6193C3.62772 22.9102 1.20521 20.4794 0.436861 16.4923C-0.186982 13.3905 -0.126933 10.2566 0.5164 7.14319Z" fill="url(#paint0_linear_3153_2362)"></path>
@@ -111,7 +111,7 @@
                             </svg></i></div>
                     <span>Album</span>
                 </div>
-            </a>
+            </a> -->
             <a href="{{ route('site.home') }}" class="menu-list-action-item" @auth('user') href="" @else onclick="showAlerLogin()" @endauth>
                 <div class="action-item-content ">
                     <div><i> <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -140,11 +140,11 @@
                 
                 @foreach(Auth::guard('user')->user()->playLists as $playList)
                 
-                    <a href="{{ route('site.home') }}" class="menu-list-action-item">
+                    <a class="menu-list-action-item" data-id-playlist="{{ $playList->id }}">
                         <div class="action-item-content ">
                             <span>{{ $playList->title }}</span>
                         </div>
-                        <div class="wrapper-icon" data-id-playlist="{{ $playList->id }}" data-id-user=" {{ Auth::guard('user')->user()->id }} ">
+                        <div class="wrapper-icon" data-id-playlist="{{ $playList->id }}" data-id-user=" {{ Auth::guard('user')->user()->id }} " onclick="showConfirmDeletePlayList(this)">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </a>

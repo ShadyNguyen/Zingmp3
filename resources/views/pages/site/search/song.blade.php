@@ -41,6 +41,14 @@
             </div>
         </div>
         <div class="search-content">
+            @if($listRsSong->count() ==0)
+                <div class="search-content-items no-content">
+                        <div class="wrapper-icon">
+                            <i class="fa-solid fa-compact-disc"></i>
+                        </div>
+                        <p>Không có kết quả được tìm thấy</p>
+                </div>  
+            @endif
             <div class="search-content-items">
                 @if($listRsSong->count() > 0)
                 <div class="search-content-item-title">

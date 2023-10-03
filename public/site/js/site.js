@@ -9,7 +9,8 @@ function setStringAction(action, strStrong, messPlus = "") {
     return `Bạn đã ${action} <strong>${strStrong}</strong> ${messPlus}`;
 }
 // notification
-function addNotification(id, mess, time = 2000) {
+function addNotification(id=ID_NOTIFICATION, mess, time = 2000) {
+    
     if (closeNotificationId) {
         clearTimeout(closeNotificationId);
     }
@@ -97,7 +98,7 @@ function generateRandomNumberString(length) {
 
 //
 function createItemSongPlaySidebar(song,stastus=null) {
-    console.log(song);
+  
     const itemSong = document.createElement('div');
     let strHTML=`<i class="fa-solid fa-play "></i>
                 <i class="fa-regular fa-circle-pause fa-spin hidden"></i>`
@@ -146,6 +147,10 @@ function secondToMinute(second){
     const secondLeft = Math.floor(second - minutes*60);
     const str = String(minutes).padStart(2, '0').slice(0, 2) +':'+ String(secondLeft).padStart(2, '0').slice(0, 2);
     return str;
+}
+function replaceEmptyImage(img){
+
+    img.src = "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/6/0/5/8/6058a7cec305e63abbf7f27819f0552e.jpg";
 }
 
 

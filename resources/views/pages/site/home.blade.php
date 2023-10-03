@@ -34,12 +34,11 @@
         </div>
     </div>
 
+    @if($topArtists->count() > 0)
     <div class="home-page-content-items">
-        <x-list-album title="Có Thể Bạn Muốn Nghe"/>
-
-
-
+        <x-list-album title="Có Thể Bạn Muốn Nghe" :listAlbum="$topAlbums"/>
     </div>
+    @endif
 
     @if($topArtists->count() > 0)
     <div class="home-page-content-items">

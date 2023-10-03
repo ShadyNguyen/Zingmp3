@@ -19,14 +19,17 @@ class HomeController extends Controller
        
         $quantityTopSong = 9;
         $quantityTopArtists = 5;
+        $quantityTopAlbum = 5;
+
 
         $listPlayListAside = [];
 
         $topSongs = Song::where('status',true)->orderBy('total_listen','desc')->take($quantityTopSong)->orderBy('total_listen', 'desc')->get();
         $topArtists = User::where('is_celeb',true)->where('status',true)->where('role','user')->take($quantityTopArtists)->orderBy('total_followers', 'desc')->get();
+        $topAlbums = Playlist::where('status',true)->take($quantityTopAlbum)->orderBy('total_listen', 'desc')->get();
 
         
-        return view('pages.site.home',compact('topSongs','topArtists'));
+        return view('pages.site.home',compact('topSongs','topArtists','topAlbums'));
     }
 
     public function searchAll(Request $request){  

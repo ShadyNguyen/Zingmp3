@@ -1,3 +1,4 @@
+
 <div class="list-album-wrapper">
     @if(!empty($title))
     <div class="main-items-header">
@@ -7,84 +8,83 @@
     </div>
     @endif
     <div class="main-items-content album">
+        @if($addAlbum)
+        <div class="create-playlist" onclick="toggleAddPlayList(true)">
+            <div class="wrapper-icom">
+                <i class="fa-regular fa-square-plus"></i>
+            </div>
+            <p>tạo playlist mới</p>
+        </div>
+        @endif
+        @foreach($listAlbum as $album)
+        
+        
         <div class="items-content">
             <div class="wrapper-items-album">
                 <div class="items-album-img">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/7/a/ab7aec69a53caaa0225097e2a4495dcb.jpg" alt="">
+                    <img src="{{ $album->avatar ? $album->avatar : 'anh.jp' }}" alt="" onerror="replaceEmptyImage(this)">
                 </div>
-                <button class="item-actions">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="item-actions play">
+                @if($check)
+                    <button class="item-actions" 
+                        @auth('user') 
+                            onclick="likePlayList(this,'{{ $album->id }}','{{$album->title }}')"  
+                        @else 
+                            onclick="showAlerLogin()" 
+                        @endauth
+                    >
+                    @auth('user')
+                        @if(Auth::guard('user')->user()->checkLikePlaylists($album->id))
+                            <i class="fa-solid fa-heart"></i>
+                        @else
+                            <i class="fa-regular fa-heart"></i>
+
+                        @endif
+                        
+                    @else
+                    
+                        <i class="fa-regular fa-heart"></i>
+                    @endauth
+                    </button>
+                @else
+                    <button class="item-actions" data-id-playlist="{{ $album->id }}" data-id-user=" {{ Auth::guard('user')->user()->id }} " onclick="showConfirmDeletePlayList(this,true)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                @endif
+                
+                <button class="item-actions play" 
+                @if($album->songs->count() > 0)
+                    onclick="playAlbum('{{$album->id}}')"
+                @else
+                    onclick="addNotification('notification','Danh sách phát này chưa có bài hát',3000)"
+                @endif
+                >
                     <i class="fa-regular fa-circle-play"></i>
                 </button>
+                @if($check)
                 <button class="item-actions">
                     <i class="fa-solid fa-ellipsis"></i>
                 </button>
+                @else
+                <!-- Edit -->
+                    <a href="{{ route('site.mymusic.playlist.edit',['slugPlaylist'=>$album->slug]) }}" class="item-actions">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                <!-- end edit -->
+                @endif
             </div>
             <div class="name-user-album">
-                <a>Tên tao</a>
+                <a href="#" class="name">{{ $album->title }}</a>
+                <br>
+                <span >{{ $album->user->name }}</span>
             </div>
         </div>
-        <div class="items-content">
-            <div class="wrapper-items-album">
-                <div class="items-album-img">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/7/a/ab7aec69a53caaa0225097e2a4495dcb.jpg" alt="">
-                </div>
-                <button class="item-actions">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="item-actions play">
-                    <i class="fa-regular fa-circle-play"></i>
-                </button>
-                <button class="item-actions">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </button>
-            </div>
-            <div class="name-user-album">
-                <a>Tên tao</a>
-            </div>
-        </div>
-        <div class="items-content">
-            <div class="wrapper-items-album">
-                <div class="items-album-img">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/7/a/ab7aec69a53caaa0225097e2a4495dcb.jpg" alt="">
-                </div>
-                <button class="item-actions">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="item-actions play">
-                    <i class="fa-regular fa-circle-play"></i>
-                </button>
-                <button class="item-actions">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </button>
-            </div>
-            <div class="name-user-album">
-                <a>Tên tao</a>
-            </div>
-        </div>
-        <div class="items-content">
-            <div class="wrapper-items-album">
-                <div class="items-album-img">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/7/a/ab7aec69a53caaa0225097e2a4495dcb.jpg" alt="">
-                </div>
-                <button class="item-actions">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="item-actions play">
-                    <i class="fa-regular fa-circle-play"></i>
-                </button>
-                <button class="item-actions">
-                    <i class="fa-solid fa-ellipsis"></i>
-                </button>
-            </div>
-            
-            <div class="name-user-album">
-                <a>Album1</a>
-               
-            </div>
-        </div>
+        @endforeach
+        
         
     </div>
 </div>
+@if(!$check)
+<script>
+    const reloadPagePlaylist = true
+</script>
+@endif

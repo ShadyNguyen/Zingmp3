@@ -268,7 +268,6 @@ function getSongById(idSong, callback) {
             const data = response.data;
             data["id"] = data["id_song"] + "_" + generateRandomNumberString(6);
             // addSongToList(data);
-
             const status = response.status;
             if (status === 200) {
                 callback(data);
@@ -286,13 +285,47 @@ function playMusic() {
     const svgElms = btnPauseSong.querySelectorAll("svg");
     svgElms[0].classList.remove("none");
     svgElms[1].classList.add("none");
+
+    getSourceById(options.currentSong.id_song,callbackLoadedSource)
+
+    
+}
+function callbackLoadedSource(){
     audioElm.src = options.currentSong.source;
-    // Đợi cho âm thanh tải xong trước khi phát
     audioElm.addEventListener("loadedmetadata", function () {
         // Sau khi âm thanh tải xong, gọi phương thức play()
         audioElm.play();
     });
     upListensSong();
+}
+
+function getSourceById(idSong,callbackLoadedSource){
+    const urlCall = URL_WEB + "/api/getSourceById"; // Thay đổi địa chỉ URL thành endpoint của bạn
+    
+    params = {
+        idSong,
+    };
+    // Gửi yêu cầu POST bằng Axios
+    // Thực hiện yêu cầu GET với params
+    axios
+        .get(urlCall, { params })
+        .then((response) => {
+            // Xử lý dữ liệu trả về từ máy chủ ở đây
+            const data = response.data;
+            
+            // addSongToList(data);
+
+            const status = response.status;
+            if (status === 200) {
+                options.currentSong.source = data.source
+                callbackLoadedSource()
+            }
+        })
+
+        .catch((error) => {
+            // Xử lý lỗi nếu có
+            addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+        });
 }
 
 //dừng nhạc
@@ -489,4 +522,36 @@ function upListensSong() {
 function setNextSongBtn(id_song) {
     
     getSongById(id_song,addSongToNextList);
+}
+
+function playAlbum(id_playlist){
+    const urlCall = URL_WEB + "/api/getSongByPlaylist"; // Thay đổi địa chỉ URL thành endpoint của bạn
+
+    params = {
+        id_playlist,
+    };
+    // Gửi yêu cầu POST bằng Axios
+    // Thực hiện yêu cầu GET với params
+    axios
+        .get(urlCall, { params })
+        .then((response) => {
+            // Xử lý dữ liệu trả về từ máy chủ ở đây
+            const datas = response.data.data;
+            // data["id"] = data["id_song"] + "_" + generateRandomNumberString(6);
+            // addSongToList(data);
+
+            datas.map((data) => {
+                data.id = data["id_song"] + "_" + generateRandomNumberString(6);
+            });
+            const status = response.status;
+            if (status === 200) {
+                setCurrentSong(datas[0]);
+                setListSongByOrderPlayPlist(datas);
+                playMusic();
+            }
+        })
+        .catch((error) => {
+            // Xử lý lỗi nếu có
+            addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
+        });
 }

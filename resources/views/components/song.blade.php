@@ -1,5 +1,5 @@
 <!-- item -->
-<div class="wrapper-items-song dropdown">
+<div class="wrapper-items-song dropdown" @if($isDelete) data-song-id="{{ $song->id }}" @endif>
     <button class="item-actions none">
         <i class="fa-regular fa-square-check"></i>
     </button>
@@ -105,12 +105,7 @@
             </div>
         </div>
 
-        <div class="menu-list-action-item">
-            <div class="action-item-content">
-                <div><i class="fa-solid fa-tower-broadcast"></i></div>
-                <span>Phát Nội dung tương tự</span>
-            </div>
-        </div>
+        
 
 
         <div class="menu-list action ">
@@ -173,6 +168,16 @@
                 <span>Sao chép link</span>
             </div>
         </div>
+        @if($isDelete)
+        
+        <div class="menu-list-action-item dropstart" onclick="removeSongFromPlaylist('{{ $song->id }}','{{ $playList->title }}')">
+            <div class="action-item-content">
+                <div><i class="fa-regular fa-trash-can"></i></div>
+                <span>Xóa ra khỏi play list này</span>
+            </div>
+        </div>
+        @endif
+        
     </div>
     <!-- end more song -->
 
