@@ -73,6 +73,10 @@ class User extends Authenticatable
         $isLike = $this->likePlaylists()->where('id_playlist',$idPlayList)->exists();
         return $isLike;
     }
+    public function checkLikeSong($idSong){
+        $isLike = $this->likeSongs()->where('id_song',$idSong)->exists();
+        return $isLike;
+    }
 
     public function favoriteSong(){
         return $this->hasManyThrough(

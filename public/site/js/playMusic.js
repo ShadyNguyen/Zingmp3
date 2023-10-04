@@ -126,12 +126,11 @@ function addSongToNextList(song) {
         const indexRandom = listSongRandom.findIndex((item)=> item.id === currentSong.id);
         listSong.splice(index+1, 0, song);
         listSongRandom.splice(indexRandom+1, 0, song);
-   
-
     }
     
     saveListSongLocalStorage();
 }
+
 
 function addManySongToList(songs) {
     listSong = [...listSong, ...songs];
@@ -522,6 +521,14 @@ function upListensSong() {
 function setNextSongBtn(id_song) {
     
     getSongById(id_song,addSongToNextList);
+    tooggleDropdown(id_song);
+    addNotification(ID_NOTIFICATION,'Đã thêm vào bài hát tiếp theo',1500);
+}
+function setSongBtn(id_song) {
+    
+    getSongById(id_song,addSongToList);
+    tooggleDropdown(id_song);
+    addNotification(ID_NOTIFICATION,'Đã thêm vào bài hát vào danh sách phát',1500);
 }
 
 function playAlbum(id_playlist){

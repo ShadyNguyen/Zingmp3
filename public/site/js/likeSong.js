@@ -1,4 +1,5 @@
-function likeSong(button,id_user, id_song) {
+function likeSong(button, id_song) {
+    const id_user = _idUser.value;
     const urlCall = URL_WEB + "/api/likeSong"; // Thay đổi địa chỉ URL thành endpoint của bạn
     const formData = new FormData();
     const elm =button;

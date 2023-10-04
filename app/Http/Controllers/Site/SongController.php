@@ -330,8 +330,9 @@ class SongController extends Controller
 
         $playlist = Playlist::where('id',$id_playlist)->first();
         
+
         
-        if($playlist && $playlist->isActive()){
+        if($playlist){
             $listSong = $playlist->songs->where('status',true);
             
             return SongResource::collection($listSong);

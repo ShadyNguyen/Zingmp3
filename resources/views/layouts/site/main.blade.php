@@ -46,7 +46,12 @@
 </head>
 
 <body>
+    <script>
+        function replaceEmptyImage(img){
 
+    img.src = "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/6/0/5/8/6058a7cec305e63abbf7f27819f0552e.jpg";
+    }
+    </script>
     <!-- overlay -->
     <div class="bg-overlay">
     </div>
@@ -209,6 +214,7 @@
         <!-- End playListAside -->
 
         <!-- alert -->
+        
         <div class="notification d-flex justify-content-center align-items-center hidden" id="notification">
             <p>Đã thêm <strong>Toanf</strong> vào danh sách phát</p>
             <div class="icon-notification wrapper-icon justify-content-between"><i class="fa-solid fa-xmark " onclick="closeNotification('notification')"></i></div>

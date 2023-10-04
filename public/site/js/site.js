@@ -1,6 +1,6 @@
 const URL_WEB = document.querySelector('meta[name="root-url"]').dataset.index;
 const ID_NOTIFICATION = "notification";
-const _idUser = document.getElementById('_id-user');
+const _idUser = document.getElementById("_id-user");
 
 var closeNotificationId = null;
 // addNotification('notification','toanf',10000);
@@ -9,22 +9,29 @@ function setStringAction(action, strStrong, messPlus = "") {
     return `Bạn đã ${action} <strong>${strStrong}</strong> ${messPlus}`;
 }
 // notification
-function addNotification(id=ID_NOTIFICATION, mess, time = 2000) {
-    
+
+function addNotification(id = ID_NOTIFICATION, mess, time = 2000) {
+    closeNotification(id);
     if (closeNotificationId) {
         clearTimeout(closeNotificationId);
     }
-
-    const notiElm = document.getElementById(id);
-    notiElm.querySelector("p").innerHTML = mess;
-    document.getElementById(id).classList.remove("hidden");
-    closeNotificationId = setTimeout(() => {
-        closeNotification(id);
-    }, time);
+    setTimeout(()=>{
+        const notiElm = document.getElementById(id);
+        notiElm.querySelector("p").innerHTML = mess;
+        // document.getElementById(id).classList.remove("none");
+        document.getElementById(id).classList.remove("hidden");
+    
+        closeNotificationId = setTimeout(() => {
+            closeNotification(id);
+        }, time);
+    },100)
+    
 }
 
 function closeNotification(id) {
     document.getElementById(id).classList.add("hidden");
+
+
 }
 
 // sidebar
@@ -54,12 +61,17 @@ function toggleSidebar(show) {
 }
 
 //add play list
-const modalAddPlayList = new bootstrap.Modal(
-    document.getElementById("modal-add-play-list"),
-    {
-        keyboard: false,
-    }
-);
+const modalAddPlayListElm = document.getElementById("modal-add-play-list");
+let modalAddPlayList;
+if(modalAddPlayListElm){
+    modalAddPlayList = new bootstrap.Modal(
+        modalAddPlayListElm,
+        {
+            keyboard: false,
+        }
+    );
+}
+
 function toggleAddPlayList(show) {
     if (show) {
         modalAddPlayList.show();
@@ -97,18 +109,17 @@ function generateRandomNumberString(length) {
 }
 
 //
-function createItemSongPlaySidebar(song,stastus=null) {
-  
-    const itemSong = document.createElement('div');
-    let strHTML=`<i class="fa-solid fa-play "></i>
-                <i class="fa-regular fa-circle-pause fa-spin hidden"></i>`
-    itemSong.classList.add('item-song');
-    if(stastus !== null) {
-        strHTML=`<i class="fa-solid fa-play hidden"></i>
-                <i class="fa-regular fa-circle-pause fa-spin "></i>`
+function createItemSongPlaySidebar(song, stastus = null) {
+    const itemSong = document.createElement("div");
+    let strHTML = `<i class="fa-solid fa-play "></i>
+                <i class="fa-regular fa-circle-pause fa-spin hidden"></i>`;
+    itemSong.classList.add("item-song");
+    if (stastus !== null) {
+        strHTML = `<i class="fa-solid fa-play hidden"></i>
+                <i class="fa-regular fa-circle-pause fa-spin "></i>`;
         itemSong.classList.add(stastus);
     }
-    
+
     const wrapper = document.createElement("div");
     wrapper.classList.add("item-song-wrapper");
     wrapper.innerHTML = `<div class="item-song-content">
@@ -132,25 +143,49 @@ function createItemSongPlaySidebar(song,stastus=null) {
                         </div>`;
     itemSong.appendChild(wrapper);
 
-    if(stastus !== null){
-        const foorterElm = document.createElement('div');
-        foorterElm.classList.add('item-song-footer');
-        foorterElm.innerHTML=`<p>Tiếp theo</p>`;
+    if (stastus !== null) {
+        const foorterElm = document.createElement("div");
+        foorterElm.classList.add("item-song-footer");
+        foorterElm.innerHTML = `<p>Tiếp theo</p>`;
         itemSong.appendChild(foorterElm);
     }
-    
+
     return itemSong;
 }
 
-function secondToMinute(second){
-    const minutes =Math.floor(second/60);
-    const secondLeft = Math.floor(second - minutes*60);
-    const str = String(minutes).padStart(2, '0').slice(0, 2) +':'+ String(secondLeft).padStart(2, '0').slice(0, 2);
+function secondToMinute(second) {
+    const minutes = Math.floor(second / 60);
+    const secondLeft = Math.floor(second - minutes * 60);
+    const str =
+        String(minutes).padStart(2, "0").slice(0, 2) +
+        ":" +
+        String(secondLeft).padStart(2, "0").slice(0, 2);
     return str;
 }
-function replaceEmptyImage(img){
 
-    img.src = "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_jpeg/cover/6/0/5/8/6058a7cec305e63abbf7f27819f0552e.jpg";
+function copyLinkToClipboard(elm, id) {
+    const copyLink = elm.dataset["linkCopy"];
+    // copyLink.select();
+    // copyLink.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyLink);
+    addNotification(ID_NOTIFICATION, "Đã sao chép vào clipboard", 1500);
+    tooggleDropdown(id);
 }
 
+function tooggleDropdown(id) {
+    const strId = "id-more-song-" + id;
+    const drpElm = document.querySelector(`#${strId}`);
 
+    // const dropdown = new bootstrap.Dropdown(drpElm, {
+    //     popperConfig: function (defaultBsPopperConfig) {
+    //         const newPopperConfig  = {
+    //             autoClose:true
+    //         }
+    //         return newPopperConfig
+    //     }
+    //   })
+    //   drpElm.setAttribute('aria-hidden', 'false');
+    drpElm.click();
+}

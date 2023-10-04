@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="search-content">
-            @if($listPlaylistFavorite->count == 0)
+            @if($listPlaylistFavorite->count() == 0)
             <div class="search-content-items no-content">
                     <div class="wrapper-icon">
                         <i class="fa-solid fa-compact-disc"></i>

@@ -39,6 +39,26 @@
         <x-list-album title="Có Thể Bạn Muốn Nghe" :listAlbum="$topAlbums"/>
     </div>
     @endif
+    
+    <div class="home-page-content-items">
+        <div class="list-song-wrapper">
+            <div class="main-items-header">
+                <!-- <div class="items-header-subtitle">
+                    <span>Bắt đầu nghe từ một bài hát</span>
+                </div> -->
+                <div class="items-header-title">
+                   Top 10 bài hát được yêu thích nhất
+                </div>
+            </div>
+            <div class="main-items-content">
+                @foreach($topSongsLike as $song)
+                <!-- item -->
+                <x-song :song="$song" />
+                <!-- End item -->
+                @endforeach
+            </div>
+        </div>
+    </div>
 
     @if($topArtists->count() > 0)
     <div class="home-page-content-items">

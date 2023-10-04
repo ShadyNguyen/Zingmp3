@@ -23,6 +23,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
+        view()->share('handleDate', function ($dateString) {
+            return $dateString->format('d/m/Y');
+        });
     }
 }

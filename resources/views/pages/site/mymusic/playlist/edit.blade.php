@@ -111,7 +111,8 @@
                         </div>
                         <div class="action-model-action">
                             <div class="form-check form-switch swich-model">
-                                <input checked="{{ $playlist->status }}" class="form-check-input" id="status-edit-playlist" type="checkbox" name="check-status-edit-playlist">
+                                
+                                <input @if($playlist->status) checked @endif class="form-check-input" id="status-edit-playlist" type="checkbox" name="check-status-edit-playlist">
                             </div>
                         </div>
                     </div>

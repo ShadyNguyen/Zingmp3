@@ -68,4 +68,8 @@ class Song extends Model
             return null;
         }
     }
+    public function getThumnail($size){
+        $sizeSting = ".zmdcdn.me/w".$size;
+        return str_replace(".zmdcdn.me/w94",$sizeSting , $this->thumbnail);
+    }
 }

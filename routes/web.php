@@ -56,10 +56,10 @@ Route::group(['prefix' => 'nghe-si'], function () {
     Route::get('{aritistSlug}/album', [Site\HomeController::class, 'albumArtist'])->name('site.artist.album');
     Route::get('{aritistSlug}/bai-hat', [Site\HomeController::class, 'songArtist'])->name('site.artist.song');
     Route::get('{aritistSlug}', [Site\HomeController::class, 'homeArtist'])->name('site.artist.home');
-
-    
-
 });
+Route::get('song/{songSlug}', [Site\HomeController::class, 'songHome'])->name('site.song.home');
+Route::get('album/{albumSlug}', [Site\HomeController::class, 'albumHome'])->name('site.song.album');
+
 
 
 

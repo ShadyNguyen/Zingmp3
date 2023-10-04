@@ -158,6 +158,7 @@
 
 .search-content-items.search-content-header {
     display: flex;
+    align-items: start;
 }
 
 .search-content-items.search-content-header .create-playlist {
@@ -213,9 +214,17 @@
     color: var(--text-primary);
 
 }
+.items-content.edit .name-user-album span a{
+    color: var(--text-primary);
+}
+.items-content.edit .name-user-album span a:hover{
+    color: var(--link-text-hover);
+    text-decoration: underline;
+}
 .items-content.edit .name-user-album span{
     color: var(--text-secondary) ;
-    display: block;
+    display: flex;
+    gap:1rem;
 }
 .items-content.edit .name-user-album strong{
     color: var(--text-primary);
@@ -224,6 +233,10 @@
 
 .items-content.edit .action .name{
     font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 .items-content.edit .wrapper-items-album {
     width: 30rem;
@@ -243,4 +256,15 @@
 }
 .edit-wrapper .search-content-item-song{
     width: 100%;
+}
+.items-content.edit .name-user-album .btn-outline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    & span{
+        color: var(--text-primary);
+    }
 }

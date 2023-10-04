@@ -73,7 +73,7 @@
                 @endif
             </div>
             <div class="name-user-album">
-                <a href="#" class="name">{{ $album->title }}</a>
+                <a href="{{ route('site.song.album',['albumSlug'=>$album->slug]) }}" class="name">{{ $album->title }}</a>
                 <br>
                 <span >{{ $album->user->name }}</span>
             </div>

@@ -59,11 +59,12 @@ function addPlayListCall(idUser, namePlayList, isPublic) {
                     4000
                 );
                 toggleAddPlayList(false);
-                if(reloadPagePlaylist){
+                if(typeof reloadPagePlaylist !== 'undefined'){
                     setTimeout(()=>{
                         location.reload();
                     },1500)
                 }
+               
                 
                 
                 const newElmPlayList = document.createElement("a");
@@ -77,8 +78,10 @@ function addPlayListCall(idUser, namePlayList, isPublic) {
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </div>
                                         </a>`;
-
-                    document.querySelector("nav.aside-nav .aside-nav-content.play-list").appendChild(newElmPlayList);
+                                        
+                const elmPr = document.querySelector("nav.aside-nav .aside-nav-content.play-list");
+                
+                elmPr.appendChild(newElmPlayList);
             }
         })
         .catch((error) => {
@@ -166,7 +169,7 @@ function btnDeletePlayListCall(id_user, id_playlist,reload) {
                 setStringAction("Xóa playlist", " ", "thành công!"),
                 4000
                 );
-            if(reloadPagePlaylist){
+            if(typeof reloadPagePlaylist !== 'undefined'){
                 setTimeout(()=>{
                     location.reload();
                 },1500)
@@ -216,6 +219,8 @@ function addSongToPlayList(idUser,idSong,idPlayList,namePlayList){
                     setStringAction("Thêm bài hát vào playlist", namePlayList, "thành công!"),
                     4000
                 );
+                tooggleDropdown(idSong);
+
                 
             }
         })

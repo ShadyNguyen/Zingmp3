@@ -15,7 +15,7 @@
                     </button>
                 </div>
                 <div class="song-info">
-                    <a href="#" class="song-info-name"><span>{{ $song->name }}</span></a>
+                    <a href="{{ route('site.song.home',['songSlug'=>$song->slug]) }}" class="song-info-name"><span>{{ $song->name }}</span></a>
                     <a href="{{ route('site.artist.home',['aritistSlug' => $song->user->slug]) }}" class="song-info-astist">
                         <span>{{ $song->user->name }}
                             @if($song->user->is_celeb)
@@ -32,12 +32,12 @@
     <!-- like btn -->
     @auth('user')
         @if($isLike)
-            <button class="item-actions" data-name-song="{{ $song->name }}" onclick="likeSong(this,'{{ $stringJs }}')">
+            <button class="item-actions" data-name-song="{{ $song->name }}" onclick="likeSong(this,'{{$song->id}}')">
                 <i class="fa-solid fa-heart active"></i>
             </button>
 
         @else
-            <button class="item-actions" data-name-song="{{ $song->name }}" onclick="likeSong(this,'{{ $stringJs }}')">
+            <button class="item-actions" data-name-song="{{ $song->name }}" onclick="likeSong(this,'{{$song->id}}')">
                 <i class="fa-regular fa-heart"></i>
             </button>
         @endif
@@ -50,11 +50,11 @@
 
 
 
-    <button class="item-actions" id="id-test" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="item-actions" id="id-more-song-{{$song->id}}" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-ellipsis"></i>
     </button>
     <!-- more song -->
-    <div class="dropdown-menu song-menu" aria-labelledby="id-test">
+    <div class="dropdown-menu song-menu" aria-labelledby="id-more-song-{{$song->id}}">
         <div class="menu-list song-info-menu">
             <div class="thumb-song">
                 <img src="{{ $song->thumbnail }}" alt="">
@@ -92,7 +92,7 @@
         </div>
 
         <div class="menu-list-action-item">
-            <div class="action-item-content">
+            <div class="action-item-content" onclick="setSongBtn('{{ $song->id }}')">
                 <div><i class="fa-brands fa-google-play"></i></div>
                 <span>Thêm vào danh sách phát</span>
             </div>
@@ -110,14 +110,14 @@
 
         <div class="menu-list action ">
             <div class="menu-list-action-item dropstart">
-                <div class="action-item-content" id="add-play-list" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="action-item-content" id="id-more-song-add-play-list-{{$song->id}}"  data-bs-toggle="dropdown" aria-expanded="false">
                     <div><i class="fa-solid fa-circle-plus"></i></div>
                     <span>Thêm vào playlist</span>
                     <div class="icon-sub">
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                 </div>
-                <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="add-play-list">
+                <ul class="dropdown-menu sub-menu-song add-play-list" aria-labelledby="id-more-song-add-play-list-{{$song->id}}">
                     <div class="action-item-content">
                         <input type="text" placeholder="Tìm playlist">
                     </div>
@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        <div class="menu-list-action-item dropstart">
+        <div class="menu-list-action-item dropstart" onclick="copyLinkToClipboard(this,'{{$song->id}}')" data-link-copy="{{ route('site.song.home',['songSlug'=>$song->slug]) }}">
             <div class="action-item-content">
                 <div><i class="fa-regular fa-copy"></i></div>
                 <span>Sao chép link</span>
@@ -170,7 +170,7 @@
         </div>
         @if($isDelete)
         
-        <div class="menu-list-action-item dropstart" onclick="removeSongFromPlaylist('{{ $song->id }}','{{ $playList->title }}')">
+        <div class="menu-list-action-item dropstart" onclick="removeSongFromPlaylist('{{ $song->id }}','{{ $song->name }}')">
             <div class="action-item-content">
                 <div><i class="fa-regular fa-trash-can"></i></div>
                 <span>Xóa ra khỏi play list này</span>

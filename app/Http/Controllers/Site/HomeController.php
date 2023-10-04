@@ -19,17 +19,18 @@ class HomeController extends Controller
        
         $quantityTopSong = 9;
         $quantityTopArtists = 5;
-        $quantityTopAlbum = 5;
-
+        $quantityTopAlbum = 4;
+        $quantityTopSongLike = 9;
 
         $listPlayListAside = [];
 
-        $topSongs = Song::where('status',true)->orderBy('total_listen','desc')->take($quantityTopSong)->orderBy('total_listen', 'desc')->get();
+        $topSongs = Song::where('status',true)->orderBy('total_listen','desc')->take($quantityTopSong)->get();
         $topArtists = User::where('is_celeb',true)->where('status',true)->where('role','user')->take($quantityTopArtists)->orderBy('total_followers', 'desc')->get();
         $topAlbums = Playlist::where('status',true)->take($quantityTopAlbum)->orderBy('total_listen', 'desc')->get();
-
+        $topSongsLike = Song::where('status',true)->orderBy('total_like','desc')->take($quantityTopSong)->get();
+       
         
-        return view('pages.site.home',compact('topSongs','topArtists','topAlbums'));
+        return view('pages.site.home',compact('topSongs','topArtists','topAlbums','topSongsLike'));
     }
 
     public function searchAll(Request $request){  
@@ -164,5 +165,20 @@ class HomeController extends Controller
         // dd($listRsSong);
         return view('pages.site.artist.album',compact('listAlbum','artist'));
 
+    }
+
+    public function songHome(string $songSlug){
+        if(empty($songSlug)){
+            return redirect()->route('site.home');
+        }
+        $song = Song::where('slug',$songSlug)->first();
+        return view('pages.site.song',compact('song'));
+    }
+    public function albumHome(string $albumSlug){
+        if(empty($albumSlug)){
+            return redirect()->route('site.home');
+        }
+        $playlist = Playlist::where('slug',$albumSlug)->first();
+        return view('pages.site.album',compact('playlist'));
     }
 }
