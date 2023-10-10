@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="purple">
+<html lang="vi" data-theme="">
 
 <head>
     <meta charset="UTF-8">

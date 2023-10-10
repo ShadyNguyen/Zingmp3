@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="{{ url('public/site/css/components/listArtist.css') }}">
 <link rel="stylesheet" href="{{ url('public/partials/paginateCustom.css') }}">
 
-
-
 @stop
 
 @section('content')

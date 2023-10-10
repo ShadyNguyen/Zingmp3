@@ -24,7 +24,7 @@ function setTheme(theme){
 }
 function prevTheme(theme){
     
-    const htmlElm = document.querySelector('html')
+    const htmlElm = document.querySelector('html');
     htmlElm.setAttribute('data-theme', theme);
 }
 

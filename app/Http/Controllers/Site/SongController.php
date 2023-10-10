@@ -360,6 +360,8 @@ class SongController extends Controller
                     SongListenerHistory::create(['id_user' => $id_user,'id_song'=>$id_song]);
                 }
                 
+            }else{
+                SongListenerHistory::create(['id_song'=>$id_song]);
             }
             return response()->json([],204);
         }

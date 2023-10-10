@@ -66,6 +66,7 @@ Route::get('album/{albumSlug}', [Site\HomeController::class, 'albumHome'])->name
 // Route::get('/admin', [Admin\HomeController::class, 'dashboard'])->name('admin.dashboard');
 Route::group(['prefix' => 'admin','middleware'=>'admin:admin,nv'], function () {
     Route::get('/', [Admin\HomeController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/user', [Admin\HomeController::class, 'user'])->name('admin.user');
     Route::get('/onlyadmin', [Admin\HomeController::class, 'onlyAdmin'])->name('admin.onlyAdmin')->withoutMiddleware('admin:admin,nv')->middleware(('admin:admin'));
 
 });

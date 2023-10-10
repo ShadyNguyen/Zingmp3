@@ -1,0 +1,98 @@
+.table-user,
+table {
+    border-color: var(--boder-color);
+    color: var(--text-primary);
+    background-color: var(--header-bg);
+}
+
+.card {
+    padding: 0rem;
+}
+
+.card.table-data {
+    flex: 1;
+}
+
+.header-filter {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--boder-color);
+}
+
+.content-filter {
+    padding: 1.5rem;
+}
+
+.wrapper-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-select select {
+    color: var(--text-primary);
+    background-color: var(--bg-input);
+    border: 1px solid var(--boder-color) !important;
+    outline: none;
+    padding: 0.7rem;
+
+}
+
+.wrapper-select select option {
+    background-color: var(--header-bg);
+    font-size: 1.5rem;
+    padding: 0.3rem;
+
+
+}
+
+.wrapper-select + .wrapper-select{
+    margin-top: 2rem;
+}
+
+.table-data .input-group{
+    padding: 0;
+    border: 1px solid var(--boder-color);
+    border-radius: 0.4rem;
+
+}
+.table-data .input-group input{
+    background-color: var(--bg-input);
+    color:var(--text-primary);
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+}
+.table-data .input-group input:focus{
+    border: none;
+    box-shadow: none;
+}
+.input-group .wrapper-icon{
+    padding: 1rem;
+    cursor: pointer;
+    background-color: var(--header-bg);
+}
+.table-data .row.card{
+    margin-top: 1rem;
+    padding: 2rem 0;
+}
+.table{
+    color:var(--text-primary);
+}
+.table-user .avatar-radius{
+    width: 4rem;
+}
+.table-user tbody th{
+    display: flex;
+    justify-content: center;
+   
+}
+.table-user th,td{
+    padding: 1rem;
+    text-align: center;
+}
+.table-data .wrapper-icon{
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+.table-user .status-user{
+    cursor: pointer;
+}
