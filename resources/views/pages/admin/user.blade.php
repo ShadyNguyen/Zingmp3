@@ -21,19 +21,17 @@
         </div>
         <div class="content-filter">
             <div class="wrapper-select">
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <select name="" id="exampleDataList">
-                    <option value=""><span>asd</span></option>
-                    <option value=""><span>asd</span></option>
-                    <option value=""><span>asd</span></option>
-                    <option value=""><span>asd</span></option>
+                <label for="status" class="form-label">Trạng thái</label>
+                <select name="status" id="status">
+                    <option value="1"><span>Hoạt động</span></option>
+                    <option value="0"><span>Khóa</span></option>
                 </select>
             </div>
             <div class="wrapper-select">
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <select name="" id="exampleDataList">
-                    <option value=""><span>asd</span></option>
-                    <option value=""><span>asd</span></option>
+                <label for="sort-follower" class="form-label">Sắp xếp theo follower</label>
+                <select name="" id="sort-follower">
+                    <option value="1"><span>Tăng</span></option>
+                    <option value="0"><span>Giảm</span></option>
                     <option value=""><span>asd</span></option>
                     <option value=""><span>asd</span></option>
                 </select>
@@ -43,47 +41,51 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xl-8 table-data">
         <div class="row">
             <div class="input-group flex-nowrap">
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="q-name" id="q-name">
                 <div class="wrapper-icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
         </div>
-        <div class="row card">
-            <table class="table table-user align-middle">
-                <thead>
-                    <tr>
-                        <th scope="col">Avatar</th>
-                        <th scope="col">Tên</th>
-                        <th scope="col">Username</th>
+        <div id="tbUser">
 
-                        <th scope="col">Trạng thái</th>
-                        <th scope="col">Follower</th>
-                        <th scope="col">Slug</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>
-                            <div class="avatar-radius">
-                                <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/1/a/c/9/1ac927d990a98c2716f0e556fa3a004e.jpg" alt="">
-                            </div>
-                        </th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="status-user"><span class="badge bg-success">Success</span></td>
-                        <td>1</td>
-                        <td><a href="#" target="_blank">Huyen-Tam-Mon</a></td>
-                        <td>
-                            <a href="#" class="wrapper-icon bg-primary">
-                                <i class="fa-solid fa-user-pen"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 
+            <!-- <div class="row card">
+                <table class="table table-user align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Avatar</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Username</th>
+
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Follower</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <div class="avatar-radius">
+                                    <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/1/a/c/9/1ac927d990a98c2716f0e556fa3a004e.jpg" alt="">
+                                </div>
+                            </th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td class="status-user"><span class="badge bg-success">Success</span></td>
+                            <td>1</td>
+                            <td><a href="#" target="_blank">Huyen-Tam-Mon</a></td>
+                            <td>
+                                <a href="#" class="wrapper-icon bg-primary">
+                                    <i class="fa-solid fa-user-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div> -->
         </div>
     </div>
 </div>
@@ -128,4 +130,5 @@
         modalChangeStatusUser.show();
     }
 </script>
+<script src="{{  url('public/admin/js/callApi.js')  }}"></script>
 @stop

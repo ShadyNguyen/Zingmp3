@@ -368,4 +368,16 @@ class SongController extends Controller
             return response()->json([],503);
 
     }
+    public function adminTableUser(Request $request){
+        $quantityRsUser = 20;
+        $listUser = User::where('role','user');
+        if($request->has('name')){
+            $listUser = $listUser->where('name',$request->get('name'));
+        }
+        if($request->has('status')){
+            $listUser = $listUser->where('name',$request->get('status'));
+        }
+        $listUser = $listUser->paginate($quantityRsUser);
+        return view('pages.admin.tableUser',compact('listUser'));
+    }
 }

@@ -40,6 +40,8 @@ Route::get('/upListensSong', [Site\SongController::class, 'upListensSong']);
 
 Route::post('/register', [Site\AuthController::class, 'register']);
 
+Route::get('/admin/tableUser',[Site\SongController::class, 'adminTableUser']);
+
 // Route::post('/loginAjax', [Site\AuthController::class, 'loginAjax'])->name('site.auth.loginAjax');
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
