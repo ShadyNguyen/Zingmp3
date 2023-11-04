@@ -20,7 +20,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
-        
+        // $views = ['pages.site.*', 'pages.admin.posts.*'];
+        // foreach ($views as $view) {
+        //     view()->composer($view, function ($view) {
+        //         $view->with([
+        //             'listCategories' => Category::all()
+        //         ]);
+        //     });
+        // }
     }
 }

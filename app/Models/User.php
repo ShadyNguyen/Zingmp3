@@ -32,14 +32,14 @@ class User extends Authenticatable
         'slug',
         'total_followers'
     ];
-    
 
-    
+
+
     public function songs()
     {
         return $this->hasMany(Song::class, 'id_user', 'id');
     }
-    
+
     public function getListSong()
     {
         return $this->hasMany(Song::class, 'id_user', 'id')->where('status', 1);
@@ -63,22 +63,31 @@ class User extends Authenticatable
     {
         return $this->hasMany(FollowArtist::class, 'id_user', 'id');
     }
+    public function followers()
+    {
+        return $this->hasMany(FollowArtist::class, 'id_artist', 'id');
+    }
 
-    public function checkFollowArtists($idArtist){
+    public function checkFollowArtists($idArtist)
+    {
         $isFollowing = $this->followArtists()->where('id_artist', $idArtist)->exists();
         return $isFollowing;
     }
 
-    public function checkLikePlaylists($idPlayList){
-        $isLike = $this->likePlaylists()->where('id_playlist',$idPlayList)->exists();
+    public function checkLikePlaylists($idPlayList)
+    {
+        $isLike = $this->likePlaylists()->where('id_playlist', $idPlayList)->exists();
         return $isLike;
     }
-    public function checkLikeSong($idSong){
-        $isLike = $this->likeSongs()->where('id_song',$idSong)->exists();
+    public function checkLikeSong($idSong)
+    {
+        $isLike = $this->likeSongs()->where('id_song', $idSong)->exists();
         return $isLike;
     }
 
-    public function favoriteSong(){
+
+    public function favoriteSong()
+    {
         return $this->hasManyThrough(
             Song::class, // Model của bảng cần truy cập (Song)
             LikeSong::class, // Model của bảng trung gian (SongListenerHistory)
@@ -89,7 +98,8 @@ class User extends Authenticatable
         )->orderBy('created_at', 'desc');
     }
 
-    public function favoritePlayList(){
+    public function favoritePlayList()
+    {
         return $this->hasManyThrough(
             Playlist::class, // Model của bảng cần truy cập (Song)
             LikePlaylist::class, // Model của bảng trung gian (SongListenerHistory)
@@ -100,11 +110,13 @@ class User extends Authenticatable
         )->orderBy('created_at', 'desc');
     }
 
-    public function songListenerHistorys(){
+    public function songListenerHistorys()
+    {
         return $this->hasMany(SongListenerHistory::class, 'id_user', 'id');
     }
 
-    public function searchHistorys(){
+    public function searchHistorys()
+    {
         return $this->hasMany(SearchHistory::class, 'id_user', 'id');
     }
 
@@ -125,10 +137,10 @@ class User extends Authenticatable
     {
         return $this->role == 'admin';
     }
-    
+
     public function isUserActive()
     {
-        if($this->role=='user'&&$this->status==1){
+        if ($this->role == 'user' && $this->status == 1) {
             return true;
         }
         return false;
@@ -140,7 +152,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password'
-        
+
     ];
 
     /**

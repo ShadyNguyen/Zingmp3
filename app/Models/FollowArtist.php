@@ -10,7 +10,7 @@ class FollowArtist extends Model
     use HasFactory;
 
     protected $table = 'follow_artists';
-    protected $fillable = ['id_user','id_artist'];
+    protected $fillable = ['id_user', 'id_artist'];
 
     public function user()
     {
@@ -21,4 +21,5 @@ class FollowArtist extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_artist');
     }
+    
 }

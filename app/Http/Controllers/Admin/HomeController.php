@@ -68,11 +68,15 @@ class HomeController extends Controller
     }
 
     public function user(){
-        return view('pages.admin.user');
+        return view('pages.admin.user.dashboard');
+    }
+    public function userDetail(User $user){
+        return view('pages.admin.user.detailUser',compact('user'));
     }
     function getTotalCountByMonth($model, $firstDayOfLastMonth, $lastDayOfLastMonth)
     {
         $count = $model::whereBetween('created_at', [$firstDayOfLastMonth, $lastDayOfLastMonth])->count();
         return $count;
     }
+
 }

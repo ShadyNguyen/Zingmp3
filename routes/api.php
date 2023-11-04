@@ -42,6 +42,14 @@ Route::post('/register', [Site\AuthController::class, 'register']);
 
 Route::get('/admin/tableUser',[Site\SongController::class, 'adminTableUser']);
 
+Route::get('/admin/user/detailUser',[Site\SongController::class, 'detailUser']);
+
+Route::get('/admin/test/user',[Site\SongController::class, 'getTest']);
+
+
+Route::post('/admin/toggleStatusUser',[Site\SongController::class, 'adminToggleStatusUser']);
+
+
 // Route::post('/loginAjax', [Site\AuthController::class, 'loginAjax'])->name('site.auth.loginAjax');
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -1,5 +1,5 @@
 @extends('layouts.site.main')
-@section('title', '{{ $artist->name }}')
+@section('title',  $artist->name )
 
 @section('css')
 <link rel="stylesheet" href="{{ url('public/site/css/pages/search/main.css') }}">

@@ -21,7 +21,10 @@ table {
 
 .content-filter {
     padding: 1.5rem;
-    
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap:5rem;
 }
 
 .wrapper-select {
@@ -46,9 +49,9 @@ table {
 
 }
 
-.wrapper-select + .wrapper-select{
+/* .wrapper-select + .wrapper-select{
     margin-top: 2rem;
-}
+} */
 
 .table-data .input-group{
     padding: 0;

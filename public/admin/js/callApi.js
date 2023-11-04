@@ -1,17 +1,12 @@
-const tbELm = document.getElementById('tbUser');
-const searchElm = document.getElementById('q-name');
-const sortFollowerElm = document.getElementById('sort-follower');
-const statusElm = document.getElementById('status');
 
-sortFollowerElm.addEventListener('change',(e)=>{
-    
-})
+function callTableUser(callback, url = null) {
+    let urlCall;
+    if (url == null) {
+        urlCall = URL_WEB + "/api/admin/tableUser"; // Thay đổi địa chỉ URL thành endpoint của bạn
+    } else {
+        urlCall = url; // Thay đổi địa chỉ URL thành endpoint của bạn
+    }
 
-
-
-function callTableUser(params=null){
-    const urlCall = URL_WEB + "/api/admin/tableUser"; // Thay đổi địa chỉ URL thành endpoint của bạn
-    
     // params = {
     //   idSong  ,
     // };
@@ -22,13 +17,13 @@ function callTableUser(params=null){
         .then((response) => {
             // Xử lý dữ liệu trả về từ máy chủ ở đây
             const data = response.data;
-            
+
             // addSongToList(data);
 
             const status = response.status;
             if (status === 200) {
-                tbELm.innerHTML = data
-                // console.log(data)
+                tbELm.innerHTML = data;
+                callback();
             }
         })
 
@@ -37,4 +32,3 @@ function callTableUser(params=null){
             // addNotification(ID_NOTIFICATION, "Có lối, thử lại sau!", 4000);
         });
 }
-callTableUser();
